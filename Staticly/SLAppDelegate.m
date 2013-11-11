@@ -7,6 +7,7 @@
 //
 
 #import "SLAppDelegate.h"
+#import "SLPostsViewController.h"
 
 @implementation SLAppDelegate
 
@@ -17,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
@@ -24,7 +26,10 @@
         
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+        UINavigationController *navigationController = [[tabBarController childViewControllers] firstObject];
+        SLPostsViewController *postsViewController = [navigationController topViewController];
+        postsViewController.managedObjectContext = self.managedObjectContext;
     }
     return YES;
 }
