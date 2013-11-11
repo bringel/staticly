@@ -17,8 +17,6 @@
 		2FADC2311830546E000FC13E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FADC22F1830546E000FC13E /* Main_iPhone.storyboard */; };
 		2FADC2341830546E000FC13E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FADC2321830546E000FC13E /* Main_iPad.storyboard */; };
 		2FADC2371830546E000FC13E /* Staticly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FADC2351830546E000FC13E /* Staticly.xcdatamodeld */; };
-		2FADC23A1830546E000FC13E /* SLMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FADC2391830546E000FC13E /* SLMasterViewController.m */; };
-		2FADC23D1830546E000FC13E /* SLDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FADC23C1830546E000FC13E /* SLDetailViewController.m */; };
 		2FADC23F1830546E000FC13E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FADC23E1830546E000FC13E /* Images.xcassets */; };
 		2FADC2461830546E000FC13E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FADC2451830546E000FC13E /* XCTest.framework */; };
 		2FADC2471830546E000FC13E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FADC21B1830546E000FC13E /* Foundation.framework */; };
@@ -53,10 +51,6 @@
 		2FADC2301830546E000FC13E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		2FADC2331830546E000FC13E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		2FADC2361830546E000FC13E /* Staticly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Staticly.xcdatamodel; sourceTree = "<group>"; };
-		2FADC2381830546E000FC13E /* SLMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLMasterViewController.h; sourceTree = "<group>"; };
-		2FADC2391830546E000FC13E /* SLMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLMasterViewController.m; sourceTree = "<group>"; };
-		2FADC23B1830546E000FC13E /* SLDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLDetailViewController.h; sourceTree = "<group>"; };
-		2FADC23C1830546E000FC13E /* SLDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLDetailViewController.m; sourceTree = "<group>"; };
 		2FADC23E1830546E000FC13E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FADC2441830546E000FC13E /* StaticlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaticlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FADC2451830546E000FC13E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -129,10 +123,6 @@
 				2FADC22D1830546E000FC13E /* SLAppDelegate.m */,
 				2FADC22F1830546E000FC13E /* Main_iPhone.storyboard */,
 				2FADC2321830546E000FC13E /* Main_iPad.storyboard */,
-				2FADC2381830546E000FC13E /* SLMasterViewController.h */,
-				2FADC2391830546E000FC13E /* SLMasterViewController.m */,
-				2FADC23B1830546E000FC13E /* SLDetailViewController.h */,
-				2FADC23C1830546E000FC13E /* SLDetailViewController.m */,
 				2FADC23E1830546E000FC13E /* Images.xcassets */,
 				2FADC2351830546E000FC13E /* Staticly.xcdatamodeld */,
 				2FADC2241830546E000FC13E /* Supporting Files */,
@@ -269,10 +259,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FADC22A1830546E000FC13E /* main.m in Sources */,
-				2FADC23A1830546E000FC13E /* SLMasterViewController.m in Sources */,
 				2FADC2371830546E000FC13E /* Staticly.xcdatamodeld in Sources */,
 				2FADC22E1830546E000FC13E /* SLAppDelegate.m in Sources */,
-				2FADC23D1830546E000FC13E /* SLDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,6 @@
 
 #import "SLAppDelegate.h"
 
-#import "SLMasterViewController.h"
-
 @implementation SLAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -25,12 +23,8 @@
         splitViewController.delegate = (id)navigationController.topViewController;
         
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        SLMasterViewController *controller = (SLMasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
     } else {
         UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        SLMasterViewController *controller = (SLMasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
     }
     return YES;
 }
