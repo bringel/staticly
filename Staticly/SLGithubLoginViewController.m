@@ -9,8 +9,11 @@
 #import "SLGithubLoginViewController.h"
 #import "SLGithubClient.h"
 #import "SLUser.h"
+#import "SLUserRepositoryBrowserViewController.h"
 
 @interface SLGithubLoginViewController ()
+
+@property (strong, nonatomic) SLUser *authenticatedUser;
 
 @end
 
@@ -64,12 +67,23 @@
                                        [[[SLGithubClient sharedClient] requestSerializer] clearAuthorizationHeader];
                                        NSError *error;
                                        [self.managedObjectContext save:&error];
+                                       self.authenticatedUser = user;
                                        NSLog(@"Successfully got a token");
+                                       [self performSegueWithIdentifier:@"showRepositoryBrowser" sender:self];
                                    }
                                }
                                failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                   
+                                   //We should probably handle this error somewhere. I just don't know where
                                }];
     
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"showRepositoryBrowser"]){
+        SLUserRepositoryBrowserViewController *repositoryBrowser = segue.destinationViewController;
+        repositoryBrowser.managedObjectContext = self.managedObjectContext;
+        repositoryBrowser.currentUser = self.authenticatedUser;
+    }
 }
 @end

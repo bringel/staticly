@@ -1,19 +1,22 @@
 //
-//  SLPostsViewController.m
+//  SLUserRepositoryBrowserViewController.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 11/10/13.
+//  Created by Bradley Ringel on 11/11/13.
 //  Copyright (c) 2013 Bradley Ringel. All rights reserved.
 //
 
-#import "SLPostsViewController.h"
-#import "SLGithubLoginViewController.h"
+#import "SLUserRepositoryBrowserViewController.h"
+#import "SLGithubClient.h"
+#import "SLRepository.h"
 
-@interface SLPostsViewController ()
+@interface SLUserRepositoryBrowserViewController ()
+
+@property (strong, nonatomic) NSArray *repositories;
 
 @end
 
-@implementation SLPostsViewController
+@implementation SLUserRepositoryBrowserViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,14 +37,32 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
-    NSError *error;
-    NSArray *users = [[self managedObjectContext] executeFetchRequest:request error:&error];
+    //We should load all the repositories that the user has so they can select one to use
+    [[SLGithubClient sharedClient] setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     
-    if(users.count == 0){
-        //we need a user. show the login screen
-        [self performSegueWithIdentifier:@"showLoginViewController" sender:self];
-    }
+    [[SLGithubClient sharedClient] GET:@"/user/repos" parameters: @{@"access_token" : [self.currentUser oauthToken]}
+                               success:^(NSURLSessionDataTask *task, id responseObject) {
+                                   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                                   if(response.statusCode == 200){
+                                       NSArray *repos = responseObject;
+                                       for(NSDictionary *repo in repos){
+                                           //This will crash if any of these objects are NSNull.
+                                           //FIXME
+                                           SLRepository *newRepository = [NSEntityDescription insertNewObjectForEntityForName:@"SLRepository" inManagedObjectContext:self.managedObjectContext];
+                                           newRepository.name = [repo objectForKey:@"name"];
+                                           newRepository.fullName = [repo objectForKey:@"full_name"];
+                                           newRepository.homepage = [repo objectForKey:@"homepage"];
+                                           newRepository.repoID = [repo objectForKey:@"id"];
+                                           NSError *error;
+                                           [self.managedObjectContext save:&error];
+                                       }
+                                       [self.tableView reloadData];
+                                       NSLog(@"Got a bunch of repositories");
+                                   }
+                               }
+                               failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                   NSLog(@"Uh Oh, something went wrong getting repositories: %@", error);
+                               }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,25 +75,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.repositories.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"repoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    
+    SLRepository *repository = [self.repositories objectAtIndex:indexPath.row];
+    cell.textLabel.text = repository.name;
+    cell.detailTextLabel.text = repository.fullName;
     return cell;
 }
 
@@ -115,7 +136,7 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -123,13 +144,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"showLoginViewController"]){
-        UINavigationController *navController = segue.destinationViewController;
-        
-        ((SLGithubLoginViewController *)navController.topViewController).managedObjectContext = self.managedObjectContext;
-    }
 }
 
-
+ */
 
 @end
