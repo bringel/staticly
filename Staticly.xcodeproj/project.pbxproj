@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F8D9B73183090C500C7951B /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D9B72183090C500C7951B /* SLUser.m */; };
+		2F6C57881831C3B400B2E5D0 /* SLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C57871831C3B400B2E5D0 /* SLSettingsViewController.m */; };
+		2F6C578B1832C3E100B2E5D0 /* SLButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C578A1832C3E100B2E5D0 /* SLButtonCell.m */; };
+		2F6C578E1833045200B2E5D0 /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C578D1833045200B2E5D0 /* SLUser.m */; };
+		2F6C57921833104F00B2E5D0 /* SLPickUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C57911833104F00B2E5D0 /* SLPickUsersViewController.m */; };
+		2F6C57951833105800B2E5D0 /* SLPickSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C57941833105800B2E5D0 /* SLPickSiteViewController.m */; };
 		2F8D9B7918309D3C00C7951B /* SLUserRepositoryBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D9B7818309D3C00C7951B /* SLUserRepositoryBrowserViewController.m */; };
 		2F8D9B7C1830A18B00C7951B /* SLRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D9B7B1830A18B00C7951B /* SLRepository.m */; };
 		2FADC21C1830546E000FC13E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FADC21B1830546E000FC13E /* Foundation.framework */; };
@@ -45,8 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F8D9B71183090C500C7951B /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
-		2F8D9B72183090C500C7951B /* SLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUser.m; sourceTree = "<group>"; };
+		2F6C57861831C3B400B2E5D0 /* SLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSettingsViewController.h; sourceTree = "<group>"; };
+		2F6C57871831C3B400B2E5D0 /* SLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSettingsViewController.m; sourceTree = "<group>"; };
+		2F6C57891832C3E100B2E5D0 /* SLButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLButtonCell.h; sourceTree = "<group>"; };
+		2F6C578A1832C3E100B2E5D0 /* SLButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLButtonCell.m; sourceTree = "<group>"; };
+		2F6C578C1833045200B2E5D0 /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
+		2F6C578D1833045200B2E5D0 /* SLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUser.m; sourceTree = "<group>"; };
+		2F6C57901833104F00B2E5D0 /* SLPickUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickUsersViewController.h; sourceTree = "<group>"; };
+		2F6C57911833104F00B2E5D0 /* SLPickUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickUsersViewController.m; sourceTree = "<group>"; };
+		2F6C57931833105800B2E5D0 /* SLPickSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickSiteViewController.h; sourceTree = "<group>"; };
+		2F6C57941833105800B2E5D0 /* SLPickSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickSiteViewController.m; sourceTree = "<group>"; };
 		2F8D9B7718309D3C00C7951B /* SLUserRepositoryBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUserRepositoryBrowserViewController.h; sourceTree = "<group>"; };
 		2F8D9B7818309D3C00C7951B /* SLUserRepositoryBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUserRepositoryBrowserViewController.m; sourceTree = "<group>"; };
 		2F8D9B7A1830A18B00C7951B /* SLRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRepository.h; sourceTree = "<group>"; };
@@ -109,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F6C578F18330F8F00B2E5D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2FADC267183086AA000FC13E /* SLGithubLoginViewController.h */,
+				2FADC268183086AA000FC13E /* SLGithubLoginViewController.m */,
+				2F8D9B7718309D3C00C7951B /* SLUserRepositoryBrowserViewController.h */,
+				2F8D9B7818309D3C00C7951B /* SLUserRepositoryBrowserViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		2FADC20F1830546E000FC13E = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +215,8 @@
 		2FADC25E183085B9000FC13E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2F8D9B71183090C500C7951B /* SLUser.h */,
-				2F8D9B72183090C500C7951B /* SLUser.m */,
+				2F6C578C1833045200B2E5D0 /* SLUser.h */,
+				2F6C578D1833045200B2E5D0 /* SLUser.m */,
 				2FADC261183085E3000FC13E /* SLGithubClient.h */,
 				2FADC262183085E3000FC13E /* SLGithubClient.m */,
 				2F8D9B7A1830A18B00C7951B /* SLRepository.h */,
@@ -205,6 +228,8 @@
 		2FADC25F183085BE000FC13E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C57891832C3E100B2E5D0 /* SLButtonCell.h */,
+				2F6C578A1832C3E100B2E5D0 /* SLButtonCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -214,10 +239,13 @@
 			children = (
 				2FADC2641830869C000FC13E /* SLPostsViewController.h */,
 				2FADC2651830869C000FC13E /* SLPostsViewController.m */,
-				2FADC267183086AA000FC13E /* SLGithubLoginViewController.h */,
-				2FADC268183086AA000FC13E /* SLGithubLoginViewController.m */,
-				2F8D9B7718309D3C00C7951B /* SLUserRepositoryBrowserViewController.h */,
-				2F8D9B7818309D3C00C7951B /* SLUserRepositoryBrowserViewController.m */,
+				2F6C578F18330F8F00B2E5D0 /* Login */,
+				2F6C57861831C3B400B2E5D0 /* SLSettingsViewController.h */,
+				2F6C57871831C3B400B2E5D0 /* SLSettingsViewController.m */,
+				2F6C57901833104F00B2E5D0 /* SLPickUsersViewController.h */,
+				2F6C57911833104F00B2E5D0 /* SLPickUsersViewController.m */,
+				2F6C57931833105800B2E5D0 /* SLPickSiteViewController.h */,
+				2F6C57941833105800B2E5D0 /* SLPickSiteViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -357,15 +385,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6C57881831C3B400B2E5D0 /* SLSettingsViewController.m in Sources */,
+				2F6C57921833104F00B2E5D0 /* SLPickUsersViewController.m in Sources */,
 				2FADC263183085E3000FC13E /* SLGithubClient.m in Sources */,
 				2F8D9B7918309D3C00C7951B /* SLUserRepositoryBrowserViewController.m in Sources */,
-				2F8D9B73183090C500C7951B /* SLUser.m in Sources */,
 				2F8D9B7C1830A18B00C7951B /* SLRepository.m in Sources */,
+				2F6C57951833105800B2E5D0 /* SLPickSiteViewController.m in Sources */,
 				2FADC22A1830546E000FC13E /* main.m in Sources */,
 				2FADC2661830869C000FC13E /* SLPostsViewController.m in Sources */,
+				2F6C578E1833045200B2E5D0 /* SLUser.m in Sources */,
 				2FADC2371830546E000FC13E /* Staticly.xcdatamodeld in Sources */,
 				2FADC269183086AA000FC13E /* SLGithubLoginViewController.m in Sources */,
 				2FADC22E1830546E000FC13E /* SLAppDelegate.m in Sources */,
+				2F6C578B1832C3E100B2E5D0 /* SLButtonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

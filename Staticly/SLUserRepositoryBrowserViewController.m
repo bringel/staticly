@@ -12,7 +12,7 @@
 
 @interface SLUserRepositoryBrowserViewController ()
 
-@property (strong, nonatomic) NSArray *repositories;
+@property (strong, nonatomic) NSMutableArray *repositories;
 
 @end
 
@@ -25,6 +25,13 @@
         // Custom initialization
     }
     return self;
+}
+
+- (NSMutableArray *)repositories{
+    if(_repositories == nil){
+        _repositories = [[NSMutableArray alloc] init];
+    }
+    return _repositories;
 }
 
 - (void)viewDidLoad
@@ -45,17 +52,7 @@
                                    NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
                                    if(response.statusCode == 200){
                                        NSArray *repos = responseObject;
-                                       for(NSDictionary *repo in repos){
-                                           //This will crash if any of these objects are NSNull.
-                                           //FIXME
-                                           SLRepository *newRepository = [NSEntityDescription insertNewObjectForEntityForName:@"SLRepository" inManagedObjectContext:self.managedObjectContext];
-                                           newRepository.name = [repo objectForKey:@"name"];
-                                           newRepository.fullName = [repo objectForKey:@"full_name"];
-                                           newRepository.homepage = [repo objectForKey:@"homepage"];
-                                           newRepository.repoID = [repo objectForKey:@"id"];
-                                           NSError *error;
-                                           [self.managedObjectContext save:&error];
-                                       }
+                                       [self.repositories addObjectsFromArray:repos];
                                        [self.tableView reloadData];
                                        NSLog(@"Got a bunch of repositories");
                                    }
@@ -91,10 +88,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    SLRepository *repository = [self.repositories objectAtIndex:indexPath.row];
-    cell.textLabel.text = repository.name;
-    cell.detailTextLabel.text = repository.fullName;
+    NSDictionary *repository = [self.repositories objectAtIndex:indexPath.row];
+    cell.textLabel.text = [repository objectForKey:@"name"];
+    cell.detailTextLabel.text = [repository objectForKey:@"full_name"];
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //The user selected a repository, now we need to get them to pick a branch
 }
 
 /*
@@ -136,7 +139,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -146,6 +149,5 @@
     // Pass the selected object to the new view controller.
 }
 
- */
 
 @end
