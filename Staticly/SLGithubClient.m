@@ -25,18 +25,22 @@
 
 - (NSString *)clientSecret{
     
-    NSDictionary *githubapi = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"githubapi" ofType:@"plist"]];
+    if(_clientSecret == nil){
+        NSDictionary *githubapi = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"githubapi" ofType:@"plist"]];
     
-    return  [githubapi objectForKey:@"clientSecret"];
-    
+        _clientSecret = [githubapi objectForKey:@"clientSecret"];
+    }
+    return  _clientSecret;
 }
 
 - (NSString *)clientID{
     
-    NSDictionary *githubapi = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"githubapi" ofType:@"plist"]];
-    
-    return [githubapi objectForKey:@"clientID"];
-    
+    if(_clientID == nil){
+        NSDictionary *githubapi = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"githubapi" ofType:@"plist"]];
+        
+        _clientID = [githubapi objectForKey:@"clientID"];
+    }
+    return _clientID;
 }
 
 @end

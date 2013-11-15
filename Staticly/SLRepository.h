@@ -15,6 +15,5 @@
 @property (nonatomic, retain) NSNumber * repoID;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * fullName;
-@property (nonatomic, retain) NSString * homepage;
 
 @end

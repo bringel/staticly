@@ -5,6 +5,7 @@
 //  Created by Bradley Ringel on 11/10/13.
 //  Copyright (c) 2013 Bradley Ringel. All rights reserved.
 //
+#import <QuartzCore/QuartzCore.h>
 
 #import "SLGithubLoginViewController.h"
 #import "SLGithubClient.h"
@@ -32,6 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,6 +65,7 @@
                                        NSDictionary *tokenResponse = responseObject;
                                        user.oauthToken = [tokenResponse objectForKey:@"token"];
                                        user.tokenID = [tokenResponse objectForKey:@"id"];
+                                       user.currentUser = [NSNumber numberWithBool:YES];
                                        //we don't want to send the username and password anymore
                                        [[[SLGithubClient sharedClient] requestSerializer] clearAuthorizationHeader];
                                        NSError *error;

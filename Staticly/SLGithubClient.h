@@ -7,11 +7,13 @@
 //
 
 #import "AFHTTPSessionManager.h"
+#import "SLUser.h"
 
 @interface SLGithubClient : AFHTTPSessionManager
 
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
+@property (nonatomic, strong) SLUser *currentUser;
 
 + (SLGithubClient *)sharedClient;
 

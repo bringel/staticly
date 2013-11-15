@@ -14,6 +14,5 @@
 @dynamic repoID;
 @dynamic name;
 @dynamic fullName;
-@dynamic homepage;
 
 @end
