@@ -2,7 +2,7 @@
 //  SLUser.h
 //  Staticly
 //
-//  Created by Bradley Ringel on 11/12/13.
+//  Created by Bradley Ringel on 11/16/13.
 //  Copyright (c) 2013 Bradley Ringel. All rights reserved.
 //
 
@@ -12,9 +12,9 @@
 
 @interface SLUser : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * currentUser;
 @property (nonatomic, retain) NSString * oauthToken;
 @property (nonatomic, retain) NSNumber * tokenID;
 @property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSNumber * currentUser;
 
 @end

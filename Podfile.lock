@@ -19,14 +19,17 @@ PODS:
   - AFNetworking/Serialization (2.0.2)
   - AFNetworking/UIKit (2.0.2):
     - AFNetworking/NSURLConnection
+  - MRProgress (0.2.1)
   - TestFlightSDK (2.1.1-beta)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - MRProgress (~> 0.2)
   - TestFlightSDK
 
 SPEC CHECKSUMS:
   AFNetworking: 22de50ae71ab1c4859773f61068d6fcd1d8f9a4d
+  MRProgress: 28c146612cd5ceb30a16d06216028beab125d926
   TestFlightSDK: dea28c16f0bf65c49c4ed8939b2ae0b0ed9bf8b0
 
 COCOAPODS: 0.27.1
