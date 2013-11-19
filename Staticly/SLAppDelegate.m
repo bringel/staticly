@@ -8,6 +8,7 @@
 
 #import "SLAppDelegate.h"
 #import "SLPostsViewController.h"
+#import "SLGithubClient.h"
 
 @implementation SLAppDelegate
 
@@ -29,7 +30,17 @@
         UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
         UINavigationController *navigationController = [[tabBarController childViewControllers] firstObject];
         SLPostsViewController *postsViewController = [navigationController topViewController];
+        [[SLGithubClient sharedClient] setManagedObjectContext:self.managedObjectContext];
+        
         postsViewController.managedObjectContext = self.managedObjectContext;
+        //These should all be UINavigationControllers in the iPhone version
+
+        for(UINavigationController *navController in tabBarController.viewControllers){
+            if([navController.topViewController respondsToSelector:@selector(setManagedObjectContext:)]){
+                //have to cast as id to get rid of unknown selector error
+                [(id)navController.topViewController setManagedObjectContext:self.managedObjectContext];
+            }
+        }
     }
     return YES;
 }

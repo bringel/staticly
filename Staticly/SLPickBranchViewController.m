@@ -1,23 +1,23 @@
 //
-//  SLUserRepositoryBrowserViewController.m
+//  SLPickBranchViewController.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 11/11/13.
+//  Created by Bradley Ringel on 11/15/13.
 //  Copyright (c) 2013 Bradley Ringel. All rights reserved.
 //
 
-#import "SLUserRepositoryBrowserViewController.h"
-#import "SLGithubClient.h"
-#import "SLRepository.h"
 #import "SLPickBranchViewController.h"
+#import "SLBranch.h"
+#import "SLGithubClient.h"
+#import "SLUser.h"
 
-@interface SLUserRepositoryBrowserViewController ()
+@interface SLPickBranchViewController ()
 
-@property (strong, nonatomic) NSMutableArray *repositories;
+@property (strong, nonatomic) NSMutableArray *branches;
 
 @end
 
-@implementation SLUserRepositoryBrowserViewController
+@implementation SLPickBranchViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,11 +28,11 @@
     return self;
 }
 
-- (NSMutableArray *)repositories{
-    if(_repositories == nil){
-        _repositories = [[NSMutableArray alloc] init];
+- (NSMutableArray *)branches{
+    if(_branches == nil){
+        _branches = [[NSMutableArray alloc] init];
     }
-    return _repositories;
+    return _branches;
 }
 
 - (void)viewDidLoad
@@ -45,22 +45,23 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    //We should load all the repositories that the user has so they can select one to use
-    [[SLGithubClient sharedClient] setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    
-    [[SLGithubClient sharedClient] GET:@"/user/repos" parameters: @{@"access_token" : [self.currentUser oauthToken]}
+    NSString *user = [[[SLGithubClient sharedClient] currentUser] username];
+    NSString *repoName = [self.selectedRepository name];
+    NSString *token = [[[SLGithubClient sharedClient] currentUser] oauthToken];
+    NSString *url = [NSString stringWithFormat:@"/repos/%@/%@/git/refs", user, repoName];
+    [[SLGithubClient sharedClient] GET:url parameters:@{@"access_token" : token}
                                success:^(NSURLSessionDataTask *task, id responseObject) {
-                                   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                                   NSHTTPURLResponse *response = task.response;
                                    if(response.statusCode == 200){
-                                       NSArray *repos = responseObject;
-                                       [self.repositories addObjectsFromArray:repos];
+                                       NSArray *branches = responseObject;
+                                       [self.branches addObjectsFromArray:branches];
                                        [self.tableView reloadData];
-                                       NSLog(@"Got a bunch of repositories");
                                    }
-                               }
+        
+    }
                                failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                   NSLog(@"Uh Oh, something went wrong getting repositories: %@", error);
-                               }];
+                                   NSLog(@"Whoops: %@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,29 +81,44 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.repositories.count;
+    return self.branches.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"repoCell";
+    static NSString *CellIdentifier = @"branchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *repository = [self.repositories objectAtIndex:indexPath.row];
-    cell.textLabel.text = [repository objectForKey:@"name"];
-    cell.detailTextLabel.text = [repository objectForKey:@"full_name"];
+    NSArray *components = [[[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"] componentsSeparatedByString:@"/"];
+    cell.textLabel.text = [components lastObject];
+    
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //The user selected a repository, now we need to get them to pick a branch
+    //the user picked a branch, so we should make an SLBranch, and dismiss the modal view controllers
+    //now we can download commits and junk
     
-    [self performSegueWithIdentifier:@"showBranchPicker" sender:self];
-}
+    SLBranch *branch = [NSEntityDescription insertNewObjectForEntityForName:@"SLBranch" inManagedObjectContext:self.managedObjectContext];
+    NSDictionary *branchDict = [self.branches objectAtIndex:indexPath.row];
+    
+    branch.refName = [branchDict objectForKey:@"ref"];
+    branch.url = [branchDict objectForKey:@"url"];
+    branch.repository = self.selectedRepository;
+    self.selectedRepository.currentSite = [NSNumber numberWithBool:YES];
+    //Set this branch as the default and save
+    [[SLGithubClient sharedClient] setCurrentSite:self.selectedRepository];
+    [[[SLGithubClient sharedClient] currentSite] setDefaultBranch:branch];
 
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +158,7 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -150,20 +166,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"showBranchPicker"]){
-        [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
-        //Gotta make a new SLRepository object here because there wasn't one (hopefully)
-        SLRepository *repo = [NSEntityDescription insertNewObjectForEntityForName:@"SLRepository" inManagedObjectContext:self.managedObjectContext];
-        NSDictionary *repoValues = [self.repositories objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        repo.repoID = [repoValues objectForKey:@"id"];
-        repo.name = [repoValues objectForKey:@"name"];
-        repo.fullName = [repoValues objectForKey:@"full_name"];
-        
-        NSError *error;
-        [self.managedObjectContext save:&error];
-        [segue.destinationViewController setSelectedRepository:repo];
-    }
 }
 
+ */
 
 @end

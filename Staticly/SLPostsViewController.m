@@ -8,8 +8,15 @@
 
 #import "SLPostsViewController.h"
 #import "SLGithubLoginViewController.h"
+#import "SLGithubClient.h"
+#import "SLRepository.h"
+#import "SLBranch.h"
+#import "SLCommit.h"
 
 @interface SLPostsViewController ()
+
+@property (strong, nonatomic) NSMutableArray *posts;
+@property (strong, nonatomic) NSMutableArray *drafts;
 
 @end
 
@@ -34,6 +41,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //my guess is that this isn't really the proper place to be checking for this. Maybe it should happen in the app delegate?
+    
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
     NSError *error;
     NSArray *users = [[self managedObjectContext] executeFetchRequest:request error:&error];
@@ -41,6 +50,43 @@
     if(users.count == 0){
         //we need a user. show the login screen
         [self performSegueWithIdentifier:@"showLoginViewController" sender:self];
+    }
+    
+    
+    else if([[[[SLGithubClient sharedClient] currentSite] defaultBranch] commit] == nil){
+        //If the commit is null, there's a good chance we should try and get it.
+        NSString *user = [[[SLGithubClient sharedClient] currentUser] username];
+        NSString *repoName = [[[SLGithubClient sharedClient] currentSite] name];
+        NSString *ref = [[[[SLGithubClient sharedClient] currentSite] defaultBranch] refName];
+        NSString *urlString = [NSString stringWithFormat:@"/repos/%@/%@/git/%@", user, repoName, ref];
+        NSString *token = [[[SLGithubClient sharedClient] currentUser] oauthToken];
+        //Get the branch which will give us the commit sha
+        NSURLSessionDataTask *task = [[SLGithubClient sharedClient] GET:urlString parameters:@{@"access_token" : token}
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       NSHTTPURLResponse *response = task.response;
+                                       if(response.statusCode == 200){
+                                           NSDictionary *repoData = (NSDictionary *)responseObject;
+                                           SLCommit *commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+                                           NSDictionary *commitData = [repoData objectForKey:@"object"];
+                                           commit.type = [commitData objectForKey:@"type"];
+                                           commit.sha = [commitData objectForKey:@"sha"];
+                                           commit.url = [commitData objectForKey:@"url"];
+                                           
+                                           NSError *error;
+                                           [[[[SLGithubClient sharedClient] currentSite] defaultBranch] setCommit:commit];
+                                           [self.managedObjectContext save:&error];
+                                           
+                                           NSLog(@"%@",commit);
+                                       }
+        }
+                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       NSLog(@"That's not good: %@", error);
+        }];
+        while(task.state != NSURLSessionTaskStateCompleted){
+            NSLog(@"Waiting for the task to complete");
+        }
+        //get the commit so that we can get the tree
+        
     }
 }
 
