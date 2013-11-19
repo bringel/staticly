@@ -103,10 +103,51 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NNn-Rz-KSJ"/>
+                    <connections>
+                        <segue destination="QtL-2q-fD7" kind="push" identifier="showBranchPicker" id="Hns-zS-3mV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbe-7m-naQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2859" y="-2000"/>
+        </scene>
+        <!--Pick Branch View Controller-->
+        <scene sceneID="N7n-nn-Twd">
+            <objects>
+                <tableViewController id="QtL-2q-fD7" customClass="SLPickBranchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RUy-VT-K5f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="branchCell" textLabel="oNi-9K-dbV" style="IBUITableViewCellStyleDefault" id="LEe-be-9ot">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LEe-be-9ot" id="Cjc-wC-E5s">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oNi-9K-dbV">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QtL-2q-fD7" id="xvl-iM-25s"/>
+                            <outlet property="delegate" destination="QtL-2q-fD7" id="aNQ-Aj-eSh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MBE-CE-xLm"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08a-7p-GM0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3380" y="-2000"/>
         </scene>
         <!--Posts View Controller-->
         <scene sceneID="SuY-KB-aAE">

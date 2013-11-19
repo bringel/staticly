@@ -8,13 +8,26 @@
 
 #import "AFHTTPSessionManager.h"
 #import "SLUser.h"
+#import "SLRepository.h"
+#import "SLCommit.h"
+#import "SLTree.h"
+#import "SLBlob.h"
 
 @interface SLGithubClient : AFHTTPSessionManager
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) SLUser *currentUser;
+@property (strong, nonatomic) SLRepository *currentSite;
 
 + (SLGithubClient *)sharedClient;
+
+- (SLUser *)loginNewUser:(NSDictionary *)userInfo;
+- (NSArray *)getUserRepositories:(SLUser *)user;
+- (NSArray *)getRepositoryBranches:(SLRepository *)repository;
+- (SLCommit *)getCommit:(NSString *)commitSha;
+- (SLTree *)getTree:(NSString *)treeSha;
+- (NSArray *)geObjectsPointedToByTree:(SLTree *)tree;
 
 @end
