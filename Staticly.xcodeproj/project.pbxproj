@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F17144D183B0C4300AA91F2 /* SLBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F17144C183B0C4300AA91F2 /* SLBlob.m */; };
+		2F171450183B0C4300AA91F2 /* SLCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F17144F183B0C4300AA91F2 /* SLCommit.m */; };
+		2F171453183B0C4300AA91F2 /* SLRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F171452183B0C4300AA91F2 /* SLRepository.m */; };
+		2F171456183B0C4300AA91F2 /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F171455183B0C4300AA91F2 /* SLUser.m */; };
+		2F171459183B0C4300AA91F2 /* SLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F171458183B0C4300AA91F2 /* SLBranch.m */; };
+		2F17145C183B0C4300AA91F2 /* SLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F17145B183B0C4300AA91F2 /* SLTree.m */; };
 		2F43228618370A3F00A7D1E3 /* SLPickBranchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43228518370A3F00A7D1E3 /* SLPickBranchViewController.m */; };
-		2F4322981838120E00A7D1E3 /* SLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4322971838120E00A7D1E3 /* SLBranch.m */; };
-		2F43229B1838120E00A7D1E3 /* SLRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43229A1838120E00A7D1E3 /* SLRepository.m */; };
-		2F43229E1838120E00A7D1E3 /* SLCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43229D1838120E00A7D1E3 /* SLCommit.m */; };
-		2F4322A11838120E00A7D1E3 /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4322A01838120E00A7D1E3 /* SLUser.m */; };
 		2F4322A41838125E00A7D1E3 /* SLGithubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4322A31838125E00A7D1E3 /* SLGithubClient.m */; };
-		2F4322A71838245B00A7D1E3 /* SLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4322A61838245B00A7D1E3 /* SLTree.m */; };
-		2F4322AA1838245C00A7D1E3 /* SLBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4322A91838245C00A7D1E3 /* SLBlob.m */; };
 		2F6C57881831C3B400B2E5D0 /* SLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C57871831C3B400B2E5D0 /* SLSettingsViewController.m */; };
 		2F6C578B1832C3E100B2E5D0 /* SLButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C578A1832C3E100B2E5D0 /* SLButtonCell.m */; };
 		2F6C57921833104F00B2E5D0 /* SLPickUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C57911833104F00B2E5D0 /* SLPickUsersViewController.m */; };
@@ -54,22 +54,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F17144B183B0C4300AA91F2 /* SLBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBlob.h; sourceTree = "<group>"; };
+		2F17144C183B0C4300AA91F2 /* SLBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBlob.m; sourceTree = "<group>"; };
+		2F17144E183B0C4300AA91F2 /* SLCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCommit.h; sourceTree = "<group>"; };
+		2F17144F183B0C4300AA91F2 /* SLCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCommit.m; sourceTree = "<group>"; };
+		2F171451183B0C4300AA91F2 /* SLRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRepository.h; sourceTree = "<group>"; };
+		2F171452183B0C4300AA91F2 /* SLRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRepository.m; sourceTree = "<group>"; };
+		2F171454183B0C4300AA91F2 /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
+		2F171455183B0C4300AA91F2 /* SLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUser.m; sourceTree = "<group>"; };
+		2F171457183B0C4300AA91F2 /* SLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranch.h; sourceTree = "<group>"; };
+		2F171458183B0C4300AA91F2 /* SLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranch.m; sourceTree = "<group>"; };
+		2F17145A183B0C4300AA91F2 /* SLTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTree.h; sourceTree = "<group>"; };
+		2F17145B183B0C4300AA91F2 /* SLTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTree.m; sourceTree = "<group>"; };
 		2F43228418370A3F00A7D1E3 /* SLPickBranchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickBranchViewController.h; sourceTree = "<group>"; };
 		2F43228518370A3F00A7D1E3 /* SLPickBranchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickBranchViewController.m; sourceTree = "<group>"; };
-		2F4322961838120E00A7D1E3 /* SLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranch.h; sourceTree = "<group>"; };
-		2F4322971838120E00A7D1E3 /* SLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranch.m; sourceTree = "<group>"; };
-		2F4322991838120E00A7D1E3 /* SLRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRepository.h; sourceTree = "<group>"; };
-		2F43229A1838120E00A7D1E3 /* SLRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRepository.m; sourceTree = "<group>"; };
-		2F43229C1838120E00A7D1E3 /* SLCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCommit.h; sourceTree = "<group>"; };
-		2F43229D1838120E00A7D1E3 /* SLCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCommit.m; sourceTree = "<group>"; };
-		2F43229F1838120E00A7D1E3 /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
-		2F4322A01838120E00A7D1E3 /* SLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUser.m; sourceTree = "<group>"; };
 		2F4322A21838125E00A7D1E3 /* SLGithubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGithubClient.h; sourceTree = "<group>"; };
 		2F4322A31838125E00A7D1E3 /* SLGithubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGithubClient.m; sourceTree = "<group>"; };
-		2F4322A51838245B00A7D1E3 /* SLTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTree.h; sourceTree = "<group>"; };
-		2F4322A61838245B00A7D1E3 /* SLTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTree.m; sourceTree = "<group>"; };
-		2F4322A81838245C00A7D1E3 /* SLBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBlob.h; sourceTree = "<group>"; };
-		2F4322A91838245C00A7D1E3 /* SLBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBlob.m; sourceTree = "<group>"; };
 		2F6C57861831C3B400B2E5D0 /* SLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSettingsViewController.h; sourceTree = "<group>"; };
 		2F6C57871831C3B400B2E5D0 /* SLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSettingsViewController.m; sourceTree = "<group>"; };
 		2F6C57891832C3E100B2E5D0 /* SLButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLButtonCell.h; sourceTree = "<group>"; };
@@ -232,18 +232,18 @@
 		2FADC25E183085B9000FC13E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2F4322A81838245C00A7D1E3 /* SLBlob.h */,
-				2F4322A91838245C00A7D1E3 /* SLBlob.m */,
-				2F4322A51838245B00A7D1E3 /* SLTree.h */,
-				2F4322A61838245B00A7D1E3 /* SLTree.m */,
-				2F43229F1838120E00A7D1E3 /* SLUser.h */,
-				2F4322A01838120E00A7D1E3 /* SLUser.m */,
-				2F43229C1838120E00A7D1E3 /* SLCommit.h */,
-				2F43229D1838120E00A7D1E3 /* SLCommit.m */,
-				2F4322991838120E00A7D1E3 /* SLRepository.h */,
-				2F43229A1838120E00A7D1E3 /* SLRepository.m */,
-				2F4322961838120E00A7D1E3 /* SLBranch.h */,
-				2F4322971838120E00A7D1E3 /* SLBranch.m */,
+				2F17145A183B0C4300AA91F2 /* SLTree.h */,
+				2F17145B183B0C4300AA91F2 /* SLTree.m */,
+				2F171457183B0C4300AA91F2 /* SLBranch.h */,
+				2F171458183B0C4300AA91F2 /* SLBranch.m */,
+				2F171454183B0C4300AA91F2 /* SLUser.h */,
+				2F171455183B0C4300AA91F2 /* SLUser.m */,
+				2F171451183B0C4300AA91F2 /* SLRepository.h */,
+				2F171452183B0C4300AA91F2 /* SLRepository.m */,
+				2F17144E183B0C4300AA91F2 /* SLCommit.h */,
+				2F17144F183B0C4300AA91F2 /* SLCommit.m */,
+				2F17144B183B0C4300AA91F2 /* SLBlob.h */,
+				2F17144C183B0C4300AA91F2 /* SLBlob.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -325,6 +325,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Bradley Ringel";
 				TargetAttributes = {
+					2FADC2171830546E000FC13E = {
+						DevelopmentTeam = HK7854N4SL;
+					};
 					2FADC2431830546E000FC13E = {
 						TestTargetID = 2FADC2171830546E000FC13E;
 					};
@@ -410,22 +413,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F171453183B0C4300AA91F2 /* SLRepository.m in Sources */,
+				2F171456183B0C4300AA91F2 /* SLUser.m in Sources */,
+				2F17145C183B0C4300AA91F2 /* SLTree.m in Sources */,
 				2F6C57881831C3B400B2E5D0 /* SLSettingsViewController.m in Sources */,
 				2F6C57921833104F00B2E5D0 /* SLPickUsersViewController.m in Sources */,
-				2F4322981838120E00A7D1E3 /* SLBranch.m in Sources */,
 				2F8D9B7918309D3C00C7951B /* SLUserRepositoryBrowserViewController.m in Sources */,
-				2F4322A11838120E00A7D1E3 /* SLUser.m in Sources */,
 				2F6C57951833105800B2E5D0 /* SLPickSiteViewController.m in Sources */,
-				2F43229E1838120E00A7D1E3 /* SLCommit.m in Sources */,
 				2FADC22A1830546E000FC13E /* main.m in Sources */,
-				2F43229B1838120E00A7D1E3 /* SLRepository.m in Sources */,
-				2F4322AA1838245C00A7D1E3 /* SLBlob.m in Sources */,
+				2F171450183B0C4300AA91F2 /* SLCommit.m in Sources */,
+				2F171459183B0C4300AA91F2 /* SLBranch.m in Sources */,
 				2FADC2661830869C000FC13E /* SLPostsViewController.m in Sources */,
 				2FADC2371830546E000FC13E /* Staticly.xcdatamodeld in Sources */,
 				2FADC269183086AA000FC13E /* SLGithubLoginViewController.m in Sources */,
+				2F17144D183B0C4300AA91F2 /* SLBlob.m in Sources */,
 				2F4322A41838125E00A7D1E3 /* SLGithubClient.m in Sources */,
 				2FADC22E1830546E000FC13E /* SLAppDelegate.m in Sources */,
-				2F4322A71838245B00A7D1E3 /* SLTree.m in Sources */,
 				2F43228618370A3F00A7D1E3 /* SLPickBranchViewController.m in Sources */,
 				2F6C578B1832C3E100B2E5D0 /* SLButtonCell.m in Sources */,
 			);
@@ -565,6 +568,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
@@ -579,6 +583,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";

@@ -33,8 +33,13 @@
         [[SLGithubClient sharedClient] setManagedObjectContext:self.managedObjectContext];
         
         postsViewController.managedObjectContext = self.managedObjectContext;
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66/256.0 green:66.0/256.0 blue:66.0/265.0 alpha:1]];
+        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/256.0 green:204.0/256.0 blue:0.0/256.0 alpha:1]];
+        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:170.0/256.0 green:20.0/256.0 blue:20.0/256.0 alpha:1]];
+        [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:66/256.0 green:66.0/256.0 blue:66.0/265.0 alpha:1]];
+        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
         //These should all be UINavigationControllers in the iPhone version
-
+        
         for(UINavigationController *navController in tabBarController.viewControllers){
             if([navController.topViewController respondsToSelector:@selector(setManagedObjectContext:)]){
                 //have to cast as id to get rid of unknown selector error
