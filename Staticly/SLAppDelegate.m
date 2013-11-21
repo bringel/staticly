@@ -19,6 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    //If this is the first launch, this will register, otherwise it won't
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"firstLaunch" : @(YES)}];
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -54,6 +56,10 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    //If this is the first time the user is quitting the app, then we set our bool to no
+    //If it's already no then it doesn't really matter.
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -76,6 +82,9 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    //If this is the first time the user is quitting the app, then we set our bool to no
+    //If it's already no then it doesn't really matter.
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
 }
 
 - (void)saveContext

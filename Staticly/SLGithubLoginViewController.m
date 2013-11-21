@@ -43,6 +43,11 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
+    //Use this to check if we're running for the first time
+    //Changes where we want to segue because this view controller can also
+    //be pushed from the Settings VC to add a new user.
+    bool firstRun = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
+    
     NSString *userName = [[self usernameField] text];
     NSString *pass = [[self passwordField] text];
     
@@ -72,7 +77,12 @@
                                        [self.managedObjectContext save:&error];
                                        self.authenticatedUser = user;
                                        NSLog(@"Successfully got a token");
-                                       [self performSegueWithIdentifier:@"showRepositoryBrowser" sender:self];
+                                       if(firstRun){
+                                           [self performSegueWithIdentifier:@"showRepositoryBrowser" sender:self];
+                                       }
+                                       else{
+                                           [self.navigationController popViewControllerAnimated:YES];
+                                       }
                                    }
                                }
                                failure:^(NSURLSessionDataTask *task, NSError *error) {

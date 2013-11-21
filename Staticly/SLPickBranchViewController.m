@@ -116,8 +116,13 @@
     NSError *error;
     [self.managedObjectContext save:&error];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+    bool firstRun = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
+    if(firstRun){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else{
+        [self performSegueWithIdentifier:@"unwindSegue" sender:self];
+    }
 }
 /*
 // Override to support conditional editing of the table view.
