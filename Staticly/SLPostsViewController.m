@@ -42,56 +42,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //my guess is that this isn't really the proper place to be checking for this. Maybe it should happen in the app delegate?
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
-    NSError *error;
-    NSArray *users = [[self managedObjectContext] executeFetchRequest:request error:&error];
-    
+    NSLog(@"Now we're inside SLPostsViewController's viewDidLoad:");
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
         //we need a user. show the login screen
         [self performSegueWithIdentifier:@"showLoginViewController" sender:self];
     }
     
-    
-    else if([[[[SLGithubClient sharedClient] currentSite] defaultBranch] commit] == nil){
-        //If the commit is null, there's a good chance we should try and get it.
-        NSString *user = [[[SLGithubClient sharedClient] currentUser] username];
-        NSString *repoName = [[[SLGithubClient sharedClient] currentSite] name];
-        NSString *ref = [[[[SLGithubClient sharedClient] currentSite] defaultBranch] refName];
-        NSString *urlString = [NSString stringWithFormat:@"/repos/%@/%@/git/%@", user, repoName, ref];
-        NSString *token = [[[SLGithubClient sharedClient] currentUser] oauthToken];
-        //Get the branch which will give us the commit sha
-        
-        void (^successBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject) {
-            NSHTTPURLResponse *response = task.response;
-            if(response.statusCode == 200){
-                NSDictionary *repoData = (NSDictionary *)responseObject;
-                SLCommit *commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
-                NSDictionary *commitData = [repoData objectForKey:@"object"];
-                commit.type = [commitData objectForKey:@"type"];
-                commit.sha = [commitData objectForKey:@"sha"];
-                commit.url = [commitData objectForKey:@"url"];
-                
-                NSError *error;
-                [[[[SLGithubClient sharedClient] currentSite] defaultBranch] setCommit:commit];
-                [self.managedObjectContext save:&error];
-                
-                NSLog(@"%@",commit);
-            }
-        };
-        void (^failBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"That's not good: %@", error);
-        };
-        
-        NSURLSessionDataTask *task = [[SLGithubClient sharedClient] GET:urlString parameters:@{@"access_token" : token}
-                                   success: successBlock failure:failBlock];
-        
-        while(task.state != NSURLSessionTaskStateCompleted){
-            NSLog(@"Waiting for the task to complete");
-        }
-        //get the commit so that we can get the tree
-        
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,6 +123,90 @@
 
 
 #pragma mark - Navigation
+//This is where we are going to load all of the commit information because
+//we just came from the branch view controller
+- (IBAction)unwindFromBranchController:(UIStoryboardSegue *)unwindSegue{
+    //put up our fancy spinner
+    MRProgressOverlayView *overlay = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    overlay.mode = MRProgressOverlayViewModeIndeterminateSmall;
+    
+    //First things first, get the rest of the commit information
+    SLCommit *commit = [[[[SLGithubClient sharedClient] currentSite] defaultBranch] commit];
+    NSString *repoName = [[[SLGithubClient sharedClient] currentSite] name];
+    NSString *userName = [[[SLGithubClient sharedClient] currentUser] username];
+    NSString *commitSha = [commit sha];
+    NSString *accessToken = [[[SLGithubClient sharedClient] currentUser] oauthToken];
+    NSString *getURL = [NSString stringWithFormat:@"/repos/%@/%@/git/commits/%@",userName, repoName, commitSha];
+    
+    
+    //TODO: Stop this block from creating duplicates
+#warning This block creates duplicate commits
+    void (^successBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject){
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200){
+            NSDictionary *responseData = (NSDictionary *)responseObject;
+            commit.message = [responseData objectForKey:@"message"];
+            NSArray *commitParents = [responseData objectForKey:@"parents"];
+            NSError *error;
+            for(NSDictionary *parentData in commitParents){
+                //Should really try and fetch a commit with this sha first
+                //and then create a new commit if we can't find one
+                //This will lead to all sorts of dupicates right now
+
+                SLCommit *parent = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+                parent.sha = [parentData objectForKey:@"sha"];
+                parent.url = [parentData objectForKey:@"url"];
+                [commit addParentsObject:parent];
+                [self.managedObjectContext save:&error];
+            }
+            SLTree *rootTree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+            rootTree.url = [responseData valueForKeyPath:@"tree.url"];
+            rootTree.sha = [responseData valueForKeyPath:@"tree.sha"];
+            [self.managedObjectContext save:&error];
+            
+            NSString *treeGetURL = [NSString stringWithFormat:@"/repos/%@/%@/git/trees/%@", userName, repoName, rootTree.sha];
+        }
+    };
+    
+    void (^failBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error){
+        NSLog(@"%@", error);
+    };
+    
+    void (^treeSuccessBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject){
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200){
+            NSArray *treeData = [responseObject objectForKey:@"tree"];
+            //we're going to get back a bunch of tree references and blob references that
+            //we then have to go and get
+            for(NSDictionary *gitObject in treeData){
+                NSString *objectType = [gitObject objectForKey:@"type"];
+                if([objectType isEqualToString:@"tree"]){
+                    
+                }
+                else if([objectType isEqualToString:@"blob"]){
+                    
+                }
+            }
+        }
+    };
+    
+    void (^treeFailBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error){
+        NSLog(@"%@", error);
+    };
+    
+    void (^blobSuccessBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject){
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200){
+            
+        }
+    };
+    
+    void (^blobFailBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error){
+        NSLog(@"%@", error);
+    };
+    
+    [[SLGithubClient sharedClient] GET:getURL parameters:@{@"access_token" : accessToken} success:successBlock failure:failBlock];
+}
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

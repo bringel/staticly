@@ -12,4 +12,5 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (IBAction)unwindFromBranchController:(UIStoryboardSegue *)unwindSegue;
 @end

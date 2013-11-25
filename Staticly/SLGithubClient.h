@@ -23,11 +23,4 @@
 
 + (SLGithubClient *)sharedClient;
 
-- (SLUser *)loginNewUser:(NSDictionary *)userInfo;
-- (NSArray *)getUserRepositories:(SLUser *)user;
-- (NSArray *)getRepositoryBranches:(SLRepository *)repository;
-- (SLCommit *)getCommit:(NSString *)commitSha;
-- (SLTree *)getTree:(NSString *)treeSha;
-- (NSArray *)geObjectsPointedToByTree:(SLTree *)tree;
-
 @end

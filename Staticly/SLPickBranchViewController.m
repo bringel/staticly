@@ -48,7 +48,7 @@
     NSString *user = [[[SLGithubClient sharedClient] currentUser] username];
     NSString *repoName = [self.selectedRepository name];
     NSString *token = [[[SLGithubClient sharedClient] currentUser] oauthToken];
-    NSString *url = [NSString stringWithFormat:@"/repos/%@/%@/git/refs", user, repoName];
+    NSString *url = [NSString stringWithFormat:@"/repos/%@/%@/git/refs/heads", user, repoName];
     
     void (^successBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject) {
         NSHTTPURLResponse *response = task.response;
@@ -119,10 +119,19 @@
 
     NSError *error;
     [self.managedObjectContext save:&error];
+    //also save the sha of the commit that is at the tip of this branch
+    
+    SLCommit *branchCommit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+    branchCommit.sha = [branchDict valueForKeyPath:@"object.sha"];
+    branchCommit.type = [branchDict valueForKeyPath:@"object.type"];
+    branchCommit.url = [branchDict valueForKeyPath:@"object.url"];
+    branch.commit = branchCommit;
+    
+    [self.managedObjectContext save:&error];
     
     bool firstRun = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
     if(firstRun){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"unwindFromBranchController" sender:self];
     }
     else{
         [self performSegueWithIdentifier:@"unwindSegue" sender:self];
@@ -167,7 +176,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -175,8 +184,11 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"unwindFromBranchController"]){
+
+    }
 }
 
- */
+
 
 @end

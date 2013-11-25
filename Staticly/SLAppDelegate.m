@@ -28,12 +28,15 @@
         splitViewController.delegate = (id)navigationController.topViewController;
         
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-    } else {
+    }
+    else {
         UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
         UINavigationController *navigationController = [[tabBarController childViewControllers] firstObject];
         SLPostsViewController *postsViewController = [navigationController topViewController];
         [[SLGithubClient sharedClient] setManagedObjectContext:self.managedObjectContext];
         
+        
+        NSLog(@"We're inside the app delegate");
         postsViewController.managedObjectContext = self.managedObjectContext;
         UIColor *greyColor = [UIColor colorWithRed:66.0/255.0 green:66.0/255.0 blue:66.0/255.0 alpha:1];
         UIColor *redColor = [UIColor colorWithRed:203./256.0 green:0/256.0 blue:15.0/265.0 alpha:1];

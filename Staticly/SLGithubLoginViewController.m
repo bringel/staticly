@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    NSLog(@"I'm inside the loginViewController's viewDidLoad:");
 }
 
 - (void)didReceiveMemoryWarning

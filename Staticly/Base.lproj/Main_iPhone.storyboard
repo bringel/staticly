@@ -147,6 +147,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="MBE-CE-xLm"/>
+                    <connections>
+                        <segue destination="evX-s7-8Jz" kind="unwind" identifier="unwindFromBranchController" unwindAction="unwindFromBranchController:" id="msM-3E-MdC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08a-7p-GM0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="evX-s7-8Jz" userLabel="Exit" sceneMemberID="exit"/>
@@ -178,7 +181,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="70W-jv-xS2"/>
                     <connections>
-                        <segue destination="m6e-yJ-weP" kind="modal" identifier="showLoginViewController" id="ixd-rB-TBQ"/>
+                        <segue destination="m6e-yJ-weP" kind="modal" identifier="showLoginViewController" id="CKC-TX-KSS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BU4-W2-N29" userLabel="First Responder" sceneMemberID="firstResponder"/>
