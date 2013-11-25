@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,6 +48,9 @@
     //be pushed from the Settings VC to add a new user.
     bool firstRun = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
     
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    overlayView.mode = MRProgressOverlayViewModeIndeterminateSmall;
+    
     NSString *userName = [[self usernameField] text];
     NSString *pass = [[self passwordField] text];
     
@@ -57,37 +60,40 @@
     NSError *error;
     [self.managedObjectContext save:&error];
     
+    void (^successBlock)(NSURLSessionDataTask  *, id responseObject) = ^(NSURLSessionDataTask *task, id responseObject) {
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200 || response.statusCode == 201){
+            //The token came back
+            NSDictionary *tokenResponse = responseObject;
+            user.oauthToken = [tokenResponse objectForKey:@"token"];
+            user.tokenID = [tokenResponse objectForKey:@"id"];
+            user.currentUser = [NSNumber numberWithBool:YES];
+            //we don't want to send the username and password anymore
+            [[[SLGithubClient sharedClient] requestSerializer] clearAuthorizationHeader];
+            NSError *error;
+            [self.managedObjectContext save:&error];
+            self.authenticatedUser = user;
+            NSLog(@"Successfully got a token");
+            if(firstRun){
+                [self performSegueWithIdentifier:@"showRepositoryBrowser" sender:self];
+            }
+            else{
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+    };
+    
+    void (^failBlock)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask *task, NSError *error) {
+        //We should probably handle this error somewhere. I just don't know where
+    };
+    
     [[[SLGithubClient sharedClient] requestSerializer] setAuthorizationHeaderFieldWithUsername:userName password:pass];
-
     [[SLGithubClient sharedClient] PUT:[NSString stringWithFormat:@"/authorizations/clients/%@",[[SLGithubClient sharedClient] clientID]]
                             parameters:@{@"client_secret" : [[SLGithubClient sharedClient] clientSecret],
                                          @"scopes" : @[@"repo"],
                                          @"note" : @"Key for Staticly, Jekyll site editor"}
-                               success:^(NSURLSessionDataTask *task, id responseObject) {
-                                   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-                                   if(response.statusCode == 200 || response.statusCode == 201){
-                                       //The token came back
-                                       NSDictionary *tokenResponse = responseObject;
-                                       user.oauthToken = [tokenResponse objectForKey:@"token"];
-                                       user.tokenID = [tokenResponse objectForKey:@"id"];
-                                       user.currentUser = [NSNumber numberWithBool:YES];
-                                       //we don't want to send the username and password anymore
-                                       [[[SLGithubClient sharedClient] requestSerializer] clearAuthorizationHeader];
-                                       NSError *error;
-                                       [self.managedObjectContext save:&error];
-                                       self.authenticatedUser = user;
-                                       NSLog(@"Successfully got a token");
-                                       if(firstRun){
-                                           [self performSegueWithIdentifier:@"showRepositoryBrowser" sender:self];
-                                       }
-                                       else{
-                                           [self.navigationController popViewControllerAnimated:YES];
-                                       }
-                                   }
-                               }
-                               failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                   //We should probably handle this error somewhere. I just don't know where
-                               }];
+                               success: successBlock
+                               failure:failBlock];
     
 }
 

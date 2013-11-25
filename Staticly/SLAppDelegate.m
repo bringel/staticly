@@ -35,10 +35,14 @@
         [[SLGithubClient sharedClient] setManagedObjectContext:self.managedObjectContext];
         
         postsViewController.managedObjectContext = self.managedObjectContext;
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:66/256.0 green:66.0/256.0 blue:66.0/265.0 alpha:1]];
-        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/256.0 green:204.0/256.0 blue:0.0/256.0 alpha:1]];
-        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:170.0/256.0 green:20.0/256.0 blue:20.0/256.0 alpha:1]];
-        [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:66/256.0 green:66.0/256.0 blue:66.0/265.0 alpha:1]];
+        UIColor *greyColor = [UIColor colorWithRed:66.0/255.0 green:66.0/255.0 blue:66.0/255.0 alpha:1];
+        UIColor *redColor = [UIColor colorWithRed:203./256.0 green:0/256.0 blue:15.0/265.0 alpha:1];
+        UIColor *blueColor = [UIColor colorWithRed:152.0/255.0 green:219.0/255.0 blue:240.0/255.0 alpha:1];
+        [[UINavigationBar appearance] setBarTintColor:greyColor];
+        [[UINavigationBar appearance] setTintColor:blueColor];
+        //[[UITabBar appearance] setTintColor:[UIColor colorWithRed:170.0/256.0 green:20.0/256.0 blue:20.0/256.0 alpha:1]];
+        [[UITabBar appearance] setBarTintColor:greyColor];
+        [[UITabBar appearance] setTintColor:blueColor];
         [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
         //These should all be UINavigationControllers in the iPhone version
         
@@ -48,6 +52,8 @@
                 [(id)navController.topViewController setManagedObjectContext:self.managedObjectContext];
             }
         }
+        
+        
     }
     return YES;
 }

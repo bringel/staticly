@@ -47,7 +47,7 @@
     NSError *error;
     NSArray *users = [[self managedObjectContext] executeFetchRequest:request error:&error];
     
-    if(users.count == 0){
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
         //we need a user. show the login screen
         [self performSegueWithIdentifier:@"showLoginViewController" sender:self];
     }
@@ -61,27 +61,31 @@
         NSString *urlString = [NSString stringWithFormat:@"/repos/%@/%@/git/%@", user, repoName, ref];
         NSString *token = [[[SLGithubClient sharedClient] currentUser] oauthToken];
         //Get the branch which will give us the commit sha
+        
+        void (^successBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject) {
+            NSHTTPURLResponse *response = task.response;
+            if(response.statusCode == 200){
+                NSDictionary *repoData = (NSDictionary *)responseObject;
+                SLCommit *commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+                NSDictionary *commitData = [repoData objectForKey:@"object"];
+                commit.type = [commitData objectForKey:@"type"];
+                commit.sha = [commitData objectForKey:@"sha"];
+                commit.url = [commitData objectForKey:@"url"];
+                
+                NSError *error;
+                [[[[SLGithubClient sharedClient] currentSite] defaultBranch] setCommit:commit];
+                [self.managedObjectContext save:&error];
+                
+                NSLog(@"%@",commit);
+            }
+        };
+        void (^failBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"That's not good: %@", error);
+        };
+        
         NSURLSessionDataTask *task = [[SLGithubClient sharedClient] GET:urlString parameters:@{@"access_token" : token}
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       NSHTTPURLResponse *response = task.response;
-                                       if(response.statusCode == 200){
-                                           NSDictionary *repoData = (NSDictionary *)responseObject;
-                                           SLCommit *commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
-                                           NSDictionary *commitData = [repoData objectForKey:@"object"];
-                                           commit.type = [commitData objectForKey:@"type"];
-                                           commit.sha = [commitData objectForKey:@"sha"];
-                                           commit.url = [commitData objectForKey:@"url"];
-                                           
-                                           NSError *error;
-                                           [[[[SLGithubClient sharedClient] currentSite] defaultBranch] setCommit:commit];
-                                           [self.managedObjectContext save:&error];
-                                           
-                                           NSLog(@"%@",commit);
-                                       }
-        }
-                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       NSLog(@"That's not good: %@", error);
-        }];
+                                   success: successBlock failure:failBlock];
+        
         while(task.state != NSURLSessionTaskStateCompleted){
             NSLog(@"Waiting for the task to complete");
         }

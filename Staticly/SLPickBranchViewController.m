@@ -49,19 +49,23 @@
     NSString *repoName = [self.selectedRepository name];
     NSString *token = [[[SLGithubClient sharedClient] currentUser] oauthToken];
     NSString *url = [NSString stringWithFormat:@"/repos/%@/%@/git/refs", user, repoName];
-    [[SLGithubClient sharedClient] GET:url parameters:@{@"access_token" : token}
-                               success:^(NSURLSessionDataTask *task, id responseObject) {
-                                   NSHTTPURLResponse *response = task.response;
-                                   if(response.statusCode == 200){
-                                       NSArray *branches = responseObject;
-                                       [self.branches addObjectsFromArray:branches];
-                                       [self.tableView reloadData];
-                                   }
+    
+    void (^successBlock)(NSURLSessionDataTask *, id) = ^(NSURLSessionDataTask *task, id responseObject) {
+        NSHTTPURLResponse *response = task.response;
+        if(response.statusCode == 200){
+            NSArray *branches = responseObject;
+            [self.branches addObjectsFromArray:branches];
+            [self.tableView reloadData];
+        }
         
-    }
-                               failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                   NSLog(@"Whoops: %@", error);
-    }];
+    };
+    
+    void (^failBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Whoops: %@", error);
+    };
+    
+    [[SLGithubClient sharedClient] GET:url parameters:@{@"access_token" : token}
+                               success: successBlock failure:failBlock];
 }
 
 - (void)didReceiveMemoryWarning

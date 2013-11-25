@@ -48,19 +48,23 @@
     //We should load all the repositories that the user has so they can select one to use
     [[SLGithubClient sharedClient] setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     
+    void (^successBlock)(NSURLSessionDataTask *, id)  = ^(NSURLSessionDataTask *task, id responseObject) {
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200){
+            NSArray *repos = responseObject;
+            [self.repositories addObjectsFromArray:repos];
+            [self.tableView reloadData];
+            NSLog(@"Got a bunch of repositories");
+        }
+    };
+    
+    void (^failBlock)(NSURLSessionDataTask *, NSError *) = ^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Uh Oh, something went wrong getting repositories: %@", error);
+    };
+    
     [[SLGithubClient sharedClient] GET:@"/user/repos" parameters: @{@"access_token" : [self.currentUser oauthToken]}
-                               success:^(NSURLSessionDataTask *task, id responseObject) {
-                                   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-                                   if(response.statusCode == 200){
-                                       NSArray *repos = responseObject;
-                                       [self.repositories addObjectsFromArray:repos];
-                                       [self.tableView reloadData];
-                                       NSLog(@"Got a bunch of repositories");
-                                   }
-                               }
-                               failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                   NSLog(@"Uh Oh, something went wrong getting repositories: %@", error);
-                               }];
+                               success:successBlock
+                               failure:failBlock];
 }
 
 - (void)didReceiveMemoryWarning
