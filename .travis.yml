@@ -1,1 +1,10 @@
 language: objective-c
+
+rvm: 1.9.3
+
+notifications:
+  email: false
+
+xcode_sdk:
+  - iphoneos6.0
+  - iphoneos7.0
