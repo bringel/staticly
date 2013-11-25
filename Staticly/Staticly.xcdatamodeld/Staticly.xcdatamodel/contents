@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5029" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SLBlob" representedClassName="SLBlob" syncable="YES">
+        <attribute name="blobName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLTree" inverseName="blobs" inverseEntity="SLTree" syncable="YES"/>
     </entity>
     <entity name="SLBranch" representedClassName="SLBranch" syncable="YES">
@@ -28,6 +29,7 @@
     </entity>
     <entity name="SLTree" representedClassName="SLTree" syncable="YES">
         <attribute name="sha" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="treeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="blobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SLBlob" inverseName="tree" inverseEntity="SLBlob" syncable="YES"/>
         <relationship name="commit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLCommit" inverseName="tree" inverseEntity="SLCommit" syncable="YES"/>
@@ -41,11 +43,11 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SLRepository" positionX="-63" positionY="-9" width="128" height="120"/>
-        <element name="SLUser" positionX="-252" positionY="3" width="128" height="105"/>
+        <element name="SLBlob" positionX="484" positionY="-162" width="128" height="73"/>
         <element name="SLBranch" positionX="115" positionY="57" width="128" height="105"/>
         <element name="SLCommit" positionX="304" positionY="45" width="128" height="165"/>
-        <element name="SLTree" positionX="504" positionY="108" width="128" height="135"/>
-        <element name="SLBlob" positionX="484" positionY="-162" width="128" height="60"/>
+        <element name="SLRepository" positionX="-63" positionY="-9" width="128" height="120"/>
+        <element name="SLTree" positionX="504" positionY="108" width="128" height="148"/>
+        <element name="SLUser" positionX="-252" positionY="3" width="128" height="105"/>
     </elements>
 </model>

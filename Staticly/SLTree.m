@@ -2,7 +2,7 @@
 //  SLTree.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 11/18/13.
+//  Created by Bradley Ringel on 11/25/13.
 //  Copyright (c) 2013 Bradley Ringel. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 
 @dynamic sha;
 @dynamic url;
+@dynamic treeName;
 @dynamic blobs;
 @dynamic commit;
 @dynamic parentTree;

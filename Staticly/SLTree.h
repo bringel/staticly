@@ -2,7 +2,7 @@
 //  SLTree.h
 //  Staticly
 //
-//  Created by Bradley Ringel on 11/18/13.
+//  Created by Bradley Ringel on 11/25/13.
 //  Copyright (c) 2013 Bradley Ringel. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * sha;
 @property (nonatomic, retain) NSString * url;
+@property (nonatomic, retain) NSString * treeName;
 @property (nonatomic, retain) NSSet *blobs;
 @property (nonatomic, retain) SLCommit *commit;
 @property (nonatomic, retain) SLTree *parentTree;
