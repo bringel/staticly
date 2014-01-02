@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/bringel/staticly.png?branch=master)](https://travis-ci.org/bringel/staticly)
 
+[Trello Board](https://trello.com/b/jLj8SwnF)
+
 Staticly is an iOS application that allows you to edit your jekyll generated sites and blogs on the go.
 
 Here are the things that are planned for the first version:

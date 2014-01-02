@@ -17,8 +17,6 @@
 		2FAC4E1F1875BA44008D46D4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FAC4E1D1875BA44008D46D4 /* Main_iPhone.storyboard */; };
 		2FAC4E221875BA44008D46D4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FAC4E201875BA44008D46D4 /* Main_iPad.storyboard */; };
 		2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC4E231875BA44008D46D4 /* Staticly.xcdatamodeld */; };
-		2FAC4E281875BA44008D46D4 /* SLMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC4E271875BA44008D46D4 /* SLMasterViewController.m */; };
-		2FAC4E2B1875BA44008D46D4 /* SLDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC4E2A1875BA44008D46D4 /* SLDetailViewController.m */; };
 		2FAC4E2D1875BA44008D46D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FAC4E2C1875BA44008D46D4 /* Images.xcassets */; };
 		2FAC4E341875BA44008D46D4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E331875BA44008D46D4 /* XCTest.framework */; };
 		2FAC4E351875BA44008D46D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E091875BA44008D46D4 /* Foundation.framework */; };
@@ -26,6 +24,7 @@
 		2FAC4E371875BA44008D46D4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E0F1875BA44008D46D4 /* CoreData.framework */; };
 		2FAC4E3F1875BA44008D46D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FAC4E3D1875BA44008D46D4 /* InfoPlist.strings */; };
 		2FAC4E411875BA44008D46D4 /* StaticlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC4E401875BA44008D46D4 /* StaticlyTests.m */; };
+		D485792D85EA4681B9A563E5 /* libPods-Staticly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A3C67DC77411E903E35D0 /* libPods-Staticly.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,16 +52,14 @@
 		2FAC4E1E1875BA44008D46D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		2FAC4E211875BA44008D46D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		2FAC4E241875BA44008D46D4 /* Staticly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Staticly.xcdatamodel; sourceTree = "<group>"; };
-		2FAC4E261875BA44008D46D4 /* SLMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLMasterViewController.h; sourceTree = "<group>"; };
-		2FAC4E271875BA44008D46D4 /* SLMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLMasterViewController.m; sourceTree = "<group>"; };
-		2FAC4E291875BA44008D46D4 /* SLDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLDetailViewController.h; sourceTree = "<group>"; };
-		2FAC4E2A1875BA44008D46D4 /* SLDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLDetailViewController.m; sourceTree = "<group>"; };
 		2FAC4E2C1875BA44008D46D4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FAC4E321875BA44008D46D4 /* StaticlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaticlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAC4E331875BA44008D46D4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2FAC4E3C1875BA44008D46D4 /* StaticlyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StaticlyTests-Info.plist"; sourceTree = "<group>"; };
 		2FAC4E3E1875BA44008D46D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FAC4E401875BA44008D46D4 /* StaticlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaticlyTests.m; sourceTree = "<group>"; };
+		803A3C67DC77411E903E35D0 /* libPods-Staticly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Staticly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staticly.xcconfig"; path = "Pods/Pods-Staticly.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +71,7 @@
 				2FAC4E101875BA44008D46D4 /* CoreData.framework in Frameworks */,
 				2FAC4E0E1875BA44008D46D4 /* UIKit.framework in Frameworks */,
 				2FAC4E0A1875BA44008D46D4 /* Foundation.framework in Frameworks */,
+				D485792D85EA4681B9A563E5 /* libPods-Staticly.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +96,7 @@
 				2FAC4E3A1875BA44008D46D4 /* StaticlyTests */,
 				2FAC4E081875BA44008D46D4 /* Frameworks */,
 				2FAC4E071875BA44008D46D4 /* Products */,
+				E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +117,7 @@
 				2FAC4E0D1875BA44008D46D4 /* UIKit.framework */,
 				2FAC4E0F1875BA44008D46D4 /* CoreData.framework */,
 				2FAC4E331875BA44008D46D4 /* XCTest.framework */,
+				803A3C67DC77411E903E35D0 /* libPods-Staticly.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,10 +129,6 @@
 				2FAC4E1B1875BA44008D46D4 /* SLAppDelegate.m */,
 				2FAC4E1D1875BA44008D46D4 /* Main_iPhone.storyboard */,
 				2FAC4E201875BA44008D46D4 /* Main_iPad.storyboard */,
-				2FAC4E261875BA44008D46D4 /* SLMasterViewController.h */,
-				2FAC4E271875BA44008D46D4 /* SLMasterViewController.m */,
-				2FAC4E291875BA44008D46D4 /* SLDetailViewController.h */,
-				2FAC4E2A1875BA44008D46D4 /* SLDetailViewController.m */,
 				2FAC4E2C1875BA44008D46D4 /* Images.xcassets */,
 				2FAC4E231875BA44008D46D4 /* Staticly.xcdatamodeld */,
 				2FAC4E121875BA44008D46D4 /* Supporting Files */,
@@ -176,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FAC4E441875BA44008D46D4 /* Build configuration list for PBXNativeTarget "Staticly" */;
 			buildPhases = (
+				BEC07025BA6345A79931F6C7 /* Check Pods Manifest.lock */,
 				2FAC4E021875BA44008D46D4 /* Sources */,
 				2FAC4E031875BA44008D46D4 /* Frameworks */,
 				2FAC4E041875BA44008D46D4 /* Resources */,
+				F3BF3A9B95594969B1C5E7F5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,16 +261,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BEC07025BA6345A79931F6C7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F3BF3A9B95594969B1C5E7F5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Staticly-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2FAC4E021875BA44008D46D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2FAC4E181875BA44008D46D4 /* main.m in Sources */,
-				2FAC4E281875BA44008D46D4 /* SLMasterViewController.m in Sources */,
 				2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */,
 				2FAC4E1C1875BA44008D46D4 /* SLAppDelegate.m in Sources */,
-				2FAC4E2B1875BA44008D46D4 /* SLDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +435,7 @@
 		};
 		2FAC4E451875BA44008D46D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -419,6 +449,7 @@
 		};
 		2FAC4E461875BA44008D46D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -491,6 +522,7 @@
 				2FAC4E461875BA44008D46D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FAC4E471875BA44008D46D4 /* Build configuration list for PBXNativeTarget "StaticlyTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +531,7 @@
 				2FAC4E491875BA44008D46D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

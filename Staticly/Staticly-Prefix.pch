@@ -14,4 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import <AFNetworking/AFNetworking.h>
+    #import <MMMarkdown/MMMarkdown.h>
+    #import <MRProgress/MRProgress.h>
+    #import <TestFlightSDK/TestFlight.h>
 #endif
