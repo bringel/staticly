@@ -7,8 +7,8 @@
 //
 
 #import "SLAppDelegate.h"
-#import "SLPostsViewController.h"
-#import "SLGithubClient.h"
+
+#import "SLMasterViewController.h"
 
 @implementation SLAppDelegate
 
@@ -19,44 +19,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    //If this is the first launch, this will register, otherwise it won't
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"firstLaunch" : @(YES)}];
-
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
         
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-    }
-    else {
-        UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-        UINavigationController *navigationController = [[tabBarController childViewControllers] firstObject];
-        SLPostsViewController *postsViewController = [navigationController topViewController];
-        [[SLGithubClient sharedClient] setManagedObjectContext:self.managedObjectContext];
-        
-        
-        NSLog(@"We're inside the app delegate");
-        postsViewController.managedObjectContext = self.managedObjectContext;
-        UIColor *greyColor = [UIColor colorWithRed:66.0/255.0 green:66.0/255.0 blue:66.0/255.0 alpha:1];
-        UIColor *redColor = [UIColor colorWithRed:203./256.0 green:0/256.0 blue:15.0/265.0 alpha:1];
-        UIColor *blueColor = [UIColor colorWithRed:152.0/255.0 green:219.0/255.0 blue:240.0/255.0 alpha:1];
-        [[UINavigationBar appearance] setBarTintColor:greyColor];
-        [[UINavigationBar appearance] setTintColor:blueColor];
-        //[[UITabBar appearance] setTintColor:[UIColor colorWithRed:170.0/256.0 green:20.0/256.0 blue:20.0/256.0 alpha:1]];
-        [[UITabBar appearance] setBarTintColor:greyColor];
-        [[UITabBar appearance] setTintColor:blueColor];
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
-        //These should all be UINavigationControllers in the iPhone version
-        
-        for(UINavigationController *navController in tabBarController.viewControllers){
-            if([navController.topViewController respondsToSelector:@selector(setManagedObjectContext:)]){
-                //have to cast as id to get rid of unknown selector error
-                [(id)navController.topViewController setManagedObjectContext:self.managedObjectContext];
-            }
-        }
-        
-        
+        SLMasterViewController *controller = (SLMasterViewController *)masterNavigationController.topViewController;
+        controller.managedObjectContext = self.managedObjectContext;
+    } else {
+        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        SLMasterViewController *controller = (SLMasterViewController *)navigationController.topViewController;
+        controller.managedObjectContext = self.managedObjectContext;
     }
     return YES;
 }
@@ -65,10 +39,6 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    
-    //If this is the first time the user is quitting the app, then we set our bool to no
-    //If it's already no then it doesn't really matter.
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -91,9 +61,6 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
-    //If this is the first time the user is quitting the app, then we set our bool to no
-    //If it's already no then it doesn't really matter.
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
 }
 
 - (void)saveContext
