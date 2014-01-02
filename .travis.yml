@@ -1,4 +1,6 @@
 language: objective-c
+xcode_workspace: Staticly.xcworkspace
+xcode_scheme: Staticly
 
 rvm: 1.9.3
 

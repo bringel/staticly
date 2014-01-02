@@ -8,7 +8,6 @@
 
 #import "SLAppDelegate.h"
 
-#import "SLMasterViewController.h"
 
 @implementation SLAppDelegate
 
@@ -20,17 +19,10 @@
 {
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
         
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        SLMasterViewController *controller = (SLMasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        SLMasterViewController *controller = (SLMasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
+    }
+    else {
+        
     }
     return YES;
 }
