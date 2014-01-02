@@ -8,5 +8,5 @@ notifications:
   email: false
 
 xcode_sdk:
-  - iphoneos6.0
+  - iphoneos6.1
   - iphoneos7.0
