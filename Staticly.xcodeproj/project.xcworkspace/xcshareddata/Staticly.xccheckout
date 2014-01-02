@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1576FFEB-CEE0-484F-A70D-D6E31F56359B</string>
+	<string>9665FB21-2B80-41AB-9356-DBC10017024A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Staticly</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8D5452BC-9B5E-43F7-9736-D9B618236ED5</key>
+		<key>78284321-38F1-440A-9E83-24EE39534570</key>
 		<string>ssh://github.com/bringel/staticly.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Staticly.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8D5452BC-9B5E-43F7-9736-D9B618236ED5</key>
+		<key>78284321-38F1-440A-9E83-24EE39534570</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8D5452BC-9B5E-43F7-9736-D9B618236ED5</string>
+	<string>78284321-38F1-440A-9E83-24EE39534570</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8D5452BC-9B5E-43F7-9736-D9B618236ED5</string>
+			<string>78284321-38F1-440A-9E83-24EE39534570</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Staticly</string>
 		</dict>

@@ -2,8 +2,8 @@
 //  SLAppDelegate.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 11/10/13.
-//  Copyright (c) 2013 Bradley Ringel. All rights reserved.
+//  Created by Bradley Ringel on 1/2/14.
+//  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
 #import "SLAppDelegate.h"
