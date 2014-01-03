@@ -39,6 +39,7 @@
     layer.borderColor = self.loginButton.tintColor.CGColor;
     layer.borderWidth = 1.5f;
     layer.cornerRadius = 4.5f;
+    
 }
 
 - (void)didReceiveMemoryWarning

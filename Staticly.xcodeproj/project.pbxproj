@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F9090E718760780000D8D81 /* SLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090E618760780000D8D81 /* SLLoginViewController.m */; };
 		2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090E918772EB8000D8D81 /* SLEntryCell.m */; };
+		2F9090ED18777700000D8D81 /* githublogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9090EB18777700000D8D81 /* githublogo.png */; };
+		2F9090EE18777700000D8D81 /* githublogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9090EC18777700000D8D81 /* githublogo@2x.png */; };
 		2FAC4E0A1875BA44008D46D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E091875BA44008D46D4 /* Foundation.framework */; };
 		2FAC4E0C1875BA44008D46D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E0B1875BA44008D46D4 /* CoreGraphics.framework */; };
 		2FAC4E0E1875BA44008D46D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E0D1875BA44008D46D4 /* UIKit.framework */; };
@@ -44,6 +46,8 @@
 		2F9090E618760780000D8D81 /* SLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLoginViewController.m; sourceTree = "<group>"; };
 		2F9090E818772EB8000D8D81 /* SLEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLEntryCell.h; sourceTree = "<group>"; };
 		2F9090E918772EB8000D8D81 /* SLEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLEntryCell.m; sourceTree = "<group>"; };
+		2F9090EB18777700000D8D81 /* githublogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = githublogo.png; sourceTree = "<group>"; };
+		2F9090EC18777700000D8D81 /* githublogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "githublogo@2x.png"; sourceTree = "<group>"; };
 		2FAC4E061875BA44008D46D4 /* Staticly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staticly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAC4E091875BA44008D46D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2FAC4E0B1875BA44008D46D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -173,6 +177,8 @@
 		2FAC4E121875BA44008D46D4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2F9090EB18777700000D8D81 /* githublogo.png */,
+				2F9090EC18777700000D8D81 /* githublogo@2x.png */,
 				2FAC4E131875BA44008D46D4 /* Staticly-Info.plist */,
 				2FAC4E141875BA44008D46D4 /* InfoPlist.strings */,
 				2FAC4E171875BA44008D46D4 /* main.m */,
@@ -284,6 +290,8 @@
 				2FAC4E221875BA44008D46D4 /* Main_iPad.storyboard in Resources */,
 				2FAC4E2D1875BA44008D46D4 /* Images.xcassets in Resources */,
 				2FAC4E1F1875BA44008D46D4 /* Main_iPhone.storyboard in Resources */,
+				2F9090ED18777700000D8D81 /* githublogo.png in Resources */,
+				2F9090EE18777700000D8D81 /* githublogo@2x.png in Resources */,
 				2FAC4E161875BA44008D46D4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

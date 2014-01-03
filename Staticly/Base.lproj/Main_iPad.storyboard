@@ -17,14 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMs-Cz-QAG">
-                                <rect key="frame" x="318" y="208" width="133" height="30"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMs-Cz-QAG">
+                                <rect key="frame" x="297" y="208" width="174" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="133" id="TjL-72-CDb"/>
+                                    <constraint firstAttribute="width" constant="174" id="IFJ-Ic-tGq"/>
+                                    <constraint firstAttribute="height" constant="40" id="dtT-DH-I5E"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Login With Github"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" title="Login With Github" image="githublogo.png">
+                                    <color key="titleColor" red="0.19607844948768616" green="0.59215688705444336" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="5f2-Qr-MSy">
                                 <rect key="frame" x="0.0" y="64" width="768" height="136"/>
@@ -58,10 +63,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5f2-Qr-MSy" secondAttribute="trailing" id="7oL-Kk-JBO"/>
                             <constraint firstItem="5f2-Qr-MSy" firstAttribute="top" secondItem="L77-uZ-ce6" secondAttribute="bottom" id="CEK-LB-vf7"/>
-                            <constraint firstItem="ZMs-Cz-QAG" firstAttribute="top" secondItem="5f2-Qr-MSy" secondAttribute="bottom" constant="8" symbolic="YES" id="boW-Ol-ujZ"/>
-                            <constraint firstItem="tH6-em-ImS" firstAttribute="top" secondItem="ZMs-Cz-QAG" secondAttribute="bottom" constant="786" id="fCk-tZ-yeD"/>
-                            <constraint firstItem="5f2-Qr-MSy" firstAttribute="centerX" secondItem="ZMs-Cz-QAG" secondAttribute="centerX" id="nnK-63-WKL"/>
+                            <constraint firstItem="tH6-em-ImS" firstAttribute="top" secondItem="ZMs-Cz-QAG" secondAttribute="bottom" constant="776" id="P1r-JB-3X1"/>
+                            <constraint firstItem="ZMs-Cz-QAG" firstAttribute="centerX" secondItem="5f2-Qr-MSy" secondAttribute="centerX" id="sS5-6S-Rha"/>
                             <constraint firstItem="5f2-Qr-MSy" firstAttribute="leading" secondItem="DMr-2c-6gD" secondAttribute="leading" id="u6y-IO-Y1h"/>
+                            <constraint firstItem="ZMs-Cz-QAG" firstAttribute="top" secondItem="5f2-Qr-MSy" secondAttribute="bottom" constant="8" symbolic="YES" id="yjX-R0-uPn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Gk-EU-S6d">
@@ -95,6 +100,9 @@
             <point key="canvasLocation" x="2776" y="1965"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="githublogo.png" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
