@@ -24,6 +24,10 @@
     else {
         
     }
+    
+    
+    [TestFlight takeOff:@"8443cad5-cf3b-40ba-9c02-29a4425c7efc"];
+    
     return YES;
 }
 							

@@ -10,4 +10,6 @@
 
 @interface SLEntryCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
 @end

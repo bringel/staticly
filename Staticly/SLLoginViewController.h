@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SLLoginViewController : UIViewController
+@interface SLLoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
