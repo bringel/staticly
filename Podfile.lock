@@ -1,4 +1,6 @@
 PODS:
+  - AFNetworkActivityLogger (2.0.1):
+    - AFNetworking (~> 2.0)
   - AFNetworking (2.0.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
@@ -22,12 +24,14 @@ PODS:
   - TestFlightSDK (2.2.0-noadid-beta)
 
 DEPENDENCIES:
+  - AFNetworkActivityLogger (~> 2.0.1)
   - AFNetworking (~> 2.0)
   - MMMarkdown (~> 0.2.3)
   - MRProgress (~> 0.2)
   - TestFlightSDK
 
 SPEC CHECKSUMS:
+  AFNetworkActivityLogger: c2e99aec5d965a3ee33f0954a20c5ddab18934fe
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   MMMarkdown: 1775ba63d27e999aedecf75f58153243e1778ea0
   MRProgress: 51af562344c3fe38ce3c0617fd064f6f1ce55cd5

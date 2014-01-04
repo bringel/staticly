@@ -18,4 +18,5 @@
     #import <MMMarkdown/MMMarkdown.h>
     #import <MRProgress/MRProgress.h>
     #import <TestFlightSDK/TestFlight.h>
+    #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #endif

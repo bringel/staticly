@@ -10,15 +10,14 @@
 
 @implementation SLGithubSessionManager
 
-- (id)initWithBaseURL:(NSURL *)url{
-    self = [super initWithBaseURL:url];
+- (id)initWithBaseURL:(NSURL *)url sessionConfiguration:(NSURLSessionConfiguration *)configuration{
+    self = [super initWithBaseURL:url sessionConfiguration:configuration];
     if(self){
         NSDictionary *apiInformation = [[NSDictionary alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"githubapi" withExtension:@"plist"]];
         self.clientID = [apiInformation objectForKey:@"clientID"];
         self.clientSecret = [apiInformation objectForKey:@"clientSecret"];
         self.requestSerializer = [AFJSONRequestSerializer serializer];
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        
     }
     
     return self;
@@ -29,7 +28,7 @@
     static SLGithubSessionManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[SLGithubSessionManager alloc] initWithBaseURL:[[NSURL alloc] initWithString:@"https://api.github.com"]];
+        manager = [[SLGithubSessionManager alloc] initWithBaseURL:[[NSURL alloc] initWithString:@"https://api.github.com"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         
     });
     
