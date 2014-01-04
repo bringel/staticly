@@ -8,6 +8,8 @@
 
 #import "SLLoginViewController.h"
 #import "SLEntryCell.h"
+#import "SLUser.h"
+#import "SLGithubSessionManager.h"
 
 @interface SLLoginViewController () <UITextFieldDelegate>
 
@@ -88,6 +90,33 @@
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
+    //time to get a new token
+    SLGithubSessionManager *manager = [SLGithubSessionManager sharedManager];
+
+    NSString *username = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] textField] text];
+    NSString *password = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]] textField] text];
+    NSString *putString = [NSString stringWithFormat:@"/authorizations/clients/%@",[manager clientID]];
+    //should we check to see if there's already a user?
+    //maybe but I dont' wanna right now
+    SLUser *newUser = [NSEntityDescription insertNewObjectForEntityForName:@"SLUser" inManagedObjectContext:self.managedObjectContext];
+    newUser.username = username;
+    [[manager requestSerializer] setAuthorizationHeaderFieldWithUsername:username password:password];
     
+    [manager PUT:putString parameters:@{ @"scopes" : @[@"repo"], @"note" : @"Staticly", @"client_secret"  : [manager clientSecret]}
+          success:^(NSURLSessionDataTask *task, id responseObject) {
+              NSHTTPURLResponse *response = (NSHTTPURLResponse *)[task response];
+              if(response.statusCode == 201 || response.statusCode == 200){
+                  NSDictionary *responseData = (NSDictionary *)responseObject;
+                  newUser.oauthToken = [responseData objectForKey:@"token"];
+                  NSLog(@"user logged in successfully!");
+                  NSError *error;
+                  [self.managedObjectContext save:&error];
+                  [[manager requestSerializer] clearAuthorizationHeader];
+              }
+          }
+          failure:^(NSURLSessionDataTask *task, NSError *error) {
+              NSLog(@"%@", error);
+              
+          }];
 }
 @end
