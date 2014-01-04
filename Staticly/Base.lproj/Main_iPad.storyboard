@@ -30,6 +30,9 @@
                                 <state key="normal" title="Login With Github" image="githublogo.png">
                                     <color key="titleColor" red="0.19607844948768616" green="0.59215688705444336" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="EfG-IS-nmw" eventType="touchUpInside" id="2WP-mD-xUk"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="5f2-Qr-MSy">
                                 <rect key="frame" x="0.0" y="64" width="768" height="136"/>
