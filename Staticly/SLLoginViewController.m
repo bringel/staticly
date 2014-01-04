@@ -14,6 +14,8 @@
 
 @interface SLLoginViewController () <UITextFieldDelegate>
 
+@property (strong, nonatomic) SLUser *currentUser;
+
 @end
 
 @implementation SLLoginViewController
@@ -112,7 +114,7 @@
                  
                  NSError *error;
                  [self.managedObjectContext save:&error];
-                 
+                 self.currentUser = user;
                  [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
                  [self performSegueWithIdentifier:@"showSites" sender:self];
              }
@@ -135,7 +137,7 @@
     if([segue.identifier isEqualToString:@"showSites"]){
         SLSitesViewController *sitesViewController = (SLSitesViewController *)segue.destinationViewController;
         sitesViewController.managedObjectContext = self.managedObjectContext;
-        
+        sitesViewController.currentUser = self.currentUser;
     }
 }
 @end
