@@ -10,6 +10,7 @@
 #import "SLEntryCell.h"
 #import "SLUser.h"
 #import "SLGithubSessionManager.h"
+#import "SLSitesViewController.h"
 
 @interface SLLoginViewController () <UITextFieldDelegate>
 
@@ -102,7 +103,7 @@
     user.username = username;
     
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
-    [manager POST:@"/authorizations" parameters:@{@"client_secret" : [manager clientSecret], @"client_id" : [manager clientID], @"scope" : @[@"repo"]}
+    [manager PUT:[NSString stringWithFormat:@"/authorizations/clients/%@", [manager clientID]] parameters:@{@"client_secret" : [manager clientSecret], @"scope" : @[@"repo"]}
          success:^(NSURLSessionDataTask *task, id responseObject) {
              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
              NSDictionary *tokenData = responseObject;
@@ -113,10 +114,28 @@
                  [self.managedObjectContext save:&error];
                  
                  [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+                 [self performSegueWithIdentifier:@"showSites" sender:self];
              }
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
              NSLog(@"%@", error);
          }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SLEntryCell *cell = (SLEntryCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell.textField becomeFirstResponder];
+    
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([segue.identifier isEqualToString:@"showSites"]){
+        SLSitesViewController *sitesViewController = (SLSitesViewController *)segue.destinationViewController;
+        sitesViewController.managedObjectContext = self.managedObjectContext;
+        
+    }
 }
 @end
