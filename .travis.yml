@@ -7,5 +7,4 @@ rvm: 1.9.3
 notifications:
   email: false
 
-xcode_sdk:
-  - iphoneos7.0
+xcode_sdk: iphonesimulator
