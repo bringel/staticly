@@ -1,20 +1,19 @@
 //
-//  SLSite.m
+//  SLBranch.m
 //  Staticly
 //
 //  Created by Bradley Ringel on 1/6/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
+#import "SLBranch.h"
 #import "SLSite.h"
-#import "SLUser.h"
 
 
-@implementation SLSite
+@implementation SLBranch
 
-@dynamic fullName;
-@dynamic name;
-@dynamic owner;
-@dynamic branches;
+@dynamic refName;
+@dynamic url;
+@dynamic site;
 
 @end

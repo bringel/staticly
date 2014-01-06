@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SLBranch" representedClassName="SLBranch" syncable="YES">
+        <attribute name="refName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="site" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLSite" inverseName="branches" inverseEntity="SLSite" syncable="YES"/>
+    </entity>
     <entity name="SLSite" representedClassName="SLSite" syncable="YES">
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLBranch" inverseName="site" inverseEntity="SLBranch" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLUser" inverseName="sites" inverseEntity="SLUser" syncable="YES"/>
     </entity>
     <entity name="SLUser" representedClassName="SLUser" syncable="YES">
@@ -11,7 +17,8 @@
         <relationship name="sites" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLSite" inverseName="owner" inverseEntity="SLSite" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SLUser" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SLSite" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SLSite" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="SLUser" positionX="-252" positionY="126" width="128" height="90"/>
+        <element name="SLBranch" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>
