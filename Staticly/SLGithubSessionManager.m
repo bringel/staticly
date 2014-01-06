@@ -18,6 +18,7 @@
         self.clientSecret = [apiInformation objectForKey:@"clientSecret"];
         self.requestSerializer = [AFJSONRequestSerializer serializer];
         self.responseSerializer = [AFJSONResponseSerializer serializer];
+        
     }
     
     return self;

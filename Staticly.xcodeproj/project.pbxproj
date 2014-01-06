@@ -16,6 +16,7 @@
 		2F9090F6187797D6000D8D81 /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090F5187797D6000D8D81 /* SLUser.m */; };
 		2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090FC1877C729000D8D81 /* SLSitesViewController.m */; };
 		2F90910018787061000D8D81 /* SLSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090FF18787061000D8D81 /* SLSite.m */; };
+		2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */; };
 		2FAC4E0A1875BA44008D46D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E091875BA44008D46D4 /* Foundation.framework */; };
 		2FAC4E0C1875BA44008D46D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E0B1875BA44008D46D4 /* CoreGraphics.framework */; };
 		2FAC4E0E1875BA44008D46D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E0D1875BA44008D46D4 /* UIKit.framework */; };
@@ -63,6 +64,8 @@
 		2F9090FC1877C729000D8D81 /* SLSitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSitesViewController.m; sourceTree = "<group>"; };
 		2F9090FE18787061000D8D81 /* SLSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSite.h; sourceTree = "<group>"; };
 		2F9090FF18787061000D8D81 /* SLSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSite.m; sourceTree = "<group>"; };
+		2F97441D187B14D8000FE5F2 /* SLBranchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranchesViewController.h; sourceTree = "<group>"; };
+		2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranchesViewController.m; sourceTree = "<group>"; };
 		2FAC4E061875BA44008D46D4 /* Staticly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staticly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAC4E091875BA44008D46D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2FAC4E0B1875BA44008D46D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,8 @@
 				2F9090E618760780000D8D81 /* SLLoginViewController.m */,
 				2F9090FB1877C728000D8D81 /* SLSitesViewController.h */,
 				2F9090FC1877C729000D8D81 /* SLSitesViewController.m */,
+				2F97441D187B14D8000FE5F2 /* SLBranchesViewController.h */,
+				2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */,
 				2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */,
 				2F9090F6187797D6000D8D81 /* SLUser.m in Sources */,
+				2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */,
 				2FAC4E181875BA44008D46D4 /* main.m in Sources */,
 				2F9090E718760780000D8D81 /* SLLoginViewController.m in Sources */,
 				2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */,

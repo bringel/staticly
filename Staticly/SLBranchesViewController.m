@@ -1,24 +1,21 @@
 //
-//  SLSitesViewController.m
+//  SLBranchesViewController.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 1/3/14.
+//  Created by Bradley Ringel on 1/6/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
-#import "SLSitesViewController.h"
-#import "SLSite.h"
-#import "SLGithubSessionManager.h"
 #import "SLBranchesViewController.h"
+#import "SLGithubSessionManager.h"
 
-@interface SLSitesViewController ()
+@interface SLBranchesViewController ()
 
-@property (strong, nonatomic) NSMutableArray *sites;
-@property (strong, nonatomic) SLSite *selectedSite;
+@property (strong, nonatomic) NSArray *branches;
 
 @end
 
-@implementation SLSitesViewController
+@implementation SLBranchesViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,7 +35,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self _fetchSites];
+    [self _fetchBranches];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,33 +44,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSMutableArray *)sites{
-    if(_sites == nil){
-        _sites = [[NSMutableArray alloc] init];
-    }
-    return _sites;
-}
-
-- (void)_fetchSites{
+- (void)_fetchBranches{
     MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
     
-    NSString *fetchString = [NSString stringWithFormat:@"/users/%@/repos", self.currentUser.username];
+    NSString *fetchString = [NSString stringWithFormat:@"/repos/%@/git/refs/heads", self.selectedSite.fullName];
     
     SLGithubSessionManager *manager = [SLGithubSessionManager sharedManager];
     
     [manager GET:fetchString parameters:@{@"access_token" : self.currentUser.oauthToken}
          success:^(NSURLSessionDataTask *task, id responseObject) {
-             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+             NSHTTPURLResponse *response = task.response;
              if(response.statusCode == 200){
-                 NSArray *responseData = responseObject;
-                 self.sites = [responseData copy];
+                 self.branches = [responseObject copy];
                  [overlayView dismiss:YES];
                  [self.tableView reloadData];
-                 
              }
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
-             
+             NSLog(@"%@", error);
          }];
 }
 
@@ -88,35 +76,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.sites.count;
+    return self.branches.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"siteCell";
+    static NSString *CellIdentifier = @"branchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [[self.sites objectAtIndex:indexPath.row] objectForKey:@"name"];
-    cell.detailTextLabel.text = [[self.sites objectAtIndex:indexPath.row] objectForKey:@"full_name"];
+    NSString *refName = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"];
+    NSArray *parts = [refName componentsSeparatedByString:@"/"];
     
+    cell.textLabel.text = [parts lastObject];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSDictionary *selected = [self.sites objectAtIndex:indexPath.row];
-    
-    SLSite *site = [NSEntityDescription insertNewObjectForEntityForName:@"SLSite" inManagedObjectContext:self.managedObjectContext];
-    site.name = [selected objectForKey:@"name"];
-    site.fullName = [selected objectForKey:@"full_name"];
-    
-    NSError *error;
-    [self.managedObjectContext save:&error];
-    self.selectedSite = site;
-    
-    [self performSegueWithIdentifier:@"showBranches" sender:self];
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -156,7 +131,7 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -164,13 +139,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"showBranches"]){
-        SLBranchesViewController *branchesVC = (SLBranchesViewController *)segue.destinationViewController;
-        branchesVC.managedObjectContext = self.managedObjectContext;
-        branchesVC.currentUser = self.currentUser;
-        branchesVC.selectedSite = self.selectedSite;
-    }
 }
 
+ */
 
 @end

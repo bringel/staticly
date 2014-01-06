@@ -116,6 +116,7 @@
                  [self.managedObjectContext save:&error];
                  self.currentUser = user;
                  [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+                 [manager.requestSerializer clearAuthorizationHeader];
                  [self performSegueWithIdentifier:@"showSites" sender:self];
              }
          }
