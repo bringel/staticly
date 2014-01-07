@@ -87,7 +87,7 @@
     }
     else{
         //this is the password field
-        [textField resignFirstResponder];
+        [self.view endEditing:YES];
     }
     return YES;
 }

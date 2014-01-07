@@ -1,21 +1,19 @@
 //
-//  SLBranchesViewController.m
+//  SLMenuViewController.m
 //  Staticly
 //
 //  Created by Bradley Ringel on 1/6/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
-#import "SLBranchesViewController.h"
-#import "SLGithubSessionManager.h"
+#import "SLMenuViewController.h"
+#import "SLLoginViewController.h"
 
-@interface SLBranchesViewController ()
-
-@property (strong, nonatomic) NSArray *branches;
+@interface SLMenuViewController ()
 
 @end
 
-@implementation SLBranchesViewController
+@implementation SLMenuViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,7 +33,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self _fetchBranches];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,54 +41,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)_fetchBranches{
-    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
-    
-    NSString *fetchString = [NSString stringWithFormat:@"/repos/%@/git/refs/heads", self.selectedSite.fullName];
-    
-    SLGithubSessionManager *manager = [SLGithubSessionManager sharedManager];
-    
-    [manager GET:fetchString parameters:@{@"access_token" : self.currentUser.oauthToken}
-         success:^(NSURLSessionDataTask *task, id responseObject) {
-             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-             if(response.statusCode == 200){
-                 self.branches = [responseObject copy];
-                 [overlayView dismiss:YES];
-                 [self.tableView reloadData];
-             }
-         }
-         failure:^(NSURLSessionDataTask *task, NSError *error) {
-             NSLog(@"%@", error);
-         }];
-}
-
+/*
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.branches.count;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"branchCell";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSString *refName = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"];
-    NSArray *parts = [refName componentsSeparatedByString:@"/"];
     
-    cell.textLabel.text = [parts lastObject];
     return cell;
 }
-
+*/
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,7 +107,14 @@
 }
 */
 
-/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //Temporarily this is the settings button, later it will moved
+    if(indexPath.row == 0){
+        [self performSegueWithIdentifier:@"showSettings" sender:self];
+    }
+}
+
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -139,8 +122,13 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"showSettings"]){
+        //Later this will be a settings view controller, but for right now
+        //login is all we have
+        SLLoginViewController *loginVC = (SLLoginViewController *)[(UINavigationController *)[segue destinationViewController] topViewController];
+        loginVC.managedObjectContext = self.managedObjectContext;
+    }
 }
 
- */
 
 @end

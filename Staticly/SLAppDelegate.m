@@ -8,6 +8,7 @@
 
 #import "SLAppDelegate.h"
 #import "SLLoginViewController.h"
+#import "SLMenuViewController.h"
 
 @implementation SLAppDelegate
 
@@ -20,9 +21,14 @@
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         //This is temporary while the Login/Site flow is in development
-        UINavigationController *navController = [[self window] rootViewController];
-        SLLoginViewController *loginViewController = [navController topViewController];
-        loginViewController.managedObjectContext = self.managedObjectContext;
+        //UINavigationController *navController = [[self window] rootViewController];
+        //SLLoginViewController *loginViewController = [navController topViewController];
+        //loginViewController.managedObjectContext = self.managedObjectContext;
+        UISplitViewController *splitVC = [[self window] rootViewController];
+        UINavigationController *masterNavController = [[splitVC viewControllers] firstObject];
+        SLMenuViewController *menuVC = [masterNavController topViewController];
+        menuVC.managedObjectContext = self.managedObjectContext;
+        
     }
     else {
         
