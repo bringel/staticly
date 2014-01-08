@@ -53,6 +53,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)disablesAutomaticKeyboardDismissal{
+    return NO;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 2;
@@ -87,7 +91,7 @@
     }
     else{
         //this is the password field
-        [self.view endEditing:YES];
+        [textField resignFirstResponder];
     }
     return YES;
 }
@@ -116,12 +120,12 @@
                  [self.managedObjectContext save:&error];
                  self.currentUser = user;
                  [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
-                 [manager.requestSerializer clearAuthorizationHeader];
+                 //[manager.requestSerializer clearAuthorizationHeader];
                  [self performSegueWithIdentifier:@"showSites" sender:self];
              }
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
-             NSLog(@"%@", error);
+             //NSLog(@"%@", error);
          }];
 }
 

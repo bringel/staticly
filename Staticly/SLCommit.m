@@ -1,20 +1,23 @@
 //
-//  SLBranch.m
+//  SLCommit.m
 //  Staticly
 //
 //  Created by Bradley Ringel on 1/8/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
+#import "SLCommit.h"
 #import "SLBranch.h"
-#import "SLSite.h"
+#import "SLCommit.h"
 
 
-@implementation SLBranch
+@implementation SLCommit
 
-@dynamic refName;
+@dynamic sha;
 @dynamic url;
-@dynamic site;
-@dynamic commit;
+@dynamic message;
+@dynamic parents;
+@dynamic tree;
+@dynamic branch;
 
 @end

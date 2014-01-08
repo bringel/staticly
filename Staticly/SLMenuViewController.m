@@ -41,6 +41,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)refreshSite:(SLSite *)site{
+    
+}
+
 /*
 #pragma mark - Table view data source
 

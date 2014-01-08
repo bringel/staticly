@@ -1,5 +1,5 @@
 //
-//  SLBranch.h
+//  SLBlob.h
 //  Staticly
 //
 //  Created by Bradley Ringel on 1/8/14.
@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SLGitObject.h"
 
-@class SLSite;
 
-@interface SLBranch : NSManagedObject
+@interface SLBlob : NSManagedObject <SLGitObject>
 
-@property (nonatomic, retain) NSString * refName;
+@property (nonatomic, retain) NSString * sha;
 @property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) SLSite *site;
-@property (nonatomic, retain) NSManagedObject *commit;
+@property (nonatomic, retain) NSString * content;
+@property (nonatomic, retain) NSManagedObject *tree;
 
 @end

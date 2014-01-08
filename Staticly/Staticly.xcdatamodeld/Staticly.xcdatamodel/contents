@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SLBlob" representedClassName="SLBlob" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sha" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLTree" inverseName="blobs" inverseEntity="SLTree" syncable="YES"/>
+    </entity>
     <entity name="SLBranch" representedClassName="SLBranch" syncable="YES">
         <attribute name="refName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="commit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLCommit" inverseName="branch" inverseEntity="SLCommit" syncable="YES"/>
         <relationship name="site" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLSite" inverseName="branches" inverseEntity="SLSite" syncable="YES"/>
+    </entity>
+    <entity name="SLCommit" representedClassName="SLCommit" syncable="YES">
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sha" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="branch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLBranch" inverseName="commit" inverseEntity="SLBranch" syncable="YES"/>
+        <relationship name="parents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLCommit" syncable="YES"/>
+        <relationship name="tree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLTree" inverseName="commit" inverseEntity="SLTree" syncable="YES"/>
     </entity>
     <entity name="SLSite" representedClassName="SLSite" syncable="YES">
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,14 +26,26 @@
         <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLBranch" inverseName="site" inverseEntity="SLBranch" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLUser" inverseName="sites" inverseEntity="SLUser" syncable="YES"/>
     </entity>
+    <entity name="SLTree" representedClassName="SLTree" syncable="YES">
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sha" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="blobs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLBlob" inverseName="tree" inverseEntity="SLBlob" syncable="YES"/>
+        <relationship name="commit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLCommit" inverseName="tree" inverseEntity="SLCommit" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLTree" inverseName="trees" inverseEntity="SLTree" syncable="YES"/>
+        <relationship name="trees" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLTree" inverseName="parent" inverseEntity="SLTree" syncable="YES"/>
+    </entity>
     <entity name="SLUser" representedClassName="SLUser" syncable="YES">
         <attribute name="oauthToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sites" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLSite" inverseName="owner" inverseEntity="SLSite" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SLSite" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="SLUser" positionX="-252" positionY="126" width="128" height="90"/>
-        <element name="SLBranch" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="SLBranch" positionX="160" positionY="192" width="128" height="103"/>
+        <element name="SLSite" positionX="-81" positionY="108" width="128" height="105"/>
+        <element name="SLUser" positionX="-297" positionY="126" width="128" height="90"/>
+        <element name="SLCommit" positionX="225" positionY="360" width="128" height="133"/>
+        <element name="SLTree" positionX="414" positionY="189" width="128" height="148"/>
+        <element name="SLBlob" positionX="349" positionY="-6" width="128" height="103"/>
     </elements>
 </model>

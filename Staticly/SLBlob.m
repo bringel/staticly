@@ -1,19 +1,19 @@
 //
-//  SLUser.m
+//  SLBlob.m
 //  Staticly
 //
 //  Created by Bradley Ringel on 1/8/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
-#import "SLUser.h"
-#import "SLSite.h"
+#import "SLBlob.h"
 
 
-@implementation SLUser
+@implementation SLBlob
 
-@dynamic oauthToken;
-@dynamic username;
-@dynamic sites;
+@dynamic sha;
+@dynamic url;
+@dynamic content;
+@dynamic tree;
 
 @end

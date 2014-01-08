@@ -8,6 +8,7 @@
 
 #import "SLBranchesViewController.h"
 #import "SLGithubSessionManager.h"
+#import "SLBranch.h"
 
 @interface SLBranchesViewController ()
 
@@ -92,6 +93,17 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SLBranch *branch = [NSEntityDescription insertNewObjectForEntityForName:@"SLBranch" inManagedObjectContext:self.managedObjectContext];
+    
+    branch.refName = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"];
+    branch.url = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"url"];
+    branch.site = self.selectedSite;
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,7 +143,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -141,6 +153,6 @@
     // Pass the selected object to the new view controller.
 }
 
- */
+
 
 @end

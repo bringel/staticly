@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLSite.h"
 
 @interface SLMenuViewController : UITableViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+- (void)refreshSite:(SLSite *)site;
 
 @end

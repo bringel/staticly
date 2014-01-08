@@ -15,9 +15,6 @@
 		2F9090F3187792BE000D8D81 /* githubapi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F9090F2187792BE000D8D81 /* githubapi.plist */; };
 		2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090FC1877C729000D8D81 /* SLSitesViewController.m */; };
 		2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */; };
-		2F974422187B2390000FE5F2 /* SLSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F974421187B2390000FE5F2 /* SLSite.m */; };
-		2F974425187B2391000FE5F2 /* SLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F974424187B2391000FE5F2 /* SLBranch.m */; };
-		2F974428187B2391000FE5F2 /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F974427187B2391000FE5F2 /* SLUser.m */; };
 		2F974429187B370F000FE5F2 /* libPods-Staticly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A3C67DC77411E903E35D0 /* libPods-Staticly.a */; };
 		2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97442B187B3A7C000FE5F2 /* SLMenuViewController.m */; };
 		2FAC4E0A1875BA44008D46D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E091875BA44008D46D4 /* Foundation.framework */; };
@@ -37,6 +34,12 @@
 		2FAC4E371875BA44008D46D4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC4E0F1875BA44008D46D4 /* CoreData.framework */; };
 		2FAC4E3F1875BA44008D46D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FAC4E3D1875BA44008D46D4 /* InfoPlist.strings */; };
 		2FAC4E411875BA44008D46D4 /* StaticlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC4E401875BA44008D46D4 /* StaticlyTests.m */; };
+		2FBCDCB3187DFA9700ADC1DD /* SLBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCB2187DFA9700ADC1DD /* SLBlob.m */; };
+		2FBCDCB6187DFA9800ADC1DD /* SLSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCB5187DFA9800ADC1DD /* SLSite.m */; };
+		2FBCDCB9187DFA9800ADC1DD /* SLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCB8187DFA9800ADC1DD /* SLBranch.m */; };
+		2FBCDCBC187DFA9800ADC1DD /* SLCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCBB187DFA9800ADC1DD /* SLCommit.m */; };
+		2FBCDCBF187DFA9800ADC1DD /* SLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCBE187DFA9800ADC1DD /* SLTree.m */; };
+		2FBCDCC2187DFA9800ADC1DD /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCC1187DFA9800ADC1DD /* SLUser.m */; };
 		D485792D85EA4681B9A563E5 /* libPods-Staticly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A3C67DC77411E903E35D0 /* libPods-Staticly.a */; };
 /* End PBXBuildFile section */
 
@@ -65,12 +68,6 @@
 		2F9090FC1877C729000D8D81 /* SLSitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSitesViewController.m; sourceTree = "<group>"; };
 		2F97441D187B14D8000FE5F2 /* SLBranchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranchesViewController.h; sourceTree = "<group>"; };
 		2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranchesViewController.m; sourceTree = "<group>"; };
-		2F974420187B2390000FE5F2 /* SLSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSite.h; sourceTree = "<group>"; };
-		2F974421187B2390000FE5F2 /* SLSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSite.m; sourceTree = "<group>"; };
-		2F974423187B2391000FE5F2 /* SLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranch.h; sourceTree = "<group>"; };
-		2F974424187B2391000FE5F2 /* SLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranch.m; sourceTree = "<group>"; };
-		2F974426187B2391000FE5F2 /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
-		2F974427187B2391000FE5F2 /* SLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUser.m; sourceTree = "<group>"; };
 		2F97442A187B3A7C000FE5F2 /* SLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMenuViewController.h; sourceTree = "<group>"; };
 		2F97442B187B3A7C000FE5F2 /* SLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMenuViewController.m; sourceTree = "<group>"; };
 		2FAC4E061875BA44008D46D4 /* Staticly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staticly.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +90,18 @@
 		2FAC4E3C1875BA44008D46D4 /* StaticlyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StaticlyTests-Info.plist"; sourceTree = "<group>"; };
 		2FAC4E3E1875BA44008D46D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FAC4E401875BA44008D46D4 /* StaticlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaticlyTests.m; sourceTree = "<group>"; };
+		2FBCDCB1187DFA9700ADC1DD /* SLBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBlob.h; sourceTree = "<group>"; };
+		2FBCDCB2187DFA9700ADC1DD /* SLBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBlob.m; sourceTree = "<group>"; };
+		2FBCDCB4187DFA9800ADC1DD /* SLSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSite.h; sourceTree = "<group>"; };
+		2FBCDCB5187DFA9800ADC1DD /* SLSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSite.m; sourceTree = "<group>"; };
+		2FBCDCB7187DFA9800ADC1DD /* SLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranch.h; sourceTree = "<group>"; };
+		2FBCDCB8187DFA9800ADC1DD /* SLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranch.m; sourceTree = "<group>"; };
+		2FBCDCBA187DFA9800ADC1DD /* SLCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCommit.h; sourceTree = "<group>"; };
+		2FBCDCBB187DFA9800ADC1DD /* SLCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCommit.m; sourceTree = "<group>"; };
+		2FBCDCBD187DFA9800ADC1DD /* SLTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTree.h; sourceTree = "<group>"; };
+		2FBCDCBE187DFA9800ADC1DD /* SLTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTree.m; sourceTree = "<group>"; };
+		2FBCDCC0187DFA9800ADC1DD /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
+		2FBCDCC1187DFA9800ADC1DD /* SLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLUser.m; sourceTree = "<group>"; };
 		803A3C67DC77411E903E35D0 /* libPods-Staticly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Staticly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staticly.xcconfig"; path = "Pods/Pods-Staticly.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,12 +161,18 @@
 		2F9090E418760690000D8D81 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2F974426187B2391000FE5F2 /* SLUser.h */,
-				2F974427187B2391000FE5F2 /* SLUser.m */,
-				2F974423187B2391000FE5F2 /* SLBranch.h */,
-				2F974424187B2391000FE5F2 /* SLBranch.m */,
-				2F974420187B2390000FE5F2 /* SLSite.h */,
-				2F974421187B2390000FE5F2 /* SLSite.m */,
+				2FBCDCC0187DFA9800ADC1DD /* SLUser.h */,
+				2FBCDCC1187DFA9800ADC1DD /* SLUser.m */,
+				2FBCDCBD187DFA9800ADC1DD /* SLTree.h */,
+				2FBCDCBE187DFA9800ADC1DD /* SLTree.m */,
+				2FBCDCBA187DFA9800ADC1DD /* SLCommit.h */,
+				2FBCDCBB187DFA9800ADC1DD /* SLCommit.m */,
+				2FBCDCB7187DFA9800ADC1DD /* SLBranch.h */,
+				2FBCDCB8187DFA9800ADC1DD /* SLBranch.m */,
+				2FBCDCB4187DFA9800ADC1DD /* SLSite.h */,
+				2FBCDCB5187DFA9800ADC1DD /* SLSite.m */,
+				2FBCDCB1187DFA9700ADC1DD /* SLBlob.h */,
+				2FBCDCB2187DFA9700ADC1DD /* SLBlob.m */,
 				2F9090F7187797E9000D8D81 /* SLGitObject.h */,
 			);
 			name = Models;
@@ -388,17 +403,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */,
+				2FBCDCB9187DFA9800ADC1DD /* SLBranch.m in Sources */,
 				2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */,
 				2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */,
+				2FBCDCC2187DFA9800ADC1DD /* SLUser.m in Sources */,
 				2FAC4E181875BA44008D46D4 /* main.m in Sources */,
-				2F974425187B2391000FE5F2 /* SLBranch.m in Sources */,
+				2FBCDCBF187DFA9800ADC1DD /* SLTree.m in Sources */,
+				2FBCDCBC187DFA9800ADC1DD /* SLCommit.m in Sources */,
 				2F9090E718760780000D8D81 /* SLLoginViewController.m in Sources */,
-				2F974428187B2391000FE5F2 /* SLUser.m in Sources */,
 				2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */,
+				2FBCDCB3187DFA9700ADC1DD /* SLBlob.m in Sources */,
 				2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */,
+				2FBCDCB6187DFA9800ADC1DD /* SLSite.m in Sources */,
 				2F9090F1187789BB000D8D81 /* SLGithubSessionManager.m in Sources */,
 				2FAC4E1C1875BA44008D46D4 /* SLAppDelegate.m in Sources */,
-				2F974422187B2390000FE5F2 /* SLSite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

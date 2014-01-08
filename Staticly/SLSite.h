@@ -2,33 +2,33 @@
 //  SLSite.h
 //  Staticly
 //
-//  Created by Bradley Ringel on 1/6/14.
+//  Created by Bradley Ringel on 1/8/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SLUser;
+@class SLBranch, SLUser;
 
 @interface SLSite : NSManagedObject
 
 @property (nonatomic, retain) NSString * fullName;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) SLUser *owner;
 @property (nonatomic, retain) NSOrderedSet *branches;
+@property (nonatomic, retain) SLUser *owner;
 @end
 
 @interface SLSite (CoreDataGeneratedAccessors)
 
-- (void)insertObject:(NSManagedObject *)value inBranchesAtIndex:(NSUInteger)idx;
+- (void)insertObject:(SLBranch *)value inBranchesAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromBranchesAtIndex:(NSUInteger)idx;
 - (void)insertBranches:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
 - (void)removeBranchesAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInBranchesAtIndex:(NSUInteger)idx withObject:(NSManagedObject *)value;
+- (void)replaceObjectInBranchesAtIndex:(NSUInteger)idx withObject:(SLBranch *)value;
 - (void)replaceBranchesAtIndexes:(NSIndexSet *)indexes withBranches:(NSArray *)values;
-- (void)addBranchesObject:(NSManagedObject *)value;
-- (void)removeBranchesObject:(NSManagedObject *)value;
+- (void)addBranchesObject:(SLBranch *)value;
+- (void)removeBranchesObject:(SLBranch *)value;
 - (void)addBranches:(NSOrderedSet *)values;
 - (void)removeBranches:(NSOrderedSet *)values;
 @end
