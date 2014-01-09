@@ -67,7 +67,7 @@
         if(response.statusCode == 200){
             NSDictionary *blobData = responseObject;
             SLBlob *blob = [manager blobWithSha:[blobData objectForKey:@"sha"]];
-            blob.content = [blobData objectForKey:@"content"];
+            blob.content = [[NSData alloc] initWithBase64EncodedString:[blobData objectForKey:@"content"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
             NSError *error;
             [self.managedObjectContext save:&error];
         }
@@ -80,7 +80,7 @@
         NSLog(@"%@", error);
     };
     
-    void (^treeSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask *task, id responseObject){
+    void (^__block treeSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask *task, id responseObject){
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
 
         if(response.statusCode == 200){
@@ -109,7 +109,7 @@
                     [self.managedObjectContext save:&error];
                     
                     NSString *blobGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/blobs/%@", username, siteName, blob.sha];
-                    [manager GET:blobGetString parameters:@{@"access_token" : token} success:blobSuccessBlock failure:blobFailBlock];
+                    [manager GET:blobGetString parameters:@{@"access_token" : token, @"encoding" : @"base64"} success:blobSuccessBlock failure:blobFailBlock];
                 }
             }
         }
