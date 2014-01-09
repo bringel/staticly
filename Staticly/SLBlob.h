@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * sha;
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSString * content;
+@property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSManagedObject *tree;
 
 @end

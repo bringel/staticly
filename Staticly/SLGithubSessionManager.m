@@ -7,6 +7,7 @@
 //
 
 #import "SLGithubSessionManager.h"
+#import "SLAppDelegate.h"
 @interface SLGithubSessionManager()
 
 @end
@@ -22,6 +23,7 @@
         self.requestSerializer = [AFJSONRequestSerializer serializer];
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         
+        self.managedObjectContext = [(SLAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
     
     return self;
@@ -40,7 +42,7 @@
 }
 
 - (SLUser *)currentUser{
-    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"currentUser == YES"];
+    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"currentUser == %@", @(YES)];
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
     request.predicate = currentPredicate;
     
@@ -57,7 +59,7 @@
 }
 
 - (SLSite *)currentSite{
-    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"currentSite == YES"];
+    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"currentSite == %@", @(YES)];
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLSite"];
     request.predicate = currentPredicate;
     
@@ -67,6 +69,52 @@
     if(sites.count == 1){
         //if this isn't the case then we've got a problem
         return [sites firstObject];
+    }
+    else{
+        return nil;
+    }
+}
+
+- (SLCommit *)commitWithSha:(NSString *)sha{
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"sha == %@", sha];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLCommit"];
+    request.predicate = pred;
+    NSError *error;
+    
+    NSArray *commits = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if(commits.count == 1){
+        //i hope that this is the case
+        return [commits firstObject];
+    }
+    else{
+        return nil;
+    }
+}
+
+- (SLTree *)treeWithSha:(NSString *)sha{
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"sha == %@", sha];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLTree"];
+    request.predicate = pred;
+    NSError *error;
+    
+    NSArray *trees = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if(trees.count == 1){
+        return [trees firstObject];
+    }
+    else{
+        return nil;
+    }
+}
+
+- (SLBlob *)blobWithSha:(NSString *)sha{
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"sha == %@", sha];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLBlob"];
+    request.predicate = pred;
+    NSError *error;
+    
+    NSArray *blobs = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if(blobs.count == 1){
+        return [blobs firstObject];
     }
     else{
         return nil;

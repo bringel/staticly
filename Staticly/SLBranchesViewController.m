@@ -113,6 +113,8 @@
     
     [self.managedObjectContext save:&error];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 /*

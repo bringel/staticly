@@ -9,6 +9,9 @@
 #import "AFHTTPSessionManager.h"
 #import "SLUser.h"
 #import "SLSite.h"
+#import "SLCommit.h"
+#import "SLTree.h"
+#import "SLBlob.h"
 
 @interface SLGithubSessionManager : AFHTTPSessionManager
 
@@ -19,5 +22,9 @@
 + (instancetype)sharedManager;
 - (SLUser *)currentUser;
 - (SLSite *)currentSite;
+
+- (SLCommit *)commitWithSha:(NSString *)sha;
+- (SLTree *)treeWithSha:(NSString *)sha;
+- (SLBlob *)blobWithSha:(NSString *)sha;
 
 @end

@@ -53,25 +53,69 @@
 - (void)refreshCurrentSite:(id)sender{
     //First things first is to fetch the commit that the default branch points to
     //We may also want to check to see if there is a new commit first
-    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"defaultBranch == YES"];
+    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"defaultBranch == %@", @(YES)];
     NSOrderedSet *defaultBranch = [[[[SLGithubSessionManager sharedManager] currentSite] branches] filteredOrderedSetUsingPredicate:currentPredicate];
     SLCommit *head = [[defaultBranch firstObject] commit];
     
+    SLGithubSessionManager *manager = [SLGithubSessionManager sharedManager];
+    NSString *username = [[manager currentUser] username];
+    NSString *siteName = [[manager currentSite] name];
+    NSString *token = [[manager currentUser] oauthToken];
+    
     void (^blobSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask * task, id responseObject){
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200){
+            NSDictionary *blobData = responseObject;
+            SLBlob *blob = [manager blobWithSha:[blobData objectForKey:@"sha"]];
+            blob.content = [blobData objectForKey:@"content"];
+            NSError *error;
+            [self.managedObjectContext save:&error];
+        }
     };
     
     void (^blobFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
-        
+        NSLog(@"%@", error);
+    };
+    void (^treeFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
+        NSLog(@"%@", error);
     };
     
     void (^treeSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask *task, id responseObject){
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+
+        if(response.statusCode == 200){
+            NSDictionary *treeData = responseObject;
+            NSArray *objects = [treeData objectForKey:@"tree"];
+            SLTree *rootTree = [manager treeWithSha:[treeData objectForKey:@"sha"]];
+            for(NSDictionary *gitObject in objects){
+                //Check to see whether this is a tree or a blob, and do the right thing
+                //dont forget to set the relationship in all of them
+                if([[gitObject objectForKey:@"type"] isEqualToString:@"tree"]){
+                    SLTree *tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+                    tree.sha = [gitObject objectForKey:@"sha"];
+                    tree.path = [gitObject objectForKey:@"path"];
+                    tree.parent = rootTree;
+                    NSError *error;
+                    [self.managedObjectContext save:&error];
+                    NSString *treeGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/trees/%@",username,siteName,tree.sha];
+                    [manager GET:treeGetString parameters:@{@"access_token" : token} success:treeSuccessBlock failure:treeFailBlock];
+                }
+                else{
+                    SLBlob *blob = [NSEntityDescription insertNewObjectForEntityForName:@"SLBlob" inManagedObjectContext:self.managedObjectContext];
+                    blob.sha = [gitObject objectForKey:@"sha"];
+                    blob.path = [gitObject objectForKey:@"path"];
+                    blob.tree = rootTree;
+                    NSError *error;
+                    [self.managedObjectContext save:&error];
+                    
+                    NSString *blobGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/blobs/%@", username, siteName, blob.sha];
+                    [manager GET:blobGetString parameters:@{@"access_token" : token} success:blobSuccessBlock failure:blobFailBlock];
+                }
+            }
+        }
     };
     
-    void (^treeFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
-        
-    };
+    
     
     void (^commitSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask *task, id responseObject){
         NSError *error;
@@ -84,7 +128,7 @@
                 SLCommit *p = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
                 p.sha = [parent objectForKey:@"sha"];
                 p.url = [parent objectForKey:@"url"];
-                [head addParentsObject:p];
+                //[head addParentsObject:p];
                 
                 [self.managedObjectContext save:&error];
             }
@@ -92,25 +136,26 @@
             SLTree *tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
             tree.url = [commitData valueForKeyPath:@"tree.url"];
             tree.sha = [commitData valueForKeyPath:@"tree.sha"];
+            
             tree.commit = head;
             
             [self.managedObjectContext save:&error];
             
             //go and get that tree
-            SLGithubSessionManager *manager = [SLGithubSessionManager sharedManager];
-            NSString *username = [[manager currentUser] username];
-            NSString *siteName = [[manager currentSite] name];
+            
             
             NSString *treeGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/trees/%@",username,siteName,tree.sha];
-            [manager GET:treeGetString parameters:@{@"access_token" : [[manager currentUser] oauthToken]} success:treeSuccessBlock failure:treeFailBlock];
+            [manager GET:treeGetString parameters:@{@"access_token" : token} success:treeSuccessBlock failure:treeFailBlock];
         }
     };
     
     void (^commitFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
-        
+        NSLog(@"%@", error);
     };
     
+    NSString *commitGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/commits/%@", username, siteName, head.sha];
     
+    [manager GET:commitGetString parameters:@{@"access_token": token} success:commitSuccessBlock failure:commitFailBlock];
 }
 
 /*

@@ -14,6 +14,7 @@
 @dynamic sha;
 @dynamic url;
 @dynamic content;
+@dynamic path;
 @dynamic tree;
 
 @end
