@@ -8,6 +8,12 @@
 
 #import "SLMenuViewController.h"
 #import "SLLoginViewController.h"
+#import "SLGithubSessionManager.h"
+#import "SLCommit.h"
+#import "SLTree.h"
+#import "SLBlob.h"
+#import "SLSite.h"
+#import "SLBranch.h"
 
 @interface SLMenuViewController ()
 
@@ -33,6 +39,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshCurrentSite:)];
+    self.toolbarItems = @[refreshButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +50,66 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)refreshSite:(SLSite *)site{
+- (void)refreshCurrentSite:(id)sender{
+    //First things first is to fetch the commit that the default branch points to
+    //We may also want to check to see if there is a new commit first
+    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"defaultBranch == YES"];
+    NSOrderedSet *defaultBranch = [[[[SLGithubSessionManager sharedManager] currentSite] branches] filteredOrderedSetUsingPredicate:currentPredicate];
+    SLCommit *head = [[defaultBranch firstObject] commit];
+    
+    void (^blobSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask * task, id responseObject){
+        
+    };
+    
+    void (^blobFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
+        
+    };
+    
+    void (^treeSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask *task, id responseObject){
+        
+    };
+    
+    void (^treeFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
+        
+    };
+    
+    void (^commitSuccessBlock)(NSURLSessionDataTask *, id) = ^void (NSURLSessionDataTask *task, id responseObject){
+        NSError *error;
+
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        if(response.statusCode == 200){
+            NSDictionary *commitData = responseObject;
+            //loop through all the parents and get those
+            for(NSDictionary *parent in [commitData objectForKey:@"parents"]){
+                SLCommit *p = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+                p.sha = [parent objectForKey:@"sha"];
+                p.url = [parent objectForKey:@"url"];
+                [head addParentsObject:p];
+                
+                [self.managedObjectContext save:&error];
+            }
+            //create a tree
+            SLTree *tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+            tree.url = [commitData valueForKeyPath:@"tree.url"];
+            tree.sha = [commitData valueForKeyPath:@"tree.sha"];
+            tree.commit = head;
+            
+            [self.managedObjectContext save:&error];
+            
+            //go and get that tree
+            SLGithubSessionManager *manager = [SLGithubSessionManager sharedManager];
+            NSString *username = [[manager currentUser] username];
+            NSString *siteName = [[manager currentSite] name];
+            
+            NSString *treeGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/trees/%@",username,siteName,tree.sha];
+            [manager GET:treeGetString parameters:@{@"access_token" : [[manager currentUser] oauthToken]} success:treeSuccessBlock failure:treeFailBlock];
+        }
+    };
+    
+    void (^commitFailBlock)(NSURLSessionDataTask *, NSError *) = ^void (NSURLSessionDataTask *task, NSError *error){
+        
+    };
+    
     
 }
 

@@ -2,7 +2,7 @@
 //  SLSite.h
 //  Staticly
 //
-//  Created by Bradley Ringel on 1/8/14.
+//  Created by Bradley Ringel on 1/9/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * fullName;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * currentSite;
 @property (nonatomic, retain) NSOrderedSet *branches;
 @property (nonatomic, retain) SLUser *owner;
 @end

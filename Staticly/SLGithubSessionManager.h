@@ -7,6 +7,8 @@
 //
 
 #import "AFHTTPSessionManager.h"
+#import "SLUser.h"
+#import "SLSite.h"
 
 @interface SLGithubSessionManager : AFHTTPSessionManager
 
@@ -15,5 +17,7 @@
 @property (strong, nonatomic) NSString *clientSecret;
 
 + (instancetype)sharedManager;
+- (SLUser *)currentUser;
+- (SLSite *)currentSite;
 
 @end

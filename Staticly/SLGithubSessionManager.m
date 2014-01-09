@@ -7,6 +7,9 @@
 //
 
 #import "SLGithubSessionManager.h"
+@interface SLGithubSessionManager()
+
+@end
 
 @implementation SLGithubSessionManager
 
@@ -34,6 +37,40 @@
     });
     
     return manager;
+}
+
+- (SLUser *)currentUser{
+    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"currentUser == YES"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
+    request.predicate = currentPredicate;
+    
+    NSError *error;
+    NSArray *users = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if(users.count == 1){
+        //if this isn't the case then we've got a problem
+        return [users firstObject];
+    }
+    else{
+        return nil;
+    }
+}
+
+- (SLSite *)currentSite{
+    NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"currentSite == YES"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLSite"];
+    request.predicate = currentPredicate;
+    
+    NSError *error;
+    NSArray *sites = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if(sites.count == 1){
+        //if this isn't the case then we've got a problem
+        return [sites firstObject];
+    }
+    else{
+        return nil;
+    }
 }
 
 @end

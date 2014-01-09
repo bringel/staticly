@@ -110,7 +110,7 @@
     SLSite *site = [NSEntityDescription insertNewObjectForEntityForName:@"SLSite" inManagedObjectContext:self.managedObjectContext];
     site.name = [selected objectForKey:@"name"];
     site.fullName = [selected objectForKey:@"full_name"];
-    
+    site.currentSite = @(YES);
     NSError *error;
     [self.managedObjectContext save:&error];
     self.selectedSite = site;

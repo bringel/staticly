@@ -9,6 +9,7 @@
 #import "SLBranchesViewController.h"
 #import "SLGithubSessionManager.h"
 #import "SLBranch.h"
+#import "SLCommit.h"
 
 @interface SLBranchesViewController ()
 
@@ -99,7 +100,17 @@
     branch.refName = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"];
     branch.url = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"url"];
     branch.site = self.selectedSite;
+    branch.defaultBranch = @(YES);
     NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    SLCommit *commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+    NSDictionary *commitData = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"object"];
+    commit.sha = [commitData objectForKey:@"sha"];
+    commit.url = [commitData objectForKey:@"url"];
+    
+    commit.branch = branch;
+    
     [self.managedObjectContext save:&error];
     
 }

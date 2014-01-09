@@ -13,6 +13,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (void)refreshSite:(SLSite *)site;
+- (void)refreshCurrentSite:(id)sender;
 
 @end

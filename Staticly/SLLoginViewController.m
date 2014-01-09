@@ -107,6 +107,7 @@
     
     SLUser *user = [NSEntityDescription insertNewObjectForEntityForName:@"SLUser" inManagedObjectContext:self.managedObjectContext];
     user.username = username;
+    user.currentUser = @(YES);
     
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     [manager PUT:[NSString stringWithFormat:@"/authorizations/clients/%@", [manager clientID]] parameters:@{@"client_secret" : [manager clientSecret], @"scope" : @[@"repo"]}

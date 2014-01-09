@@ -2,7 +2,7 @@
 //  SLSite.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 1/8/14.
+//  Created by Bradley Ringel on 1/9/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @dynamic fullName;
 @dynamic name;
+@dynamic currentSite;
 @dynamic branches;
 @dynamic owner;
 
