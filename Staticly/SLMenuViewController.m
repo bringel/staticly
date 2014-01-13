@@ -14,6 +14,7 @@
 #import "SLBlob.h"
 #import "SLSite.h"
 #import "SLBranch.h"
+#import "UINavigationController+KeyboardDismisal.h"
 
 @interface SLMenuViewController ()
 

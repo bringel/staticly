@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SLGitObject.h"
 
 @class SLTree;
 
-@interface SLBlob : NSManagedObject
+@interface SLBlob : NSManagedObject <SLGitObject>
 
 @property (nonatomic, retain) NSData * content;
 @property (nonatomic, retain) NSString * sha;

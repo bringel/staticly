@@ -53,11 +53,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)disablesAutomaticKeyboardDismissal{
-    return NO;
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 2;
 }
