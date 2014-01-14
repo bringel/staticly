@@ -107,11 +107,25 @@
     
     NSDictionary *selected = [self.sites objectAtIndex:indexPath.row];
     
-    SLSite *site = [NSEntityDescription insertNewObjectForEntityForName:@"SLSite" inManagedObjectContext:self.managedObjectContext];
-    site.name = [selected objectForKey:@"name"];
-    site.fullName = [selected objectForKey:@"full_name"];
-    site.currentSite = @(YES);
+    NSFetchRequest *siteRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLSite"];
+    NSPredicate *siteNamePredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"name", [selected objectForKey:@"name"]];
+    siteRequest.predicate = siteNamePredicate;
+    
     NSError *error;
+    NSArray *sites = [self.managedObjectContext executeFetchRequest:siteRequest error:&error];
+    
+    SLSite *site;
+    if(sites.count == 0){
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"SLSite" inManagedObjectContext:self.managedObjectContext];
+    
+        site.name = [selected objectForKey:@"name"];
+        site.fullName = [selected objectForKey:@"full_name"];
+        
+    }
+    else{
+        site = [sites firstObject];
+    }
+    site.currentSite = @(YES);
     [self.managedObjectContext save:&error];
     self.selectedSite = site;
     

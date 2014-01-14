@@ -95,21 +95,48 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SLBranch *branch = [NSEntityDescription insertNewObjectForEntityForName:@"SLBranch" inManagedObjectContext:self.managedObjectContext];
     
-    branch.refName = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"];
-    branch.url = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"url"];
-    branch.site = self.selectedSite;
-    branch.defaultBranch = @(YES);
+    NSFetchRequest *branchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLBranch"];
+    NSPredicate *branchNamePredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"refName", [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"]];
+    branchRequest.predicate = branchNamePredicate;
+    
     NSError *error;
+    NSArray *branches = [self.managedObjectContext executeFetchRequest:branchRequest error:&error];
+    
+    SLBranch *branch;
+    if(branches.count == 0){
+        branch = [NSEntityDescription insertNewObjectForEntityForName:@"SLBranch" inManagedObjectContext:self.managedObjectContext];
+    
+        branch.refName = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"ref"];
+        branch.url = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"url"];
+        branch.site = self.selectedSite;
+    }
+    else{
+        branch = [branches firstObject];
+    }
+    branch.defaultBranch = @(YES);
     [self.managedObjectContext save:&error];
     
-    SLCommit *commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
     NSDictionary *commitData = [[self.branches objectAtIndex:indexPath.row] objectForKey:@"object"];
-    commit.sha = [commitData objectForKey:@"sha"];
-    commit.url = [commitData objectForKey:@"url"];
+
     
-    commit.branch = branch;
+    NSFetchRequest *commitRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLCommit"];
+    NSPredicate *commitShaPredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"sha", [commitData objectForKey:@"sha"]];
+    commitRequest.predicate = commitShaPredicate;
+    
+    NSArray *commits = [self.managedObjectContext executeFetchRequest:commitRequest error:&error];
+    
+    SLCommit *commit;
+    if(commits.count == 0){
+        commit = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+        commit.sha = [commitData objectForKey:@"sha"];
+        commit.url = [commitData objectForKey:@"url"];
+        commit.branch = branch;
+    }
+    else{
+        commit = [commits firstObject];
+        commit.branch = branch;
+    }
     
     [self.managedObjectContext save:&error];
     

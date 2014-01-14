@@ -100,9 +100,23 @@
     NSString *username = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] textField] text];
     NSString *password = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]] textField] text];
     
-    SLUser *user = [NSEntityDescription insertNewObjectForEntityForName:@"SLUser" inManagedObjectContext:self.managedObjectContext];
-    user.username = username;
-    user.currentUser = @(YES);
+    NSFetchRequest *userRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
+    NSPredicate *usernamePredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"username", username];
+    userRequest.predicate = usernamePredicate;
+    NSError *error;
+    NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
+    
+    SLUser *user;
+    if(users.count == 0){
+        user = [NSEntityDescription insertNewObjectForEntityForName:@"SLUser" inManagedObjectContext:self.managedObjectContext];
+        user.username = username;
+        user.currentUser = @(YES);
+    }
+    else{
+        //This is an assumption that there is only one user that comes back with that username
+        //hopefully
+        user = [users firstObject];
+    }
     
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     [manager PUT:[NSString stringWithFormat:@"/authorizations/clients/%@", [manager clientID]] parameters:@{@"client_secret" : [manager clientSecret], @"scope" : @[@"repo"]}
