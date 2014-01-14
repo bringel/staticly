@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2F419F7B18838B58006C0874 /* UINavigationController+KeyboardDismisal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F419F7A18838B58006C0874 /* UINavigationController+KeyboardDismisal.m */; };
+		2F419F7E18845CC9006C0874 /* SLPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F419F7D18845CC9006C0874 /* SLPostsViewController.m */; };
+		2F419F8118845CD1006C0874 /* SLPagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F419F8018845CD1006C0874 /* SLPagesViewController.m */; };
+		2F419F8418845D4D006C0874 /* SLTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F419F8318845D4D006C0874 /* SLTextViewController.m */; };
 		2F618D74187EFA8C0011F77A /* SLSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F618D73187EFA8C0011F77A /* SLSite.m */; };
 		2F618D77187EFA8C0011F77A /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F618D76187EFA8C0011F77A /* SLUser.m */; };
 		2F618D7A187EFA8C0011F77A /* SLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F618D79187EFA8C0011F77A /* SLBranch.m */; };
@@ -57,6 +60,12 @@
 /* Begin PBXFileReference section */
 		2F419F7918838B58006C0874 /* UINavigationController+KeyboardDismisal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+KeyboardDismisal.h"; sourceTree = "<group>"; };
 		2F419F7A18838B58006C0874 /* UINavigationController+KeyboardDismisal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+KeyboardDismisal.m"; sourceTree = "<group>"; };
+		2F419F7C18845CC9006C0874 /* SLPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPostsViewController.h; sourceTree = "<group>"; };
+		2F419F7D18845CC9006C0874 /* SLPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPostsViewController.m; sourceTree = "<group>"; };
+		2F419F7F18845CD1006C0874 /* SLPagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPagesViewController.h; sourceTree = "<group>"; };
+		2F419F8018845CD1006C0874 /* SLPagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPagesViewController.m; sourceTree = "<group>"; };
+		2F419F8218845D4D006C0874 /* SLTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTextViewController.h; sourceTree = "<group>"; };
+		2F419F8318845D4D006C0874 /* SLTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTextViewController.m; sourceTree = "<group>"; };
 		2F618D72187EFA8C0011F77A /* SLSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSite.h; sourceTree = "<group>"; };
 		2F618D73187EFA8C0011F77A /* SLSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSite.m; sourceTree = "<group>"; };
 		2F618D75187EFA8C0011F77A /* SLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLUser.h; sourceTree = "<group>"; };
@@ -150,6 +159,12 @@
 				2F97442B187B3A7C000FE5F2 /* SLMenuViewController.m */,
 				2F419F7918838B58006C0874 /* UINavigationController+KeyboardDismisal.h */,
 				2F419F7A18838B58006C0874 /* UINavigationController+KeyboardDismisal.m */,
+				2F419F7C18845CC9006C0874 /* SLPostsViewController.h */,
+				2F419F7D18845CC9006C0874 /* SLPostsViewController.m */,
+				2F419F7F18845CD1006C0874 /* SLPagesViewController.h */,
+				2F419F8018845CD1006C0874 /* SLPagesViewController.m */,
+				2F419F8218845D4D006C0874 /* SLTextViewController.h */,
+				2F419F8318845D4D006C0874 /* SLTextViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -411,6 +426,7 @@
 				2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */,
 				2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */,
 				2F618D77187EFA8C0011F77A /* SLUser.m in Sources */,
+				2F419F8418845D4D006C0874 /* SLTextViewController.m in Sources */,
 				2F618D74187EFA8C0011F77A /* SLSite.m in Sources */,
 				2FAC4E181875BA44008D46D4 /* main.m in Sources */,
 				2F618D80187F5FC20011F77A /* SLBlob.m in Sources */,
@@ -420,6 +436,8 @@
 				2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */,
 				2F618D7D187F5AE90011F77A /* SLCommit.m in Sources */,
 				2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */,
+				2F419F7E18845CC9006C0874 /* SLPostsViewController.m in Sources */,
+				2F419F8118845CD1006C0874 /* SLPagesViewController.m in Sources */,
 				2F9090F1187789BB000D8D81 /* SLGithubSessionManager.m in Sources */,
 				2FAC4E1C1875BA44008D46D4 /* SLAppDelegate.m in Sources */,
 				2F618D7A187EFA8C0011F77A /* SLBranch.m in Sources */,

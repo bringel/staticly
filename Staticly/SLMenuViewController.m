@@ -15,6 +15,8 @@
 #import "SLSite.h"
 #import "SLBranch.h"
 #import "UINavigationController+KeyboardDismisal.h"
+#import "SLPagesViewController.h"
+#import "SLPostsViewController.h"
 
 @interface SLMenuViewController ()
 
@@ -223,7 +225,7 @@
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //Temporarily this is the settings button, later it will moved
@@ -231,7 +233,7 @@
         [self performSegueWithIdentifier:@"showSettings" sender:self];
     }
 }
-
+*/
 
 #pragma mark - Navigation
 
@@ -245,6 +247,14 @@
         //login is all we have
         SLLoginViewController *loginVC = (SLLoginViewController *)[(UINavigationController *)[segue destinationViewController] topViewController];
         loginVC.managedObjectContext = self.managedObjectContext;
+    }
+    else if([segue.identifier isEqualToString:@"showPosts"]){
+        SLPostsViewController *postsVC = (SLPostsViewController *)segue.destinationViewController;
+        postsVC.managedObjectContext = self.managedObjectContext;
+    }
+    else if([segue.identifier isEqualToString:@"showPages"]){
+        SLPagesViewController *pagesVC = (SLPagesViewController *)segue.destinationViewController;
+        pagesVC.managedObjectContext = self.managedObjectContext;
     }
 }
 
