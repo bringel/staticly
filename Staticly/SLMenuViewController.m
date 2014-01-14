@@ -94,21 +94,45 @@
                 //Check to see whether this is a tree or a blob, and do the right thing
                 //dont forget to set the relationship in all of them
                 if([[gitObject objectForKey:@"type"] isEqualToString:@"tree"]){
-                    SLTree *tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+                    NSFetchRequest *treeRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLTree"];
+                    NSPredicate *treeShaPredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"sha", [gitObject objectForKey:@"sha"]];
+                    treeRequest.predicate = treeShaPredicate;
+                    NSError *error;
+                    NSArray *trees = [self.managedObjectContext executeFetchRequest:treeRequest error:&error];
+                    
+                    SLTree *tree;
+                    if(trees.count == 0){
+                        tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+                    }
+                    else{
+                        tree = [trees firstObject];
+                    }
                     tree.sha = [gitObject objectForKey:@"sha"];
                     tree.path = [gitObject objectForKey:@"path"];
                     tree.parent = rootTree;
-                    NSError *error;
+                    
                     [self.managedObjectContext save:&error];
                     NSString *treeGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/trees/%@",username,siteName,tree.sha];
                     [manager GET:treeGetString parameters:@{@"access_token" : token} success:treeSuccessBlock failure:treeFailBlock];
                 }
                 else{
-                    SLBlob *blob = [NSEntityDescription insertNewObjectForEntityForName:@"SLBlob" inManagedObjectContext:self.managedObjectContext];
+                    NSFetchRequest *blobRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLBlob"];
+                    NSPredicate *blobShaPredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"sha", [gitObject objectForKey:@"sha"]];
+                    blobRequest.predicate = blobShaPredicate;
+                    NSError *error;
+                    NSArray *blobs = [self.managedObjectContext executeFetchRequest:blobRequest error:&error];
+                    
+                    SLBlob *blob;
+                    if(blobs.count == 0){
+                        blob = [NSEntityDescription insertNewObjectForEntityForName:@"SLBlob" inManagedObjectContext:self.managedObjectContext];
+                    }
+                    else{
+                        blob = [blobs firstObject];
+                    }
                     blob.sha = [gitObject objectForKey:@"sha"];
                     blob.path = [gitObject objectForKey:@"path"];
                     blob.tree = rootTree;
-                    NSError *error;
+                    
                     [self.managedObjectContext save:&error];
                     
                     NSString *blobGetString = [NSString stringWithFormat:@"/repos/%@/%@/git/blobs/%@", username, siteName, blob.sha];
@@ -128,15 +152,39 @@
             NSDictionary *commitData = responseObject;
             //loop through all the parents and get those
             for(NSDictionary *parent in [commitData objectForKey:@"parents"]){
-                SLCommit *p = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+                NSFetchRequest *commitRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLCommit"];
+                NSPredicate *commitShaPredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"sha", [parent objectForKey:@"sha"]];
+                commitRequest.predicate = commitShaPredicate;
+                
+                NSArray *commits = [self.managedObjectContext executeFetchRequest:commitRequest error:&error];
+                
+                SLCommit *p;
+                if(commits.count == 0){
+                    p = [NSEntityDescription insertNewObjectForEntityForName:@"SLCommit" inManagedObjectContext:self.managedObjectContext];
+                }
+                else{
+                    p = [commits firstObject];
+                }
                 p.sha = [parent objectForKey:@"sha"];
                 p.url = [parent objectForKey:@"url"];
-                //[head addParentsObject:p];
+                [head addParentsObject:p];
                 
                 [self.managedObjectContext save:&error];
             }
             //create a tree
-            SLTree *tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+            NSFetchRequest *treeRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLTree"];
+            NSPredicate *treeShaPredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"sha", [commitData valueForKeyPath:@"tree.sha"]];
+            treeRequest.predicate = treeShaPredicate;
+            NSError *error;
+            NSArray *trees = [self.managedObjectContext executeFetchRequest:treeRequest error:&error];
+            
+            SLTree *tree;
+            if(trees.count == 0){
+                tree = [NSEntityDescription insertNewObjectForEntityForName:@"SLTree" inManagedObjectContext:self.managedObjectContext];
+            }
+            else{
+                tree = [trees firstObject];
+            }
             tree.url = [commitData valueForKeyPath:@"tree.url"];
             tree.sha = [commitData valueForKeyPath:@"tree.sha"];
             
