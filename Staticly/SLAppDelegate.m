@@ -9,6 +9,7 @@
 #import "SLAppDelegate.h"
 #import "SLLoginViewController.h"
 #import "SLMenuViewController.h"
+#import "SLFileViewController.h"
 
 @implementation SLAppDelegate
 
@@ -24,11 +25,14 @@
         //UINavigationController *navController = [[self window] rootViewController];
         //SLLoginViewController *loginViewController = [navController topViewController];
         //loginViewController.managedObjectContext = self.managedObjectContext;
-        UISplitViewController *splitVC = [[self window] rootViewController];
+        UISplitViewController *splitVC = (UISplitViewController *)[[self window] rootViewController];
         UINavigationController *masterNavController = [[splitVC viewControllers] firstObject];
-        SLMenuViewController *menuVC = [masterNavController topViewController];
+        SLMenuViewController *menuVC = (SLMenuViewController *)masterNavController.topViewController;
         menuVC.managedObjectContext = self.managedObjectContext;
         
+        UINavigationController *detailNavController = [[splitVC viewControllers] lastObject];
+        SLFileViewController *fileVC = (SLFileViewController *)detailNavController.topViewController;
+        splitVC.delegate = fileVC;
     }
     else {
         

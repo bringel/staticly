@@ -8,7 +8,7 @@
 
 #import "SLPostsViewController.h"
 #import "SLBlob.h"
-#import "SLTextViewController.h"
+#import "SLFileViewController.h"
 
 @interface SLPostsViewController ()
 
@@ -82,8 +82,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SLBlob *selectedFile = [self.posts objectAtIndex:indexPath.row];
     
-    SLTextViewController *textVC = (SLTextViewController *)[[[self.splitViewController viewControllers] lastObject] topViewController];
-    [textVC setFile:selectedFile];
+    SLFileViewController *fileViewController = (SLFileViewController *)[[[self.splitViewController viewControllers] objectAtIndex:1] topViewController];
+    fileViewController.file = selectedFile;
 }
 /*
 // Override to support conditional editing of the table view.
