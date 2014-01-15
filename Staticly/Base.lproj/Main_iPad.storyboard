@@ -1,49 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="OuF-4Y-h2S">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Text View Controller-->
-        <scene sceneID="qle-MU-jp6">
-            <objects>
-                <viewController id="shs-nI-Rv0" customClass="SLTextViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1gm-dy-pfu"/>
-                        <viewControllerLayoutGuide type="bottom" id="BXc-Si-sR6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="y1V-pe-Une">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-m0-gUd">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BOc-m0-gUd" firstAttribute="leading" secondItem="y1V-pe-Une" secondAttribute="leading" id="SUZ-0r-POC"/>
-                            <constraint firstItem="BXc-Si-sR6" firstAttribute="top" secondItem="BOc-m0-gUd" secondAttribute="bottom" id="bHy-i9-8b5"/>
-                            <constraint firstAttribute="trailing" secondItem="BOc-m0-gUd" secondAttribute="trailing" id="oCH-tH-2NT"/>
-                            <constraint firstItem="BOc-m0-gUd" firstAttribute="top" secondItem="y1V-pe-Une" secondAttribute="top" id="vP4-OO-aUH"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="8GI-ae-GKF"/>
-                    <connections>
-                        <outlet property="textView" destination="BOc-m0-gUd" id="nbg-37-LjW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JNh-w7-76m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2973" y="5334"/>
-        </scene>
         <!--Menu View Controller-->
         <scene sceneID="DHp-GW-bVH">
             <objects>
@@ -441,12 +402,61 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="shs-nI-Rv0" kind="relationship" relationship="rootViewController" id="AMo-cE-eKN"/>
+                        <segue destination="mPP-mX-wvG" kind="relationship" relationship="rootViewController" id="pYe-Vo-TQx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVU-bq-ssZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1999" y="5334"/>
+        </scene>
+        <!--File View Controller-->
+        <scene sceneID="QF5-PZ-2Yb">
+            <objects>
+                <viewController id="mPP-mX-wvG" customClass="SLFileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uff-Th-ZKR"/>
+                        <viewControllerLayoutGuide type="bottom" id="lfs-B3-GTL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sGY-Fh-H6O">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="This is a test" translatesAutoresizingMaskIntoConstraints="NO" id="KvQ-P6-CV8">
+                                <rect key="frame" x="0.0" y="243" width="768" height="781"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="768" placeholderIntrinsicHeight="178" translatesAutoresizingMaskIntoConstraints="NO" id="hWx-tT-YkW" customClass="SLYAMLEditView">
+                                <rect key="frame" x="0.0" y="66" width="768" height="178"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="178" id="gBL-8j-QBR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hWx-tT-YkW" secondAttribute="trailing" id="2mb-6t-Byr"/>
+                            <constraint firstItem="hWx-tT-YkW" firstAttribute="top" secondItem="Uff-Th-ZKR" secondAttribute="bottom" constant="2" id="CIu-Oh-AT9"/>
+                            <constraint firstItem="hWx-tT-YkW" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="I48-al-GcX"/>
+                            <constraint firstAttribute="trailing" secondItem="KvQ-P6-CV8" secondAttribute="trailing" id="VOx-GX-eMi"/>
+                            <constraint firstItem="KvQ-P6-CV8" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="ZN4-br-YiN"/>
+                            <constraint firstItem="KvQ-P6-CV8" firstAttribute="top" secondItem="hWx-tT-YkW" secondAttribute="bottom" constant="-1" id="fJY-pH-lNA"/>
+                            <constraint firstItem="lfs-B3-GTL" firstAttribute="top" secondItem="KvQ-P6-CV8" secondAttribute="bottom" id="rAb-1b-IUu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ml9-1V-eEJ"/>
+                    <connections>
+                        <outlet property="textView" destination="KvQ-P6-CV8" id="eJ9-X3-dnG"/>
+                        <outlet property="yamlEditView" destination="hWx-tT-YkW" id="6Ar-el-Dig"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jpq-2r-43g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3006" y="5334"/>
         </scene>
     </scenes>
     <resources>

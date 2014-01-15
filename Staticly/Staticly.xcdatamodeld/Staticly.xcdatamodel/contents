@@ -19,8 +19,8 @@
         <attribute name="sha" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="branch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLBranch" inverseName="commit" inverseEntity="SLBranch" syncable="YES"/>
-        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLCommit" inverseName="parents" inverseEntity="SLCommit" syncable="YES"/>
-        <relationship name="parents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLCommit" inverseName="children" inverseEntity="SLCommit" syncable="YES"/>
+        <relationship name="child" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="SLCommit" inverseName="parents" inverseEntity="SLCommit" syncable="YES"/>
+        <relationship name="parents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SLCommit" inverseName="child" inverseEntity="SLCommit" syncable="YES"/>
         <relationship name="tree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SLTree" inverseName="commit" inverseEntity="SLTree" syncable="YES"/>
     </entity>
     <entity name="SLSite" representedClassName="SLSite" syncable="YES">

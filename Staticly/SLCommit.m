@@ -2,7 +2,7 @@
 //  SLCommit.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 1/9/14.
+//  Created by Bradley Ringel on 1/15/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
@@ -18,8 +18,8 @@
 @dynamic sha;
 @dynamic url;
 @dynamic branch;
+@dynamic child;
 @dynamic parents;
 @dynamic tree;
-@dynamic children;
 
 @end

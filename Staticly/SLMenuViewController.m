@@ -167,8 +167,8 @@
                 }
                 p.sha = [parent objectForKey:@"sha"];
                 p.url = [parent objectForKey:@"url"];
-                [head addParentsObject:p];
                 
+                p.child = head;
                 [self.managedObjectContext save:&error];
             }
             //create a tree
