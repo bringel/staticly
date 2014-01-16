@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) SLUser *currentUser;
+@property (nonatomic) BOOL presentedFromSettings;
 
 @end

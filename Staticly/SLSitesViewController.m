@@ -126,6 +126,7 @@
         site = [sites firstObject];
     }
     site.currentSite = @(YES);
+    site.owner = self.currentUser;
     [self.managedObjectContext save:&error];
     self.selectedSite = site;
     
@@ -183,6 +184,7 @@
         branchesVC.managedObjectContext = self.managedObjectContext;
         branchesVC.currentUser = self.currentUser;
         branchesVC.selectedSite = self.selectedSite;
+        branchesVC.presentedFromSettings = self.presentedFromSettings;
     }
 }
 

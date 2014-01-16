@@ -139,9 +139,12 @@
     }
     
     [self.managedObjectContext save:&error];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+    if(self.presentedFromSettings){
+        [self performSegueWithIdentifier:@"unwindToSettings" sender:self];
+    }
+    else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 /*

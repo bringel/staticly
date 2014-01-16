@@ -131,7 +131,12 @@
                  self.currentUser = user;
                  [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
                  [manager.requestSerializer clearAuthorizationHeader];
-                 [self performSegueWithIdentifier:@"showSites" sender:self];
+                 if(self.presentedFromSettings){
+                     [self performSegueWithIdentifier:@"unwindToSettings" sender:self];
+                 }
+                 else{
+                     [self performSegueWithIdentifier:@"showSites" sender:self];
+                 }
              }
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {

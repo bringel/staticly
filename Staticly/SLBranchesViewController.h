@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) SLUser *currentUser;
 @property (strong, nonatomic) SLSite *selectedSite;
+@property (nonatomic) BOOL presentedFromSettings;
 
 @end

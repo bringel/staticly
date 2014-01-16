@@ -17,6 +17,7 @@
 #import "UINavigationController+KeyboardDismisal.h"
 #import "SLPagesViewController.h"
 #import "SLPostsViewController.h"
+#import "SLSettingsViewController.h"
 
 @interface SLMenuViewController ()
 
@@ -293,8 +294,10 @@
     if([segue.identifier isEqualToString:@"showSettings"]){
         //Later this will be a settings view controller, but for right now
         //login is all we have
-        SLLoginViewController *loginVC = (SLLoginViewController *)[(UINavigationController *)[segue destinationViewController] topViewController];
-        loginVC.managedObjectContext = self.managedObjectContext;
+        //SLLoginViewController *loginVC = (SLLoginViewController *)[(UINavigationController *)[segue destinationViewController] topViewController];
+        //loginVC.managedObjectContext = self.managedObjectContext;
+        SLSettingsViewController *settingsVC = (SLSettingsViewController *)[(UINavigationController *)segue.destinationViewController topViewController];
+        settingsVC.managedObjectContext = self.managedObjectContext;
     }
     else if([segue.identifier isEqualToString:@"showPosts"]){
         SLPostsViewController *postsVC = (SLPostsViewController *)segue.destinationViewController;

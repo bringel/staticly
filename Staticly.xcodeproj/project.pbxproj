@@ -17,6 +17,8 @@
 		2F618D77187EFA8C0011F77A /* SLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F618D76187EFA8C0011F77A /* SLUser.m */; };
 		2F618D7A187EFA8C0011F77A /* SLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F618D79187EFA8C0011F77A /* SLBranch.m */; };
 		2F618D80187F5FC20011F77A /* SLBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F618D7F187F5FC20011F77A /* SLBlob.m */; };
+		2F82BA961888841E0045E7C7 /* SLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F82BA951888841E0045E7C7 /* SLSettingsViewController.m */; };
+		2F82BA991888857F0045E7C7 /* SLButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F82BA981888857F0045E7C7 /* SLButtonCell.m */; };
 		2F9090E718760780000D8D81 /* SLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090E618760780000D8D81 /* SLLoginViewController.m */; };
 		2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090E918772EB8000D8D81 /* SLEntryCell.m */; };
 		2F9090ED18777700000D8D81 /* githublogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9090EB18777700000D8D81 /* githublogo.png */; };
@@ -24,6 +26,7 @@
 		2F9090F1187789BB000D8D81 /* SLGithubSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090F0187789BB000D8D81 /* SLGithubSessionManager.m */; };
 		2F9090F3187792BE000D8D81 /* githubapi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F9090F2187792BE000D8D81 /* githubapi.plist */; };
 		2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090FC1877C729000D8D81 /* SLSitesViewController.m */; };
+		2F95F49618882E580085B0B3 /* SLYAMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F95F49518882E580085B0B3 /* SLYAMLParser.m */; };
 		2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */; };
 		2F974429187B370F000FE5F2 /* libPods-Staticly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A3C67DC77411E903E35D0 /* libPods-Staticly.a */; };
 		2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97442B187B3A7C000FE5F2 /* SLMenuViewController.m */; };
@@ -79,6 +82,10 @@
 		2F618D79187EFA8C0011F77A /* SLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranch.m; sourceTree = "<group>"; };
 		2F618D7E187F5FC20011F77A /* SLBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBlob.h; sourceTree = "<group>"; };
 		2F618D7F187F5FC20011F77A /* SLBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBlob.m; sourceTree = "<group>"; };
+		2F82BA941888841E0045E7C7 /* SLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSettingsViewController.h; sourceTree = "<group>"; };
+		2F82BA951888841E0045E7C7 /* SLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSettingsViewController.m; sourceTree = "<group>"; };
+		2F82BA971888857F0045E7C7 /* SLButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLButtonCell.h; sourceTree = "<group>"; };
+		2F82BA981888857F0045E7C7 /* SLButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLButtonCell.m; sourceTree = "<group>"; };
 		2F9090E518760780000D8D81 /* SLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLoginViewController.h; sourceTree = "<group>"; };
 		2F9090E618760780000D8D81 /* SLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLoginViewController.m; sourceTree = "<group>"; };
 		2F9090E818772EB8000D8D81 /* SLEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLEntryCell.h; sourceTree = "<group>"; };
@@ -91,6 +98,8 @@
 		2F9090F7187797E9000D8D81 /* SLGitObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLGitObject.h; sourceTree = "<group>"; };
 		2F9090FB1877C728000D8D81 /* SLSitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSitesViewController.h; sourceTree = "<group>"; };
 		2F9090FC1877C729000D8D81 /* SLSitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSitesViewController.m; sourceTree = "<group>"; };
+		2F95F49418882E580085B0B3 /* SLYAMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAMLParser.h; sourceTree = "<group>"; };
+		2F95F49518882E580085B0B3 /* SLYAMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAMLParser.m; sourceTree = "<group>"; };
 		2F97441D187B14D8000FE5F2 /* SLBranchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranchesViewController.h; sourceTree = "<group>"; };
 		2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranchesViewController.m; sourceTree = "<group>"; };
 		2F97442A187B3A7C000FE5F2 /* SLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMenuViewController.h; sourceTree = "<group>"; };
@@ -168,6 +177,8 @@
 				2F419F8018845CD1006C0874 /* SLPagesViewController.m */,
 				2F57A5901887367C00E04205 /* SLFileViewController.h */,
 				2F57A5911887367C00E04205 /* SLFileViewController.m */,
+				2F82BA941888841E0045E7C7 /* SLSettingsViewController.h */,
+				2F82BA951888841E0045E7C7 /* SLSettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +190,8 @@
 				2F9090E918772EB8000D8D81 /* SLEntryCell.m */,
 				2F57A5931887369200E04205 /* SLYAMLEditView.h */,
 				2F57A5941887369200E04205 /* SLYAMLEditView.m */,
+				2F82BA971888857F0045E7C7 /* SLButtonCell.h */,
+				2F82BA981888857F0045E7C7 /* SLButtonCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -251,6 +264,8 @@
 				2FAC4E121875BA44008D46D4 /* Supporting Files */,
 				2F9090EF187789BB000D8D81 /* SLGithubSessionManager.h */,
 				2F9090F0187789BB000D8D81 /* SLGithubSessionManager.m */,
+				2F95F49418882E580085B0B3 /* SLYAMLParser.h */,
+				2F95F49518882E580085B0B3 /* SLYAMLParser.m */,
 			);
 			path = Staticly;
 			sourceTree = "<group>";
@@ -428,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F57A5921887367C00E04205 /* SLFileViewController.m in Sources */,
+				2F95F49618882E580085B0B3 /* SLYAMLParser.m in Sources */,
 				2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */,
 				2F57A5951887369200E04205 /* SLYAMLEditView.m in Sources */,
 				2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */,
@@ -438,10 +454,12 @@
 				2F618D80187F5FC20011F77A /* SLBlob.m in Sources */,
 				2F57A59B18873DDC00E04205 /* SLCommit.m in Sources */,
 				2FBCDCBF187DFA9800ADC1DD /* SLTree.m in Sources */,
+				2F82BA991888857F0045E7C7 /* SLButtonCell.m in Sources */,
 				2F419F7B18838B58006C0874 /* UINavigationController+KeyboardDismisal.m in Sources */,
 				2F9090E718760780000D8D81 /* SLLoginViewController.m in Sources */,
 				2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */,
 				2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */,
+				2F82BA961888841E0045E7C7 /* SLSettingsViewController.m in Sources */,
 				2F419F7E18845CC9006C0874 /* SLPostsViewController.m in Sources */,
 				2F419F8118845CD1006C0874 /* SLPagesViewController.m in Sources */,
 				2F9090F1187789BB000D8D81 /* SLGithubSessionManager.m in Sources */,
@@ -586,7 +604,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
@@ -605,7 +623,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";

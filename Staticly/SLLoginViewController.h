@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (nonatomic) BOOL presentedFromSettings;
 
 - (IBAction)loginButtonPressed:(UIButton *)sender;
 @end
