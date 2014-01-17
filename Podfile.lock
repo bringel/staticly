@@ -1,27 +1,30 @@
 PODS:
   - AFNetworkActivityLogger (2.0.1):
     - AFNetworking (~> 2.0)
-  - AFNetworking (2.0.2):
+  - AFNetworking (2.0.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.0.2):
+  - AFNetworking/NSURLConnection (2.0.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.0.2):
+  - AFNetworking/NSURLSession (2.0.3):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.0.2)
-  - AFNetworking/Security (2.0.2)
-  - AFNetworking/Serialization (2.0.2)
-  - AFNetworking/UIKit (2.0.2):
+  - AFNetworking/Reachability (2.0.3)
+  - AFNetworking/Security (2.0.3)
+  - AFNetworking/Serialization (2.0.3)
+  - AFNetworking/UIKit (2.0.3):
     - AFNetworking/NSURLConnection
+  - LibYAML (0.1.4)
   - MMMarkdown (0.2.3)
-  - MRProgress (0.2.2)
-  - TestFlightSDK (2.2.0-noadid-beta)
+  - MRProgress (0.3.0)
+  - TestFlightSDK (2.2.1-beta)
+  - YAML-Framework (0.0.1):
+    - LibYAML (~> 0.1.4)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (~> 2.0.1)
@@ -29,12 +32,15 @@ DEPENDENCIES:
   - MMMarkdown (~> 0.2.3)
   - MRProgress (~> 0.2)
   - TestFlightSDK
+  - YAML-Framework
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: c2e99aec5d965a3ee33f0954a20c5ddab18934fe
-  AFNetworking: e663917201cdb73f4ad2ba239ad35be8dc9a1e3c
+  AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
+  LibYAML: bf5d90eb17ab8006db821c000d68c1debf2a6ba8
   MMMarkdown: 1775ba63d27e999aedecf75f58153243e1778ea0
-  MRProgress: 51af562344c3fe38ce3c0617fd064f6f1ce55cd5
-  TestFlightSDK: 64f333f91ab9d11985e6c4c188a71b22cc528097
+  MRProgress: 4f086e91313001ad4a622f1ea0d19bb8aa958f6a
+  TestFlightSDK: 4249c2f70e621bcfbdebf019073169c8fe36be13
+  YAML-Framework: edb7fc5cb2c313eec6d3d7fe700b5ac94281189b
 
 COCOAPODS: 0.29.0

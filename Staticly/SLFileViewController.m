@@ -10,6 +10,9 @@
 
 @interface SLFileViewController ()
 
+@property (strong, nonatomic) NSString *frontMatter;
+@property (strong, nonatomic) NSString *body;
+
 @end
 
 @implementation SLFileViewController
@@ -35,10 +38,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)setFile:(SLBlob *)file{
     NSString *fileContent = [[NSString alloc] initWithData:file.content encoding:NSASCIIStringEncoding];
     
-    self.textView.text = fileContent;
+    NSArray *parts = [fileContent componentsSeparatedByString:@"---"];
+    //I happen to know that the first object in this array will be @""
+    self.frontMatter = [parts objectAtIndex:1];
+    self.body = [parts lastObject];
+    self.textView.text = self.body;
+    
+    NSError *error;
+    NSArray *objects = [YAMLSerialization objectsWithYAMLString:self.frontMatter options:kYAMLReadOptionStringScalars error:&error];
+    NSLog(@"%@", objects);
 }
 
 #pragma mark - UISplitViewControllerDelegate
