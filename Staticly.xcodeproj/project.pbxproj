@@ -26,7 +26,6 @@
 		2F9090F1187789BB000D8D81 /* SLGithubSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090F0187789BB000D8D81 /* SLGithubSessionManager.m */; };
 		2F9090F3187792BE000D8D81 /* githubapi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F9090F2187792BE000D8D81 /* githubapi.plist */; };
 		2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9090FC1877C729000D8D81 /* SLSitesViewController.m */; };
-		2F95F49618882E580085B0B3 /* SLYAMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F95F49518882E580085B0B3 /* SLYAMLParser.m */; };
 		2F97441F187B14D8000FE5F2 /* SLBranchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */; };
 		2F974429187B370F000FE5F2 /* libPods-Staticly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A3C67DC77411E903E35D0 /* libPods-Staticly.a */; };
 		2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97442B187B3A7C000FE5F2 /* SLMenuViewController.m */; };
@@ -98,8 +97,6 @@
 		2F9090F7187797E9000D8D81 /* SLGitObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLGitObject.h; sourceTree = "<group>"; };
 		2F9090FB1877C728000D8D81 /* SLSitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSitesViewController.h; sourceTree = "<group>"; };
 		2F9090FC1877C729000D8D81 /* SLSitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSitesViewController.m; sourceTree = "<group>"; };
-		2F95F49418882E580085B0B3 /* SLYAMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAMLParser.h; sourceTree = "<group>"; };
-		2F95F49518882E580085B0B3 /* SLYAMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAMLParser.m; sourceTree = "<group>"; };
 		2F97441D187B14D8000FE5F2 /* SLBranchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBranchesViewController.h; sourceTree = "<group>"; };
 		2F97441E187B14D8000FE5F2 /* SLBranchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBranchesViewController.m; sourceTree = "<group>"; };
 		2F97442A187B3A7C000FE5F2 /* SLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMenuViewController.h; sourceTree = "<group>"; };
@@ -264,8 +261,6 @@
 				2FAC4E121875BA44008D46D4 /* Supporting Files */,
 				2F9090EF187789BB000D8D81 /* SLGithubSessionManager.h */,
 				2F9090F0187789BB000D8D81 /* SLGithubSessionManager.m */,
-				2F95F49418882E580085B0B3 /* SLYAMLParser.h */,
-				2F95F49518882E580085B0B3 /* SLYAMLParser.m */,
 			);
 			path = Staticly;
 			sourceTree = "<group>";
@@ -443,7 +438,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F57A5921887367C00E04205 /* SLFileViewController.m in Sources */,
-				2F95F49618882E580085B0B3 /* SLYAMLParser.m in Sources */,
 				2F9090FD1877C729000D8D81 /* SLSitesViewController.m in Sources */,
 				2F57A5951887369200E04205 /* SLYAMLEditView.m in Sources */,
 				2F9090EA18772EB8000D8D81 /* SLEntryCell.m in Sources */,
@@ -604,7 +598,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 55;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
@@ -623,7 +617,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 55;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";

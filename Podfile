@@ -7,7 +7,7 @@ pod 'TestFlightSDK'
 pod 'MRProgress', '~>0.2'
 pod 'MMMarkdown', '~> 0.2.3'
 pod 'AFNetworkActivityLogger', '~> 2.0.1'
-
+pod 'YAML-Framework'
 end
 
 target "StaticlyTests" do
