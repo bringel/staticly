@@ -523,16 +523,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="768" placeholderIntrinsicHeight="178" translatesAutoresizingMaskIntoConstraints="NO" id="hWx-tT-YkW" customClass="SLYAMLEditView">
-                                <rect key="frame" x="0.0" y="66" width="768" height="178"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7OB-OG-8Sq">
+                                <rect key="frame" x="0.0" y="64" width="768" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="178" id="gBL-8j-QBR"/>
+                                    <constraint firstAttribute="height" id="uhj-dI-CnM"/>
                                 </constraints>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiE-1i-8mR">
-                                <rect key="frame" x="0.0" y="244" width="768" height="780"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entryCell" textLabel="PMC-Bw-CxM" style="IBUITableViewCellStyleDefault" id="zoq-Jp-755">
+                                        <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zoq-Jp-755" id="Mpa-X4-hf9">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PMC-Bw-CxM">
+                                                    <rect key="frame" x="15" y="0.0" width="738" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mPP-mX-wvG" id="9uQ-7Z-djJ"/>
+                                    <outlet property="delegate" destination="mPP-mX-wvG" id="h1A-Dq-MBO"/>
+                                </connections>
+                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyA-EM-HmA">
+                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -542,19 +565,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hWx-tT-YkW" secondAttribute="trailing" id="2mb-6t-Byr"/>
-                            <constraint firstItem="tiE-1i-8mR" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="99A-nV-vht"/>
-                            <constraint firstItem="hWx-tT-YkW" firstAttribute="top" secondItem="Uff-Th-ZKR" secondAttribute="bottom" constant="2" id="CIu-Oh-AT9"/>
-                            <constraint firstItem="hWx-tT-YkW" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="I48-al-GcX"/>
-                            <constraint firstAttribute="trailing" secondItem="tiE-1i-8mR" secondAttribute="trailing" id="Xg7-hn-4v4"/>
-                            <constraint firstItem="tiE-1i-8mR" firstAttribute="top" secondItem="hWx-tT-YkW" secondAttribute="bottom" id="cby-dq-Uta"/>
-                            <constraint firstItem="lfs-B3-GTL" firstAttribute="top" secondItem="tiE-1i-8mR" secondAttribute="bottom" id="khb-lf-iiV"/>
+                            <constraint firstItem="lfs-B3-GTL" firstAttribute="top" secondItem="AyA-EM-HmA" secondAttribute="bottom" id="28X-bp-AkP"/>
+                            <constraint firstItem="AyA-EM-HmA" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="98n-gp-3m6"/>
+                            <constraint firstAttribute="trailing" secondItem="7OB-OG-8Sq" secondAttribute="trailing" id="Q37-72-ct6"/>
+                            <constraint firstItem="AyA-EM-HmA" firstAttribute="top" secondItem="7OB-OG-8Sq" secondAttribute="bottom" id="are-Eq-mUA"/>
+                            <constraint firstAttribute="trailing" secondItem="AyA-EM-HmA" secondAttribute="trailing" id="nEZ-kJ-CGw"/>
+                            <constraint firstItem="7OB-OG-8Sq" firstAttribute="top" secondItem="Uff-Th-ZKR" secondAttribute="bottom" id="sNe-1O-7k8"/>
+                            <constraint firstItem="7OB-OG-8Sq" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="uUS-ng-ENX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ml9-1V-eEJ"/>
                     <connections>
-                        <outlet property="textView" destination="tiE-1i-8mR" id="W9b-Ri-ifV"/>
-                        <outlet property="yamlEditView" destination="hWx-tT-YkW" id="6Ar-el-Dig"/>
+                        <outlet property="textView" destination="AyA-EM-HmA" id="jZE-8J-wdv"/>
+                        <outlet property="yamlTableView" destination="7OB-OG-8Sq" id="au1-G2-kQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jpq-2r-43g" userLabel="First Responder" sceneMemberID="firstResponder"/>

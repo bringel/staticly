@@ -10,10 +10,10 @@
 #import "SLBlob.h"
 #import "SLYAMLEditView.h"
 
-@interface SLFileViewController : UIViewController <UISplitViewControllerDelegate>
+@interface SLFileViewController : UIViewController <UISplitViewControllerDelegate,UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet SLYAMLEditView *yamlEditView;
+@property (weak, nonatomic) IBOutlet UITableView *yamlTableView;
 
 @property (strong, nonatomic) SLBlob *file;
 
