@@ -15,6 +15,20 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        switch(self.entryCellType){
+            case SLEntryCellTypeString:
+                break;
+            case SLEntryCellTypeNumber:
+                self.textField.keyboardType = UIKeyboardTypeNumberPad;
+                break;
+            case SLEntryCellTypeDate:
+                //popover
+                break;
+            case SLEntryCellTypeToken:
+                break;
+            default:
+                break;
+        }
     }
     return self;
 }

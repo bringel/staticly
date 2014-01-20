@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+NS_ENUM(NSUInteger, SLEntryCellType){
+    SLEntryCellTypeString,
+    SLEntryCellTypeNumber,
+    SLEntryCellTypeDate,
+    SLEntryCellTypeToken
+};
+
 
 @interface SLEntryCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-
+@property (nonatomic) enum SLEntryCellType entryCellType;
 @end
