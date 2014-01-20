@@ -147,7 +147,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SLEntryCell *cell = (SLEntryCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell.textField becomeFirstResponder];
-    
+    [cell setSelected:NO];
 }
 
 #pragma mark - Navigation

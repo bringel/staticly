@@ -24,6 +24,11 @@
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         [self.requestSerializer setValue:@"application/vnd.github.v3+json" forHTTPHeaderField:@"Accept"];
         self.managedObjectContext = [(SLAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:@"NSManagedObjectContextDidSaveNotification" object:self.managedObjectContext queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+            
+        }];
+        
     }
     
     return self;

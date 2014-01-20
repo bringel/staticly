@@ -198,11 +198,19 @@
 }
 
 - (IBAction)unwindFromNewUser:(UIStoryboardSegue *)sender{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
     
+    NSError *error;
+    self.users = [self.managedObjectContext executeFetchRequest:request error:&error];
+    [self.tableView reloadData];
 }
 
 - (IBAction)unwindFromNewSite:(UIStoryboardSegue *)sender{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLSite"];
     
+    NSError *error;
+    self.sites = [self.managedObjectContext executeFetchRequest:request error:&error];
+    [self.tableView reloadData];
 }
 
 @end
