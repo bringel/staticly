@@ -177,7 +177,7 @@
 				2F82BA941888841E0045E7C7 /* SLSettingsViewController.h */,
 				2F82BA951888841E0045E7C7 /* SLSettingsViewController.m */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		2F9090E318760688000D8D81 /* Views */ = {
@@ -190,7 +190,7 @@
 				2F82BA971888857F0045E7C7 /* SLButtonCell.h */,
 				2F82BA981888857F0045E7C7 /* SLButtonCell.m */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2F9090E418760690000D8D81 /* Models */ = {
@@ -210,7 +210,7 @@
 				2FBCDCBE187DFA9800ADC1DD /* SLTree.m */,
 				2F9090F7187797E9000D8D81 /* SLGitObject.h */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2FAC4DFD1875BA44008D46D4 = {
@@ -598,7 +598,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 59;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
@@ -617,7 +617,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 59;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
