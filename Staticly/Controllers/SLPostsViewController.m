@@ -13,6 +13,7 @@
 @interface SLPostsViewController ()
 
 @property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) NSArray *drafts;
 
 @end
 
@@ -40,10 +41,17 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"SLBlob"];
     NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"tree.path LIKE %@", @"_posts"];
     
+    NSPredicate *draftsPredicate = [NSPredicate predicateWithFormat:@"tree.path LIKE %@", @"_drafts"];
+    
     request.predicate = postsPredicate;
     
     NSError *error;
     self.posts = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    request.predicate = draftsPredicate;
+    
+    self.drafts = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
     [self.tableView reloadData];
 }
 
@@ -58,13 +66,27 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.posts.count;
+    if(section == 0){
+        return self.drafts.count;
+    }
+    else{
+        return self.posts.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return @"Drafts";
+    }
+    else{
+        return @"Posts";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,14 +95,26 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    SLBlob *post = [self.posts objectAtIndex:indexPath.row];
-    
+    SLBlob *post;
+    if(indexPath.section == 0){
+        post = [self.drafts objectAtIndex:indexPath.row];
+    }
+    else{
+        post = [self.posts objectAtIndex:indexPath.row];
+    }
     cell.textLabel.text = post.path;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SLBlob *selectedFile = [self.posts objectAtIndex:indexPath.row];
+    SLBlob *selectedFile;
+    if(indexPath.section == 0){
+        selectedFile = [self.drafts objectAtIndex:indexPath.row];
+    }
+    else{
+        selectedFile = [self.posts objectAtIndex:indexPath.row];
+    }
+    
     
     SLFileViewController *fileViewController = (SLFileViewController *)[[[self.splitViewController viewControllers] objectAtIndex:1] topViewController];
     fileViewController.file = selectedFile;

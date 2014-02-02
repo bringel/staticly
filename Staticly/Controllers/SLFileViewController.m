@@ -37,6 +37,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [self.yamlTableView addGestureRecognizer:panGesture];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +47,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)pan:(UIPanGestureRecognizer *)gesture{
+    CGPoint beginPoint, translation;
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+            beginPoint = [gesture locationInView:self.yamlTableView];
+            break;
+        case UIGestureRecognizerStateEnded:
+            translation = [gesture translationInView:self.yamlTableView];
+            if(translation.y < beginPoint.y){
+                //move the tableview up
+                [UIView animateWithDuration:2.0 animations:^{
+                    //since there should only be one object, we can get the first one
+                    NSLayoutConstraint *heightConstraint = [self.yamlTableView.constraints firstObject];
+                    heightConstraint.constant = 0;
+                }];
+            }
+            break;
+        default:
+            break;
+    }
+}
 
 - (void)setFile:(SLBlob *)file{
     NSString *fileContent = [[NSString alloc] initWithData:file.content encoding:NSASCIIStringEncoding];
