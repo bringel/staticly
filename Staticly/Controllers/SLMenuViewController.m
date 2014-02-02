@@ -21,6 +21,7 @@
 
 @interface SLMenuViewController ()
 
+@property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @end
 
 @implementation SLMenuViewController
@@ -48,6 +49,12 @@
     self.toolbarItems = @[refreshButton];
 }
 
+- (UIActivityIndicatorView *)spinner{
+    if(_spinner == nil){
+        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+    return _spinner;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -55,6 +62,11 @@
 }
 
 - (void)refreshCurrentSite:(id)sender{
+    UIBarButtonItem *refreshButton = [self.toolbarItems firstObject];
+    
+    UIBarButtonItem *spinnerButton = [[UIBarButtonItem alloc] initWithCustomView:self.spinner];
+    self.toolbarItems = @[spinnerButton];
+    [self.spinner startAnimating];
     //First things first is to fetch the commit that the default branch points to
     //We may also want to check to see if there is a new commit first
     NSPredicate *currentPredicate = [NSPredicate predicateWithFormat:@"defaultBranch == %@", @(YES)];

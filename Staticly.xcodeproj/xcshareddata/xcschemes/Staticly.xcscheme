@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D5109950DE7A42458B3A343A"
+               BlueprintIdentifier = "A108AA209D654CD38F2A14C6"
                BuildableName = "libPods-Staticly.a"
                BlueprintName = "Pods-Staticly"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -43,7 +43,7 @@
       buildConfiguration = "Debug">
       <Testables>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2FAC4E311875BA44008D46D4"
