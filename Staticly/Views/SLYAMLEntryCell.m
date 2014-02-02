@@ -1,20 +1,20 @@
 //
-//  SLEntryCell.m
+//  SLYAMLEntryCell.m
 //  Staticly
 //
-//  Created by Bradley Ringel on 1/3/14.
+//  Created by Bradley Ringel on 1/30/14.
 //  Copyright (c) 2014 Bradley Ringel. All rights reserved.
 //
 
-#import "SLEntryCell.h"
+#import "SLYAMLEntryCell.h"
 
-@implementation SLEntryCell
+@implementation SLYAMLEntryCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        // Initialization code
     }
     return self;
 }

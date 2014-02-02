@@ -19,28 +19,34 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
+  - JVFloatLabeledTextField (0.0.5)
   - LibYAML (0.1.4)
   - MMMarkdown (0.2.3)
   - MRProgress (0.3.0)
+  - OCMock (2.2.2)
   - TestFlightSDK (2.2.1-beta)
-  - YAML-Framework (0.0.1):
+  - YAML-Framework (HEAD based on 0.0.2):
     - LibYAML (~> 0.1.4)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (~> 2.0.1)
   - AFNetworking (~> 2.0)
+  - JVFloatLabeledTextField (~> 0.0.5)
   - MMMarkdown (~> 0.2.3)
   - MRProgress (~> 0.2)
+  - OCMock (~> 2.2.2)
   - TestFlightSDK
-  - YAML-Framework
+  - YAML-Framework (HEAD)
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: c2e99aec5d965a3ee33f0954a20c5ddab18934fe
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  JVFloatLabeledTextField: 7daac42f450476dc9cfa5b23645e8661b868994b
   LibYAML: bf5d90eb17ab8006db821c000d68c1debf2a6ba8
   MMMarkdown: 1775ba63d27e999aedecf75f58153243e1778ea0
   MRProgress: 4f086e91313001ad4a622f1ea0d19bb8aa958f6a
+  OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
   TestFlightSDK: 4249c2f70e621bcfbdebf019073169c8fe36be13
-  YAML-Framework: edb7fc5cb2c313eec6d3d7fe700b5ac94281189b
+  YAML-Framework: 8ac087fa5dad49246f5e7c0894759dacb3644dfe
 
 COCOAPODS: 0.29.0

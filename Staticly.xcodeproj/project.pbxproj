@@ -47,6 +47,9 @@
 		2FAC4E3F1875BA44008D46D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FAC4E3D1875BA44008D46D4 /* InfoPlist.strings */; };
 		2FAC4E411875BA44008D46D4 /* StaticlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC4E401875BA44008D46D4 /* StaticlyTests.m */; };
 		2FBCDCBF187DFA9800ADC1DD /* SLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCDCBE187DFA9800ADC1DD /* SLTree.m */; };
+		2FEA2168189B51D4009E93BD /* SLYAMLEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA2167189B51D4009E93BD /* SLYAMLEntryCell.m */; };
+		2FEA216A189C30EE009E93BD /* SLLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA2169189C30EE009E93BD /* SLLoginViewControllerTests.m */; };
+		8345529AE7414331A41F6397 /* libPods-StaticlyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CEBFF698AC4AF0BA35CB28 /* libPods-StaticlyTests.a */; };
 		D485792D85EA4681B9A563E5 /* libPods-Staticly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A3C67DC77411E903E35D0 /* libPods-Staticly.a */; };
 /* End PBXBuildFile section */
 
@@ -123,7 +126,12 @@
 		2FAC4E401875BA44008D46D4 /* StaticlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaticlyTests.m; sourceTree = "<group>"; };
 		2FBCDCBD187DFA9800ADC1DD /* SLTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTree.h; sourceTree = "<group>"; };
 		2FBCDCBE187DFA9800ADC1DD /* SLTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTree.m; sourceTree = "<group>"; };
+		2FEA2166189B51D4009E93BD /* SLYAMLEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAMLEntryCell.h; sourceTree = "<group>"; };
+		2FEA2167189B51D4009E93BD /* SLYAMLEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAMLEntryCell.m; sourceTree = "<group>"; };
+		2FEA2169189C30EE009E93BD /* SLLoginViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLoginViewControllerTests.m; sourceTree = "<group>"; };
+		3EF4466FAC014A978A59A617 /* Pods-StaticlyTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaticlyTests.xcconfig"; path = "Pods/Pods-StaticlyTests.xcconfig"; sourceTree = "<group>"; };
 		803A3C67DC77411E903E35D0 /* libPods-Staticly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Staticly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87CEBFF698AC4AF0BA35CB28 /* libPods-StaticlyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StaticlyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staticly.xcconfig"; path = "Pods/Pods-Staticly.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +157,7 @@
 				2FAC4E371875BA44008D46D4 /* CoreData.framework in Frameworks */,
 				2FAC4E361875BA44008D46D4 /* UIKit.framework in Frameworks */,
 				2FAC4E351875BA44008D46D4 /* Foundation.framework in Frameworks */,
+				8345529AE7414331A41F6397 /* libPods-StaticlyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +198,8 @@
 				2F57A5941887369200E04205 /* SLYAMLEditView.m */,
 				2F82BA971888857F0045E7C7 /* SLButtonCell.h */,
 				2F82BA981888857F0045E7C7 /* SLButtonCell.m */,
+				2FEA2166189B51D4009E93BD /* SLYAMLEntryCell.h */,
+				2FEA2167189B51D4009E93BD /* SLYAMLEntryCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +232,7 @@
 				2FAC4E081875BA44008D46D4 /* Frameworks */,
 				2FAC4E071875BA44008D46D4 /* Products */,
 				E284E42D29D1489AAED9412C /* Pods-Staticly.xcconfig */,
+				3EF4466FAC014A978A59A617 /* Pods-StaticlyTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,6 +254,7 @@
 				2FAC4E0F1875BA44008D46D4 /* CoreData.framework */,
 				2FAC4E331875BA44008D46D4 /* XCTest.framework */,
 				803A3C67DC77411E903E35D0 /* libPods-Staticly.a */,
+				87CEBFF698AC4AF0BA35CB28 /* libPods-StaticlyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				2FAC4E401875BA44008D46D4 /* StaticlyTests.m */,
+				2FEA2169189C30EE009E93BD /* SLLoginViewControllerTests.m */,
 				2FAC4E3B1875BA44008D46D4 /* Supporting Files */,
 			);
 			path = StaticlyTests;
@@ -323,9 +337,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FAC4E471875BA44008D46D4 /* Build configuration list for PBXNativeTarget "StaticlyTests" */;
 			buildPhases = (
+				509BB6B2F2D443A6AA269A47 /* Check Pods Manifest.lock */,
 				2FAC4E2E1875BA44008D46D4 /* Sources */,
 				2FAC4E2F1875BA44008D46D4 /* Frameworks */,
 				2FAC4E301875BA44008D46D4 /* Resources */,
+				F62ADDD78BA549289D5BFE36 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -400,6 +416,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		509BB6B2F2D443A6AA269A47 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		BEC07025BA6345A79931F6C7 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -430,6 +461,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-Staticly-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F62ADDD78BA549289D5BFE36 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-StaticlyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -453,6 +499,7 @@
 				2F9090E718760780000D8D81 /* SLLoginViewController.m in Sources */,
 				2FAC4E251875BA44008D46D4 /* Staticly.xcdatamodeld in Sources */,
 				2F97442C187B3A7C000FE5F2 /* SLMenuViewController.m in Sources */,
+				2FEA2168189B51D4009E93BD /* SLYAMLEntryCell.m in Sources */,
 				2F82BA961888841E0045E7C7 /* SLSettingsViewController.m in Sources */,
 				2F419F7E18845CC9006C0874 /* SLPostsViewController.m in Sources */,
 				2F419F8118845CD1006C0874 /* SLPagesViewController.m in Sources */,
@@ -467,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FAC4E411875BA44008D46D4 /* StaticlyTests.m in Sources */,
+				2FEA216A189C30EE009E93BD /* SLLoginViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +646,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
@@ -617,7 +667,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bradley Ringel (2WB8P2K6SQ)";
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Staticly/Staticly-Prefix.pch";
 				INFOPLIST_FILE = "Staticly/Staticly-Info.plist";
@@ -630,6 +682,7 @@
 		};
 		2FAC4E481875BA44008D46D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EF4466FAC014A978A59A617 /* Pods-StaticlyTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Staticly.app/Staticly";
@@ -653,6 +706,7 @@
 		};
 		2FAC4E491875BA44008D46D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EF4466FAC014A978A59A617 /* Pods-StaticlyTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Staticly.app/Staticly";

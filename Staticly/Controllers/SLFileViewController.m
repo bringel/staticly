@@ -7,6 +7,7 @@
 //
 
 #import "SLFileViewController.h"
+#import "SLYAMLEntryCell.h"
 
 @interface SLFileViewController ()
 
@@ -53,8 +54,19 @@
     self.frontMatter = [parts objectAtIndex:1];
     self.body = [parts lastObject];
     self.textView.text = self.body;
+    self.yamlMapping = nil;
     
     [self.yamlTableView reloadData];
+    CGFloat tableHeight = self.yamlMapping.count * [self.yamlTableView rowHeight];
+
+    NSArray *tableViewContstraints = [self.yamlTableView constraints];
+    for(NSLayoutConstraint *c in tableViewContstraints){
+        if(c.firstAttribute == NSLayoutAttributeHeight){
+            c.constant = tableHeight;
+        }
+    }
+    //do soemthing to fix the funky scrolling here
+    self.yamlTableView.contentOffset = CGPointZero;
     
 }
 
@@ -113,11 +125,25 @@
 #pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"entryCell";
+    static NSString *identifier = @"yamlCell";
     
-    UITableViewCell *cell = [self.yamlTableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    SLYAMLEntryCell *cell = [self.yamlTableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Testing";
+    
+    NSArray *keys = [self.yamlMapping allKeys];
+    NSObject *something = [self.yamlMapping objectForKey:[keys objectAtIndex:indexPath.row]];
+    
+    cell.textField.placeholder = [keys objectAtIndex:indexPath.row];
+    cell.textField.floatingLabel.font = [UIFont boldSystemFontOfSize:13];
+    cell.textField.floatingLabel.textColor = [UIColor blackColor];
+    if([something isKindOfClass:[NSString class]]){
+        cell.textField.text = (NSString *)something;
+    }
+    else{
+        //this is an array I hope
+        cell.textField.text = [(NSArray *)something description];
+    }
+    
     return cell;
 }
 
@@ -131,27 +157,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    CGFloat tableHeight = self.yamlMapping.count * [self.yamlTableView rowHeight];
-//    CGRect oldFrame = self.yamlTableView.frame;
-//    CGRect newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, tableHeight);
-//    self.yamlTableView.frame = newFrame;
-//    [self.view setNeedsUpdateConstraints];
-//    [self.view layoutIfNeeded];
-//
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.yamlTableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:tableHeight];
-//    heightConstraint.priority = UILayoutPriorityRequired;
-//    [self.view addConstraint:heightConstraint];
-//    [self.view setNeedsUpdateConstraints];
-//    [self.view layoutIfNeeded];
-    
-    NSArray *tableViewContstraints = [self.yamlTableView constraints];
-    for(NSLayoutConstraint *c in tableViewContstraints){
-        if(c.firstAttribute == NSLayoutAttributeHeight){
-            c.constant = tableHeight;
-        }
-    }
-    
-    [self.view setNeedsUpdateConstraints];
     return [self.yamlMapping count];
 }
 
