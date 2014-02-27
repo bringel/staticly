@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="OuF-4Y-h2S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="OuF-4Y-h2S">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -526,45 +526,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7OB-OG-8Sq">
-                                <rect key="frame" x="0.0" y="64" width="768" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="uhj-dI-CnM"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yamlCell" id="zoq-Jp-755" customClass="SLYAMLEntryCell">
-                                        <rect key="frame" x="0.0" y="86" width="768" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zoq-Jp-755" id="Mpa-X4-hf9">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dIg-0O-sEX" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="8" y="0.0" width="752" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="dIg-0O-sEX" firstAttribute="top" secondItem="Mpa-X4-hf9" secondAttribute="top" id="aWr-hE-q0p"/>
-                                                <constraint firstItem="dIg-0O-sEX" firstAttribute="leading" secondItem="Mpa-X4-hf9" secondAttribute="leading" constant="8" id="jy0-TA-8Qx"/>
-                                                <constraint firstAttribute="bottom" secondItem="dIg-0O-sEX" secondAttribute="bottom" id="nlU-mR-6cl"/>
-                                                <constraint firstAttribute="trailing" secondItem="dIg-0O-sEX" secondAttribute="trailing" constant="8" id="szO-h2-Xzx"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="textField" destination="dIg-0O-sEX" id="OfU-7q-HaE"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="mPP-mX-wvG" id="9uQ-7Z-djJ"/>
-                                    <outlet property="delegate" destination="mPP-mX-wvG" id="h1A-Dq-MBO"/>
-                                </connections>
-                            </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyA-EM-HmA">
                                 <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -576,19 +537,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lfs-B3-GTL" firstAttribute="top" secondItem="AyA-EM-HmA" secondAttribute="bottom" id="28X-bp-AkP"/>
-                            <constraint firstItem="AyA-EM-HmA" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="98n-gp-3m6"/>
-                            <constraint firstAttribute="trailing" secondItem="7OB-OG-8Sq" secondAttribute="trailing" id="Q37-72-ct6"/>
-                            <constraint firstItem="AyA-EM-HmA" firstAttribute="top" secondItem="7OB-OG-8Sq" secondAttribute="bottom" id="are-Eq-mUA"/>
-                            <constraint firstAttribute="trailing" secondItem="AyA-EM-HmA" secondAttribute="trailing" id="nEZ-kJ-CGw"/>
-                            <constraint firstItem="7OB-OG-8Sq" firstAttribute="top" secondItem="Uff-Th-ZKR" secondAttribute="bottom" id="sNe-1O-7k8"/>
-                            <constraint firstItem="7OB-OG-8Sq" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="uUS-ng-ENX"/>
+                            <constraint firstItem="AyA-EM-HmA" firstAttribute="top" secondItem="Uff-Th-ZKR" secondAttribute="bottom" id="0Lz-PQ-23n"/>
+                            <constraint firstAttribute="trailing" secondItem="AyA-EM-HmA" secondAttribute="trailing" id="hIl-HB-TUE"/>
+                            <constraint firstItem="AyA-EM-HmA" firstAttribute="leading" secondItem="sGY-Fh-H6O" secondAttribute="leading" id="rvO-N3-nJ3"/>
+                            <constraint firstItem="lfs-B3-GTL" firstAttribute="top" secondItem="AyA-EM-HmA" secondAttribute="bottom" id="sYf-KH-hQz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ml9-1V-eEJ"/>
                     <connections>
                         <outlet property="textView" destination="AyA-EM-HmA" id="jZE-8J-wdv"/>
-                        <outlet property="yamlTableView" destination="7OB-OG-8Sq" id="au1-G2-kQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jpq-2r-43g" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,7 +13,7 @@
 @interface SLFileViewController : UIViewController <UISplitViewControllerDelegate,UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UITableView *yamlTableView;
+//@property (weak, nonatomic) IBOutlet UITableView *yamlTableView;
 
 @property (strong, nonatomic) SLBlob *file;
 
