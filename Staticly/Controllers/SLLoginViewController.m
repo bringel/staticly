@@ -15,6 +15,7 @@
 @interface SLLoginViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) SLUser *currentUser;
+@property (nonatomic) BOOL userNeedsTwoFactorAuth;
 
 @end
 
@@ -53,8 +54,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    if(self.userNeedsTwoFactorAuth){
+        return 2;
+    }
+    else{
+        return 1;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    if(section == 0){
+        return 2;
+    }
+    else{
+        return 1;
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,12 +78,35 @@
     return NO;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 1){
+        return @"Two Factor Authentication";
+    }
+    else{
+        return nil;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    if(section == 1){
+        return @"Please enter the One Time password and login again";
+    }
+    else{
+        return nil;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"entryCell";
     SLEntryCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     cell.textField.delegate = self;
-    if(indexPath.row == 0){
+    if(indexPath.section == 1){
+        cell.textField.returnKeyType = UIReturnKeyDone;
+        cell.textField.tag = 2;
+        cell.textField.placeholder = @"One Time Password";
+    }
+    else if(indexPath.row == 0){
         cell.textField.returnKeyType = UIReturnKeyNext;
         cell.textField.tag = 0;
         cell.textField.placeholder = @"Username";
@@ -104,6 +143,10 @@
 
     NSString *username = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] textField] text];
     NSString *password = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]] textField] text];
+    NSString *twoFactor;
+    if(self.userNeedsTwoFactorAuth){
+        twoFactor = [[(SLEntryCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]] textField] text];
+    }
     
     NSFetchRequest *userRequest = [[NSFetchRequest alloc] initWithEntityName:@"SLUser"];
     NSPredicate *usernamePredicate = [NSPredicate predicateWithFormat:@"%K LIKE %@", @"username", username];
@@ -124,6 +167,9 @@
     }
     
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
+    if(self.userNeedsTwoFactorAuth){
+        [manager.requestSerializer setValue:twoFactor forHTTPHeaderField:@"X-GitHub-OTP"];
+    }
     [manager PUT:[NSString stringWithFormat:@"/authorizations/clients/%@", [manager clientID]] parameters:@{@"client_secret" : [manager clientSecret], @"scope" : @[@"repo"]}
          success:^(NSURLSessionDataTask *task, id responseObject) {
              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -145,6 +191,34 @@
              }
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
+             //TODO:
+             //if the server returns a 401 here, check the headers for
+             // "X-GitHub-OTP: required;:2fa-type"
+             
+             //then add a tableview cell to capture the one time password,
+             // and set it to the X-GitHub-OTP header using setValue:forHTTPHeaderField:
+             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+             if(response.statusCode == 401 && [response.allHeaderFields objectForKey:@"X-Github-OTP"]) {
+                 self.userNeedsTwoFactorAuth = YES;
+                 [self.tableView beginUpdates];
+                 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationBottom];
+                 [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationBottom];
+                 [self.tableView endUpdates];
+                 
+                 NSArray *tableViewConstraints = [self.tableView constraints];
+                 //looping through these to find the height constraint so that the
+                 //login "form" will resize nicely.
+                 [tableViewConstraints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                     NSLayoutConstraint *c = obj;
+                     if(c.firstAttribute == NSLayoutAttributeHeight){
+                         CGFloat height = c.constant;
+                         c.constant = (height + 104);
+                         *stop = YES;
+                     }
+                 }];
+                 [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+             }
+             
              NSLog(@"%@", error);
          }];
 }

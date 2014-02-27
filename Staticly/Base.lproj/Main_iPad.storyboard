@@ -237,10 +237,13 @@
                                     <action selector="loginButtonPressed:" destination="EfG-IS-nmw" eventType="touchUpInside" id="2WP-mD-xUk"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-cd-eWA">
-                                <rect key="frame" x="0.0" y="46" width="540" height="152"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-cd-eWA">
+                                <rect key="frame" x="0.0" y="44" width="540" height="154"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="K4O-TO-XOW"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryCell" id="Kw5-CA-QEe" customClass="SLEntryCell">
                                         <rect key="frame" x="0.0" y="55" width="540" height="44"/>
@@ -270,8 +273,8 @@
                             <constraint firstItem="iHd-cd-eWA" firstAttribute="centerX" secondItem="ZMs-Cz-QAG" secondAttribute="centerX" id="Eml-H0-k9k"/>
                             <constraint firstItem="ZMs-Cz-QAG" firstAttribute="top" secondItem="iHd-cd-eWA" secondAttribute="bottom" constant="8" symbolic="YES" id="Va3-bK-ydJ"/>
                             <constraint firstItem="iHd-cd-eWA" firstAttribute="leading" secondItem="DMr-2c-6gD" secondAttribute="leading" id="X1b-fg-ANS"/>
-                            <constraint firstItem="tH6-em-ImS" firstAttribute="top" secondItem="ZMs-Cz-QAG" secondAttribute="bottom" constant="384" id="b6C-vY-tpY"/>
-                            <constraint firstItem="iHd-cd-eWA" firstAttribute="top" secondItem="L77-uZ-ce6" secondAttribute="bottom" constant="2" id="ogk-yG-IPr"/>
+                            <constraint firstItem="tH6-em-ImS" firstAttribute="top" relation="lessThanOrEqual" secondItem="ZMs-Cz-QAG" secondAttribute="bottom" constant="384" id="b6C-vY-tpY"/>
+                            <constraint firstItem="iHd-cd-eWA" firstAttribute="top" secondItem="L77-uZ-ce6" secondAttribute="bottom" id="ogk-yG-IPr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Gk-EU-S6d">
@@ -602,6 +605,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="a2Q-Ma-PRY"/>
+        <segue reference="nPc-Nj-JkW"/>
     </inferredMetricsTieBreakers>
 </document>

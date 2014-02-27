@@ -157,6 +157,7 @@
     NSObject *something = [self.yamlMapping objectForKey:[keys objectAtIndex:indexPath.row]];
     
     cell.textField.placeholder = [keys objectAtIndex:indexPath.row];
+    [cell.textField.floatingLabel sizeToFit];
     cell.textField.floatingLabel.font = [UIFont boldSystemFontOfSize:13];
     cell.textField.floatingLabel.textColor = [UIColor blackColor];
     if([something isKindOfClass:[NSString class]]){
